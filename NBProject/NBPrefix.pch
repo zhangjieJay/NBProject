@@ -1,0 +1,18 @@
+//
+//  NBPrefix.pch
+//  NBProject
+//
+//  Created by 峥刘 on 17/8/18.
+//  Copyright © 2017年 Jay. All rights reserved.
+//
+
+#ifndef NBPrefix_pch
+#define NBPrefix_pch
+#import <Foundation/Foundation.h>
+
+#import "NBHeader.h"
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* NBPrefix_pch */
