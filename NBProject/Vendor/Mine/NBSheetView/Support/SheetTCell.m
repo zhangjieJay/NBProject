@@ -34,7 +34,7 @@
         _lbDisplay = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, NB_SCREEN_WIDTH, 39.f)];
         _lbDisplay.textAlignment = NSTextAlignmentCenter;
         _lbDisplay.font = [NBTool getFont:15.f];
-        _lbDisplay.textColor = [NBTool getColorNumber:1];
+        _lbDisplay.textColor = [UIColor getColorNumber:1];
         [self.contentView addSubview:_lbDisplay];
         [self.contentView.layer addSublayer:self.lyLine];
     }
@@ -47,7 +47,7 @@
     if (!_lyLine) {
         _lyLine = [CALayer layer];
         _lyLine.frame = CGRectMake(0, 39.5, NB_SCREEN_WIDTH, 0.5f);
-        _lyLine.backgroundColor = [NBTool getColorNumber:10].CGColor;
+        _lyLine.backgroundColor = [UIColor getColorNumber:10].CGColor;
     }
     return _lyLine;
 

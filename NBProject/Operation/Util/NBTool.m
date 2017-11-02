@@ -195,7 +195,7 @@
     if (preArr.count != appArr.count) {//如果不等  则直接提示需要更关心
         need = YES;
     }else{
-
+        
         for (NSInteger i = preArr.count - 1; i >= 0; i--) {
             currentValue += [preArr[i] integerValue] * pow(10, i);
         }
@@ -203,12 +203,12 @@
             appValue += [appArr[i] integerValue] * pow(10, i);
         }
         if(appValue > currentValue){
-        
+            
             need = YES;
         };
     }
     return need;
-
+    
 }
 
 
@@ -477,259 +477,6 @@
 }
 
 
-
-
-
-#pragma mark -------------------------------------------------------- 获取一个颜色
-/**
- *  根据自定义序号和透明度生成颜色(此方法中可以自定义颜色,规定对应序号)
- *  @param num 自定义的序号
- *  @return 目标颜色(默认为不透明)
- */
-+ (UIColor *)getColorNumber:(NSInteger)num
-{
-    return [NBTool getColorNumber:num alph:1.f];
-}
-/**
- *  根据自定义序号和透明度生成颜色(此方法中可以自定义颜色,规定对应序号)
- *  @param num 自定义的序号
- *  @param alp 透明度
- *  @return 目标颜色
- */
-
-+ (UIColor *)getColorNumber:(NSInteger)num alph:(CGFloat)alp{
-    /*默认黑色*/
-    CGFloat red = 0.f;
-    CGFloat gre = 0.f;
-    CGFloat blu = 0.f;
-    
-    switch (num) {
-        case -1://透明色
-            alp = 0.f;
-            break;
-        case 0://纯白-#FFFFFF
-            red = 255.f;
-            gre = 255.f;
-            blu = 255.f;
-            break;
-        case 1://纯黑-#000000
-            red = 0.f;
-            gre = 0.f;
-            blu = 0.f;
-            break;
-        case 5://白烟-#F5F5F5
-            red = 245.f;
-            gre = 245.f;
-            blu = 245.f;
-            break;
-        case 10://亮灰-#DCDCDC
-            red = 220.f;
-            gre = 220.f;
-            blu = 220.f;
-            break;
-        case 15://浅灰色-#D3D3D3
-            red = 211.f;
-            gre = 211.f;
-            blu = 211.f;
-            break;
-        case 20://银白色-#C0C0C0
-            red = 192.f;
-            gre = 192.f;
-            blu = 192.f;
-            break;
-        case 25://深灰色-#A9A9A9
-            red = 169.f;
-            gre = 169.f;
-            blu = 169.f;
-            break;
-        case 30://灰色-#808080
-            red = 128.f;
-            gre = 128.f;
-            blu = 128.f;
-            break;
-        case 35://暗淡的灰色-#696969
-            red = 105.f;
-            gre = 105.f;
-            blu = 105.f;
-            break;
-            
-            
-        case 100://纯红-#FF0000
-            red = 255.f;
-            gre = 0.f;
-            blu = 0.f;
-            break;
-        case 105://印度红-#CD5C5C
-            red = 205.f;
-            gre = 92.f;
-            blu = 92.f;
-            break;
-        case 110://棕色-#A52A2A
-            red = 165.f;
-            gre = 42.f;
-            blu = 42.f;
-            break;
-        case 115://耐火砖-#B22222
-            red = 178.f;
-            gre = 34.f;
-            blu = 34.f;
-            break;
-        case 120://深红色-#8B0000
-            red = 139.f;
-            gre = 0.f;
-            blu = 0.f;
-            break;
-        case 125://栗红-#800000
-            red = 128.f;
-            gre = 0.f;
-            blu = 0.f;
-            break;
-        case 130://深粉色	#FF1493
-            red = 255.f;
-            gre = 20.f;
-            blu = 147.f;
-            break;
-        case 135://粉红	#FFC0CB	255,192,203
-            red = 255.f;
-            gre = 192.f;
-            blu = 203.f;
-            break;
-            
-            
-        case 200://深橙色-#FF8C00
-            red = 255.f;
-            gre = 140.f;
-            blu = 0.f;
-            break;
-            
-            
-        case 300://纯黄-#FFFF00
-            red = 255.f;
-            gre = 255.f;
-            blu = 0.f;
-            break;
-            
-        case 400://纯绿-#008000
-            red = 0.f;
-            gre = 128.f;
-            blu = 0.f;
-            break;
-        case 405://深绿色-#006400
-            red = 0.f;
-            gre = 100.f;
-            blu = 0.f;
-            break;
-        case 410://酸橙绿-#32CD32
-            red = 50.f;
-            gre = 205.f;
-            blu = 50.f;
-            break;
-        case 415://	酸橙色-#00FF00
-            red = 0.f;
-            gre = 255.f;
-            blu = 0.f;
-            break;
-        case 420://查特酒绿-#7FFF00
-            red = 127.f;
-            gre = 255.f;
-            blu = 0.f;
-            break;
-        case 425://草坪绿	-#7CFC00
-            red = 124.f;
-            gre = 252.f;
-            blu = 0.f;
-            break;
-        case 430://绿黄色	-#ADFF2F
-            red = 173.f;
-            gre = 255.f;
-            blu = 47.f;
-            break;
-            
-        case 500://青色-#00FFFF
-            red = 0.f;
-            gre = 255.f;
-            blu = 155.f;
-            break;
-        case 505://深绿宝石-#00CED1
-            red = 0.f;
-            gre = 206.f;
-            blu = 209.f;
-            break;
-        case 510://深青色-#008B8B
-            red = 0.f;
-            gre = 139.f;
-            blu = 139.f;
-            break;
-        case 515://适中的绿宝石-#48D1CC
-            red = 72.f;
-            gre = 209.f;
-            blu = 204.f;
-            break;
-            
-            
-            
-        case 600://纯蓝-#0000FF
-            red = 0.f;
-            gre = 255.f;
-            blu = 255.f;
-            break;
-        case 605://适中的蓝色-#0000CD
-            red = 0.f;
-            gre = 0.f;
-            blu = 205.f;
-            break;
-        case 610://皇军蓝-#4169E1
-            red = 65.f;
-            gre = 104.f;
-            blu = 225.f;
-            break;
-        case 615://淡钢蓝	-#B0C4DE
-            red = 176.f;
-            gre = 196.f;
-            blu = 222.f;
-            break;
-            
-            
-            
-        case 700://灯笼海棠(紫红色)-#FF00FF
-            red = 255.f;
-            gre = 0.f;
-            blu = 255.f;
-            break;
-            
-        case 705://紫罗兰-#EE82EE
-            red = 238.f;
-            gre = 130.f;
-            blu = 238.f;
-            break;
-        case 710://兰花的紫色-#DA70D6
-            red = 218.f;
-            gre = 112.f;
-            blu = 214.f;
-            break;
-            
-        default:
-            red = 0.f;
-            gre = 0.f;
-            blu = 0.f;
-            break;
-    }
-    return [NBTool getColorWithRed:red green:gre blue:blu alpha:alp];
-}
-/**
- *  根据RGB及透明度生成颜色
- *  @param red 红
- *  @param green 绿
- *  @param blue 蓝
- *  @param alp 透明度
- *  @return 目标颜色
- */
-+ (UIColor *)getColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alp{
-    
-    return [UIColor colorWithRed:red/255.f green:green/255.f blue:blue/255.f alpha:alp];
-    
-}
-
 /**
  *  根据参数生成需要的字体
  *  @param size 字体大小
@@ -742,7 +489,7 @@
     if (font) {
         return font;
     }else{
-     return [NBTool getFont:size];
+        return [NBTool getFont:size];
     }
 }
 
@@ -777,16 +524,21 @@
  */
 +(UIWindow *)getForfontWindow{
     UIWindow * window;
-    for(UIWindow * tempWindow in [UIApplication sharedApplication].windows){
-        //键盘所在的层次
-        if([tempWindow isKindOfClass:NSClassFromString(@"UIRemoteKeyboardWindow")]){
-            window = tempWindow;
-            break;
-        }else{//其他情况
-            window = tempWindow;
+    if (iOS11_Later) {
+        return [UIApplication sharedApplication].keyWindow;
+        
+    }else{
+        for(UIWindow * tempWindow in [UIApplication sharedApplication].windows){
+            //键盘所在的层次
+            if([tempWindow isKindOfClass:NSClassFromString(@"UIRemoteKeyboardWindow")]){
+                window = tempWindow;
+                break;
+            }else{//其他情况
+                window = tempWindow;
+            }
         }
+        return window;
     }
-    return window;
 }
 
 /**
@@ -853,7 +605,7 @@
  *  @return 可变富文本信息
  */
 +(NSMutableAttributedString *)getmuAttributedString:(NSString *)string font:(CGFloat)size textColor:(UIColor *)color{
-
+    
     return [[NSMutableAttributedString alloc]initWithAttributedString:[NBTool getmuAttributedString:string font:size textColor:color]];
 }
 /**
@@ -885,7 +637,7 @@
         [view removeFromSuperview];
         view = nil;
     }
-    showview.backgroundColor = [NBTool getColorNumber:35];
+    showview.backgroundColor = [UIColor getColorNumber:35];
     showview.alpha = 1.0f;
     showview.tag = NB_Tag_ShowView;
     [window addSubview:showview];
@@ -896,9 +648,9 @@
     
     label.frame = CGRectMake(NB_Gap_10, NB_Gap_10, LabelSize.width, LabelSize.height);
     label.text = message;
-    label.textColor = [NBTool getColorNumber:10];
+    label.textColor = [UIColor getColorNumber:10];
     label.textAlignment = NSTextAlignmentCenter;
-    label.backgroundColor =[NBTool getColorNumber:-1];
+    label.backgroundColor =[UIColor getColorNumber:-1];
     label.font = [NBTool getFont:15.f];
     [showview addSubview:label];
     double time = 1.5 * (LabelSize.height/15.f);
@@ -911,7 +663,7 @@
             [showview removeFromSuperview];
         }
     }];
-
+    
 }
 
 /**
@@ -921,7 +673,7 @@
  *  @return 查找的结果
  */
 +(UIView *)recurseTogetSuperView:(NSString *)sClass childView:(UIView *)child{
-
+    
     UIView * view = child.superview;
     
     if (view && [sClass isEqualToString:NSStringFromClass([view class])]) {
@@ -931,7 +683,7 @@
         
         return [NBTool recurseTogetSuperView:sClass childView:view];
     }
-
+    
 }
 /**
  *  返回找到的俯视图没找到则返回空

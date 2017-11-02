@@ -62,6 +62,9 @@
 		31CB48371F4AE45D0046E4DB /* NBIPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 31CB48361F4AE45D0046E4DB /* NBIPTool.m */; };
 		693A88161FA81CE500763555 /* NBSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 693A88151FA81CE500763555 /* NBSliderView.m */; };
 		693A881C1FA84CCC00763555 /* NBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 693A881B1FA84CCC00763555 /* NBRootViewController.m */; };
+		6948FE201FAAE99100EBC44D /* UIColor+NBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6948FE1F1FAAE99100EBC44D /* UIColor+NBCategory.m */; };
+		6948FE281FAAF1CB00EBC44D /* NBHudProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 6948FE231FAAF1CB00EBC44D /* NBHudProgress.m */; };
+		6948FE291FAAF1CB00EBC44D /* NBLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6948FE251FAAF1CB00EBC44D /* NBLoadingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +192,12 @@
 		693A88151FA81CE500763555 /* NBSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBSliderView.m; sourceTree = "<group>"; };
 		693A881A1FA84CCC00763555 /* NBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRootViewController.h; sourceTree = "<group>"; };
 		693A881B1FA84CCC00763555 /* NBRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRootViewController.m; sourceTree = "<group>"; };
+		6948FE1E1FAAE99100EBC44D /* UIColor+NBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+NBCategory.h"; sourceTree = "<group>"; };
+		6948FE1F1FAAE99100EBC44D /* UIColor+NBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+NBCategory.m"; sourceTree = "<group>"; };
+		6948FE221FAAF1CB00EBC44D /* NBHudProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBHudProgress.h; sourceTree = "<group>"; };
+		6948FE231FAAF1CB00EBC44D /* NBHudProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBHudProgress.m; sourceTree = "<group>"; };
+		6948FE241FAAF1CB00EBC44D /* NBLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBLoadingView.h; sourceTree = "<group>"; };
+		6948FE251FAAF1CB00EBC44D /* NBLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBLoadingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +240,7 @@
 		311416AF1F4FC69E00C6A13B /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				6948FE211FAAF1CB00EBC44D /* NBHudView */,
 				693A88131FA81CC800763555 /* NBSliderView */,
 				311EE55B1F594D1B00DC582B /* NBQRCode */,
 				31CB3CB11F57EFEE002380F1 /* NBSheetView */,
@@ -638,6 +648,8 @@
 				3125C7831F46F1B900D89D37 /* UIView+NBCategory.m */,
 				31168BC81F56C5E4007E2BF8 /* NSDictionary+NBSerializing.h */,
 				31168BC91F56C5E4007E2BF8 /* NSDictionary+NBSerializing.m */,
+				6948FE1E1FAAE99100EBC44D /* UIColor+NBCategory.h */,
+				6948FE1F1FAAE99100EBC44D /* UIColor+NBCategory.m */,
 			);
 			path = Categroy;
 			sourceTree = "<group>";
@@ -729,6 +741,17 @@
 				693A88151FA81CE500763555 /* NBSliderView.m */,
 			);
 			path = NBSliderView;
+			sourceTree = "<group>";
+		};
+		6948FE211FAAF1CB00EBC44D /* NBHudView */ = {
+			isa = PBXGroup;
+			children = (
+				6948FE221FAAF1CB00EBC44D /* NBHudProgress.h */,
+				6948FE231FAAF1CB00EBC44D /* NBHudProgress.m */,
+				6948FE241FAAF1CB00EBC44D /* NBLoadingView.h */,
+				6948FE251FAAF1CB00EBC44D /* NBLoadingView.m */,
+			);
+			path = NBHudView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -878,6 +901,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				315517E51F4BDD6C00184791 /* NBDevice.m in Sources */,
+				6948FE291FAAF1CB00EBC44D /* NBLoadingView.m in Sources */,
 				31168BB11F5658F9007E2BF8 /* NBPreView.m in Sources */,
 				311BF9B81F4D88F700E0E5D5 /* BaseViewController.m in Sources */,
 				311BF9B91F4D88F700E0E5D5 /* BaseModel.m in Sources */,
@@ -887,6 +911,7 @@
 				31CB3CBB1F57F3BC002380F1 /* SheetModel.m in Sources */,
 				312429E61EF7768F002B82A1 /* AppDelegate.m in Sources */,
 				31168BBB1F566507007E2BF8 /* BaseImgView.m in Sources */,
+				6948FE201FAAE99100EBC44D /* UIColor+NBCategory.m in Sources */,
 				311416AD1F4FBEEE00C6A13B /* NBNetWork.m in Sources */,
 				31CB3CB81F57F39D002380F1 /* SheetTCell.m in Sources */,
 				31168BCA1F56C5E4007E2BF8 /* NSDictionary+NBSerializing.m in Sources */,
@@ -900,6 +925,7 @@
 				693A881C1FA84CCC00763555 /* NBRootViewController.m in Sources */,
 				3125C7861F46F1B900D89D37 /* UIView+NBCategory.m in Sources */,
 				311BF9B71F4D88F700E0E5D5 /* BaseButton.m in Sources */,
+				6948FE281FAAF1CB00EBC44D /* NBHudProgress.m in Sources */,
 				311416D21F4FC69E00C6A13B /* Reachability.m in Sources */,
 				311416CF1F4FC69E00C6A13B /* NBSQLManager.m in Sources */,
 				311416D01F4FC69E00C6A13B /* NBSystemObserver.m in Sources */,

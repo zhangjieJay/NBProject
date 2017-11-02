@@ -25,7 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"-------------%@---------------视图控制器被加载",NSStringFromClass([self class]));
-    self.view.backgroundColor = [NBTool getColorNumber:0];
+    self.view.backgroundColor = [UIColor getColorNumber:0];
     
 }
 

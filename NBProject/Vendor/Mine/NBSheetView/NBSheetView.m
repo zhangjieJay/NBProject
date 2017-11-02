@@ -39,7 +39,7 @@
 {
     self = [super initWithFrame:CGRectMake(0, 0, NB_SCREEN_WIDTH, NB_SCREEN_HEIGHT)];
     if (self) {
-        self.backgroundColor = [NBTool getColorNumber:-1];
+        self.backgroundColor = [UIColor getColorNumber:-1];
         UITapGestureRecognizer * tapGR = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hide)];
         tapGR.delegate =self;
         [self addGestureRecognizer:tapGR];
@@ -144,7 +144,7 @@
         
     } completion:^(BOOL finished) {
         
-        self.backgroundColor = [[NBTool getColorNumber:1] colorWithAlphaComponent:0.6];//动画完成后设置背景颜色
+        self.backgroundColor = [[UIColor getColorNumber:1] colorWithAlphaComponent:0.6];//动画完成后设置背景颜色
 
     }];
 

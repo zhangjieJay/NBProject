@@ -182,12 +182,12 @@ static NSString *notice1 = @"建议与镜头保持100CM距离，尽量避免逆�
 #pragma mark -- 初始化导航栏
 -(void)initNavigationView{
     
-    self.view.backgroundColor = [NBTool getColorNumber:200];
+    self.view.backgroundColor = [UIColor getColorNumber:200];
     self.title = @"扫描二维码";
-    self.navigationController.navigationBar.barTintColor = [NBTool getColorNumber:410];
+    self.navigationController.navigationBar.barTintColor = [UIColor getColorNumber:410];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"wz_back_white.png"] style:UIBarButtonItemStylePlain target:self action:@selector(funGoBack)];
-    self.navigationItem.leftBarButtonItem.tintColor = [NBTool getColorNumber:200];//白色
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor getColorNumber:200];//白色
     self.navigationController.navigationBar.translucent =YES;
 }
 
@@ -232,7 +232,7 @@ static NSString *notice1 = @"建议与镜头保持100CM距离，尽量避免逆�
     noticeLabel.text = notice;
     noticeLabel.numberOfLines = 0;
     noticeLabel.textAlignment = NSTextAlignmentCenter;
-    noticeLabel.textColor = [NBTool getColorNumber:0];
+    noticeLabel.textColor = [UIColor getColorNumber:0];
     noticeLabel.font = [NBTool getFont:14.f];
     noticeLabel.frame = CGRectMake((NB_SCREEN_WIDTH - size.width)/2.f, actualRect.origin.y - 20.f - size.height, size.width, size.height);
     [self.view addSubview:noticeLabel];
@@ -246,7 +246,7 @@ static NSString *notice1 = @"建议与镜头保持100CM距离，尽量避免逆�
     noticeLabel1.text = notice1;
     noticeLabel1.numberOfLines = 0;
     noticeLabel1.textAlignment = NSTextAlignmentCenter;
-    noticeLabel1.textColor = [NBTool getColorNumber:0];
+    noticeLabel1.textColor = [UIColor getColorNumber:0];
     noticeLabel1.font = [NBTool getFont:14.f];
     noticeLabel1.frame = CGRectMake((NB_SCREEN_WIDTH - size.width)/2.f, CGRectGetMaxY(actualRect)+20.f, size.width, size.height);
     [self.view addSubview:noticeLabel1];

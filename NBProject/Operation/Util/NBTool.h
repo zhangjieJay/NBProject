@@ -106,11 +106,6 @@ typedef enum {
 
 
 
-#pragma mark ------------------------------- 获取一个颜色
-+ (UIColor *)getColorNumber:(NSInteger)num;
-+ (UIColor *)getColorNumber:(NSInteger)num alph:(CGFloat)alp;
-+ (UIColor *)getColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alp;
-
 #pragma mark ------------------------------- Jason字符串转化为对象
 + (id)getJsonString:(NSString *)string;
 

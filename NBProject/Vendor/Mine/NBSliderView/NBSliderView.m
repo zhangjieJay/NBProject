@@ -49,7 +49,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self initData];
-        self.viewSep.backgroundColor = [NBTool getColorNumber:615];
+        self.viewSep.backgroundColor = [UIColor getColorNumber:615];
     }
     return self;
 }
@@ -109,9 +109,9 @@
     _isAutoScroll = YES;
     
     _titleFont = [NBTool getFont:15.f];
-    _barColor = [NBTool getColorNumber:130];
-    _titleSeleColor = [NBTool getColorNumber:130];
-    _titleDeseleColor = [NBTool getColorNumber:615];
+    _barColor = [UIColor getColorNumber:130];
+    _titleSeleColor = [UIColor getColorNumber:130];
+    _titleDeseleColor = [UIColor getColorNumber:615];
     
 }
 
@@ -145,8 +145,10 @@
     self.viewSep.hidden = !_showLine;
 }
 -(void)setIsAverage:(BOOL)isAverage{
-    _isAverage = isAverage;
-    if ([self haveData]) [self initUserInterface];
+    if (_isAverage != isAverage) {
+        _isAverage = isAverage;
+        if ([self haveData]) [self initUserInterface];
+    }
 }
 -(void)setIsAutoScroll:(BOOL)isAutoScroll{
 

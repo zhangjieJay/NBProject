@@ -32,9 +32,11 @@
 #import "UIView+NBCategory.h"
 #import "UIImage+NBCategroy.h"
 #import "UIView+NBAnimation.h"
+#import "UIColor+NBCategory.h"//颜色类拓展
 
 #import "NSDictionary+NBSerializing.h"
 
+#import "NBHudProgress.h"
 #import "NBAlertView.h"
 #import "NBSheetView.h"
 

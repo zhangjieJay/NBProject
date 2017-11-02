@@ -53,11 +53,9 @@ typedef NS_ENUM(NSInteger){
 
 - (void)animateWithDuration:(NSTimeInterval)duration fromPositionX:(CGFloat)fpx toPositionX:(CGFloat)tpx{
     
-    
     CABasicAnimation * baseAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
     baseAnimation.fromValue = [NSNumber numberWithFloat:fpx];
     baseAnimation.toValue = [NSNumber numberWithFloat:tpx];
-    
     baseAnimation.duration = duration;
     [self.layer addAnimation:baseAnimation forKey:@"positionXAnimation"];
     
@@ -77,23 +75,23 @@ typedef NS_ENUM(NSInteger){
 }
 
 
-
+#pragma mark ------------------------------------ 自定义的动画  主要用于加载
 - (void)animateCircleRotation{
     
     //创建与View大小相同的正方形
     CALayer *layer = [CALayer layer];
-    layer.backgroundColor = [NBTool getColorNumber:410].CGColor; //圆环底色
+    layer.backgroundColor = [UIColor getColorNumber:410].CGColor; //圆环底色
     layer.frame = self.bounds;
     
     
     //设置圆环宽度及半径
     CGFloat NBLineWidth = 3.f;
-    CGFloat NBWidth = self.bounds.size.width;
+    CGFloat NBWidth = MIN(self.bounds.size.width, self.bounds.size.height) ;
     CGFloat NBRadius = NBWidth/2.f;
     
     
     //颜色渐变的半个矩形
-    NSMutableArray *colors = [NSMutableArray arrayWithObjects:(id)[NBTool getColorNumber:410].CGColor,(id)[UIColor whiteColor].CGColor, nil];
+    NSMutableArray *colors = [NSMutableArray arrayWithObjects:(id)[UIColor getColorNumber:410].CGColor,(id)[UIColor whiteColor].CGColor, nil];
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = CGRectMake(0, NBWidth/2.f, NBWidth, NBWidth/2.f);
     gradientLayer.startPoint = CGPointMake(0, 0);
@@ -108,7 +106,7 @@ typedef NS_ENUM(NSInteger){
     //圆环遮罩
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    shapeLayer.strokeColor = [NBTool getColorNumber:410].CGColor;
+    shapeLayer.strokeColor = [UIColor getColorNumber:410].CGColor;
     shapeLayer.lineWidth = NBLineWidth;
     shapeLayer.path = circlePath.CGPath;
     layer.mask = shapeLayer;//设置遮罩,取layer与shapelayer的重叠部分
@@ -127,26 +125,24 @@ typedef NS_ENUM(NSInteger){
 }
 
 
-
+#pragma mark ------------------------------------ 带dash线的视图
 - (void)animateDashCircleRotation
 {
-    CGFloat NBLineWidth = 5.f;
-    CGFloat NBWidth = self.bounds.size.width;
+    CGFloat NBLineWidth = 3.f;
+    CGFloat NBWidth = MIN(self.bounds.size.width, self.bounds.size.height) ;
     CGFloat NBRadius = NBWidth/2.f;
     
     //底部的灰色layer
     CAShapeLayer *bottomShapeLayer = [CAShapeLayer layer];
-    bottomShapeLayer.strokeColor = [UIColor lightGrayColor].CGColor;
+    bottomShapeLayer.strokeColor = [UIColor getColorNumber:10].CGColor;
     bottomShapeLayer.fillColor = [UIColor clearColor].CGColor;
     bottomShapeLayer.lineWidth = NBLineWidth;
     bottomShapeLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:NBRadius-NBLineWidth/2.f].CGPath;
     [self.layer addSublayer:bottomShapeLayer];
     
-    
-    
     //橘黄色的layer
     CAShapeLayer *ovalShapeLayer = [CAShapeLayer layer];
-    ovalShapeLayer.strokeColor = [NBTool getColorNumber:410].CGColor;
+    ovalShapeLayer.strokeColor = [UIColor getColorNumber:125].CGColor;
     ovalShapeLayer.fillColor = [UIColor clearColor].CGColor;
     ovalShapeLayer.lineWidth = NBLineWidth;
     ovalShapeLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:NBRadius-NBLineWidth/2.f].CGPath;
@@ -165,7 +161,6 @@ typedef NS_ENUM(NSInteger){
     strokeEndAnimation.toValue = @(1.0);
     
     
-    
     /// 组合动画
     CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
     animationGroup.animations = @[strokeStartAnimation,strokeEndAnimation];
@@ -174,12 +169,8 @@ typedef NS_ENUM(NSInteger){
     animationGroup.fillMode = kCAFillModeForwards;
     animationGroup.removedOnCompletion = NO;
     [ovalShapeLayer addAnimation:animationGroup forKey:nil];
-    
     [self.layer addSublayer:ovalShapeLayer];
-    
-    
-    
- 
+
 }
 
 

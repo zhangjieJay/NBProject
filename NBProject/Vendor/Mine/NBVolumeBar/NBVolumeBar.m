@@ -31,7 +31,7 @@
     
     if (self) {
         self.windowLevel = UIWindowLevelAlert -2;
-        self.backgroundColor = [NBTool getColorNumber:0];
+        self.backgroundColor = [UIColor getColorNumber:0];
         [self makeKeyAndVisible];
     }
     return self;
@@ -48,7 +48,7 @@
     if (!_bar) {
         CGFloat h = 3.f;
         _bar = [[UIView alloc]initWithFrame:CGRectMake(0, (CGRectGetHeight(self.frame)- h)/2.f, NB_SCREEN_WIDTH, h)];
-        _bar.backgroundColor = [NBTool getColorNumber:705];
+        _bar.backgroundColor = [UIColor getColorNumber:705];
         [self addSubview:_bar];
     }
     return _bar;

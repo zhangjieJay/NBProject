@@ -75,7 +75,7 @@
     title_font = 18.f ;
     info_font = 15.f;
     self.frame = CGRectMake(0, 0, NB_SCREEN_WIDTH, NB_SCREEN_HEIGHT);
-    self.backgroundColor = [[NBTool getColorNumber:1] colorWithAlphaComponent:0.6f];
+    self.backgroundColor = [[UIColor getColorNumber:1] colorWithAlphaComponent:0.6f];
 }
 
 - (UIImageView *)igvInfo{
@@ -95,7 +95,7 @@
     if (!_lbTitle) {
         _lbTitle = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.igvInfo.frame)+cen_w * gap_scale, cen_w, (title_font + 5.f))];
         _lbTitle.font = [NBTool getFont:title_font bold:YES];
-        _lbTitle.textColor = [NBTool getColorNumber:1];
+        _lbTitle.textColor = [UIColor getColorNumber:1];
         _lbTitle.textAlignment = NSTextAlignmentCenter;
         _lbTitle.numberOfLines = 0;
         self.max_Y = CGRectGetMaxY(_lbTitle.frame);
@@ -110,7 +110,7 @@
     if (!_lbInfo) {
         _lbInfo = [[UILabel alloc]initWithFrame:CGRectZero];
         _lbInfo.font = [NBTool getFont:cen_w * 0.1 * 0.5];
-        _lbInfo.textColor = [NBTool getColorNumber:35];
+        _lbInfo.textColor = [UIColor getColorNumber:35];
         _lbInfo.numberOfLines = 0;
         _lbInfo.textAlignment = NSTextAlignmentCenter;
         [self.viewCenter addSubview:_lbInfo];
@@ -123,7 +123,7 @@
     
     if (!_viewCenter) {
         _viewCenter =[[BaseView alloc]init];
-        _viewCenter.backgroundColor = [NBTool getColorNumber:5];
+        _viewCenter.backgroundColor = [UIColor getColorNumber:5];
         [_viewCenter addSubview:self.igvInfo];
         [self addSubview:_viewCenter];
     }
@@ -188,14 +188,14 @@
         button.frame = CGRectMake(gap + (gap + acWidth) * i, self.max_Y + cen_w * gap_scale, acWidth, height);
         [button drawBezierCornerWithRatio:2.5f];
         if (nCount == 1) {
-            [button setBackgroundImage:[UIImage imageWithColor:[NBTool getColorNumber:100]] forState:UIControlStateNormal];
+            [button setBackgroundImage:[UIImage imageWithColor:[UIColor getColorNumber:100]] forState:UIControlStateNormal];
 
         }else{
             if (i==0) {
-                [button setBackgroundImage:[UIImage imageWithColor:[NBTool getColorNumber:25]] forState:UIControlStateNormal];
+                [button setBackgroundImage:[UIImage imageWithColor:[UIColor getColorNumber:25]] forState:UIControlStateNormal];
 
             }else{
-                [button setBackgroundImage:[UIImage imageWithColor:[NBTool getColorNumber:410]] forState:UIControlStateNormal];
+                [button setBackgroundImage:[UIImage imageWithColor:[UIColor getColorNumber:410]] forState:UIControlStateNormal];
 
             }
         }
@@ -211,7 +211,7 @@
 
  
         [button setTitle:options[i] forState:UIControlStateNormal];
-        [button setTitleColor:[NBTool getColorNumber:0] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor getColorNumber:0] forState:UIControlStateNormal];
         button.titleLabel.font = [NBTool getFont:height * 0.5 name:@"Optima"];
         [self.viewCenter addSubview:button];
         

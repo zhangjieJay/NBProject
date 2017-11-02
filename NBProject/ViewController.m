@@ -29,20 +29,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.view.backgroundColor = [NBTool getColorNumber:610];
+    self.view.backgroundColor = [UIColor getColorNumber:610];
     [self initControls];
 }
 
 - (void)initControls{
     
     self.fffview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 400, 400)];
-    self.fffview.backgroundColor= [NBTool getColorNumber:1];
+    self.fffview.backgroundColor= [UIColor getColorNumber:1];
     [self.view addSubview:self.fffview];
 
     
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:@"增加" forState:UIControlStateNormal];
-    [btn setTitleColor:[NBTool getColorNumber:100] forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor getColorNumber:100] forState:UIControlStateNormal];
 
     btn.frame = CGRectMake(100, 100,120, 40);
     [btn setBackgroundColor:[UIColor blueColor]];
@@ -61,7 +61,7 @@
 //    
 //    UIButton * btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [btn1 setTitle:@"删除" forState:UIControlStateNormal];
-//    [btn1 setTitleColor:[NBTool getColorNumber:105] forState:UIControlStateNormal];
+//    [btn1 setTitleColor:[UIColor getColorNumber:105] forState:UIControlStateNormal];
 //    
 //    btn1.frame = CGRectMake(100, 200,120, 40);
 //    [btn1 setBackgroundColor:[UIColor blueColor]];
@@ -72,7 +72,7 @@
 //    
 //    UIButton * btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [btn2 setTitle:@"修改" forState:UIControlStateNormal];
-//    [btn2 setTitleColor:[NBTool getColorNumber:110] forState:UIControlStateNormal];
+//    [btn2 setTitleColor:[UIColor getColorNumber:110] forState:UIControlStateNormal];
 //    
 //    btn2.frame = CGRectMake(100, 300,120, 40);
 //    [btn2 setBackgroundColor:[UIColor blueColor]];
@@ -82,7 +82,7 @@
 //    
 //    UIButton * btn3 = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [btn3 setTitle:@"查询" forState:UIControlStateNormal];
-//    [btn3 setTitleColor:[NBTool getColorNumber:120] forState:UIControlStateNormal];
+//    [btn3 setTitleColor:[UIColor getColorNumber:120] forState:UIControlStateNormal];
 //    
 //    btn3.frame = CGRectMake(100, 400,120, 40);
 //    [btn3 setBackgroundColor:[UIColor blueColor]];
