@@ -36,13 +36,14 @@
 
 -(void)textHudView{
     
-    [NBHudProgress show];
+//    [NBHudProgress showText:@"测试中..."];
+    [NBHudProgress showErrorText:@"请求失败"];
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-       
-        sleep(2);
-        [NBHudProgress disMiss];
-    });
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//       
+//        sleep(2);
+//        [NBHudProgress disMiss];
+//    });
 
 }
 

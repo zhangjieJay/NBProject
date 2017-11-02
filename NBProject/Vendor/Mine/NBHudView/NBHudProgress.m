@@ -229,7 +229,7 @@ typedef NS_ENUM(NSInteger){
     CGFloat heightLoad = 40.f;
     CGSize size = text?[NBTool autoString:text font:textFont width:60]:CGSizeZero;//计算statusView的宽度
     CGFloat statusWidth = text?MAX(heightLoad, size.width)+gap * 2.f:heightLoad + gap*2.f;
-    CGFloat statusHeight =text?heightLoad+gap*2.f+size.height:heightLoad+gap*2.f;
+    CGFloat statusHeight =text?heightLoad+gap*3.f+size.height:heightLoad+gap*2.f;
     CGFloat lineWidth = MAX(statusWidth, statusHeight);
     self.statusView.frame = CGRectMake(0, 0, lineWidth, lineWidth);
     self.statusView.center = self.backView.center;
@@ -259,7 +259,7 @@ typedef NS_ENUM(NSInteger){
     
     self.lbText.text = text;
     if (text) {
-        self.lbText.frame = CGRectMake(0, heightLoad, self.currentFrame.size.width, size.height);
+        self.lbText.frame = CGRectMake(0, heightLoad+gap*2.f, lineWidth, size.height);
         [self.statusView addSubview:self.lbText];
         self.statusView.backgroundColor = [[UIColor getColorNumber:1] colorWithAlphaComponent:0.4];
 

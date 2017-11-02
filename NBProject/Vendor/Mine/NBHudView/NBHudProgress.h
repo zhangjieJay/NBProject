@@ -13,8 +13,8 @@
 /**显示加载用在KeyWindow**/
 + (void)show;
 + (void)showText:(NSString *)text;
-+ (void)showTopText:(NSString *)text;
-+ (void)showCenterText:(NSString *)text;
+//+ (void)showTopText:(NSString *)text;
+//+ (void)showCenterText:(NSString *)text;
 
 
 /**显示加载用在目标view上**/
