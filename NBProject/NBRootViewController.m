@@ -10,7 +10,7 @@
 #import "NBSliderView.h"
 
 
-@interface NBRootViewController ()
+@interface NBRootViewController ()<NBSliderViewDelegate>
 
 @end
 
@@ -22,9 +22,20 @@
     
     NSArray * arTitle = @[@"全部待付款",@"待付款",@"待收货",@"待付款已完成",@"售后",@"待付款",@"待收货",@"已完成",@"售后"];
     NBSliderView * sliderView = [[NBSliderView alloc]initWithFrame:CGRectMake(0, 64, NB_SCREEN_WIDTH, 45.f)];
+    sliderView.nbsv_delegate = self;
+    sliderView.isAverage = YES;
+    sliderView.showLine = YES;
+    sliderView.showBar= YES;
     sliderView.arTitle = arTitle;
-    sliderView.isAverage = NO;
     [self.view addSubview:sliderView];
+}
+
+
+
+-(void)sliderView:(NBSliderView *)sliderView didClickedButton:(UIButton *)sender atIndex:(NSInteger)index{
+
+    NSLog(@"滚动到第%ld个",index);
+
 }
 
 - (void)didReceiveMemoryWarning {

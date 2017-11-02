@@ -30,8 +30,6 @@
 
 
 @property(nonatomic,assign)CGFloat scrollWidth;//scrollView的宽度
-@property(nonatomic,assign)CGFloat edgeGap;//边缘空隙默认为10.f;
-@property(nonatomic,assign)CGFloat midGap;//中间空隙默认为10.f;
 
 
 @end
@@ -39,33 +37,33 @@
 @implementation NBSliderView
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         [self initData];
-        self.viewSep.backgroundColor = [UIColor grayColor];
+        self.viewSep.backgroundColor = [NBTool getColorNumber:615];
     }
     return self;
 }
 
 
 - (UIView *)viewSep{
-
+    
     if (!_viewSep) {
         _viewSep = [[UIView alloc]initWithFrame:CGRectMake(0, self.bounds.size.height - 0.5, self.bounds.size.width, 0.5)];
         
         [self addSubview:_viewSep];
     }
     return _viewSep;
-
+    
 }
 -(UIScrollView *)contentScrollView{
     if (!_contentScrollView) {
@@ -76,7 +74,7 @@
         [self addSubview:_contentScrollView];
     }
     return _contentScrollView;
-
+    
 }
 - (NSMutableArray *)arButton{
     if (!_arButton) {
@@ -87,42 +85,130 @@
 
 
 -(UIView *)viewSlider{
-
+    
     if (!_viewSlider) {
         _viewSlider = [[UIView alloc]init];
-        _viewSlider.backgroundColor = [UIColor redColor];
-        _viewSlider.hidden = !self.showLine;
+        _viewSlider.backgroundColor = self.barColor;
+        _viewSlider.hidden = !self.showBar;
         [self.contentScrollView addSubview:_viewSlider];
     }
     return _viewSlider;
 }
--(void)setIsAverage:(BOOL)isAverage{
-    _isAverage = isAverage;
-    [self initUserInterface];
+
+- (void)initData{
+    _midGap = 10.f;
+    _edgeGap = 10.f;
+    _barHeight = 2.f;
+    _countPerPage = 5;
+    _btnWidthOffset = 20.f;
+    _scrollWidth = NB_SCREEN_WIDTH;
+    
+    _showBar = YES;
+    _showLine = YES;
+    _isAverage = YES;
+    _isAutoScroll = YES;
+    
+    _titleFont = [NBTool getFont:15.f];
+    _barColor = [NBTool getColorNumber:130];
+    _titleSeleColor = [NBTool getColorNumber:130];
+    _titleDeseleColor = [NBTool getColorNumber:615];
+    
 }
 
+-(void)setMidGap:(CGFloat)midGap{
+    _midGap = midGap;
+    if ([self haveData]) [self initUserInterface];
+}
+-(void)setEdgeGap:(CGFloat)edgeGap{
+    _edgeGap = edgeGap;
+    if ([self haveData]) [self initUserInterface];
+}
+-(void)setBarHeight:(CGFloat)barHeight{
+    _barHeight = barHeight;
+    CGRect rect = self.viewSlider.frame;
+    rect.size.height = _barHeight;
+    self.viewSlider.frame = rect;
+}
+-(void)setBtnWidthOffset:(CGFloat)btnWidthOffset{
+    _btnWidthOffset = btnWidthOffset;
+    if ([self haveData]) [self initUserInterface];
+}
+
+
+
+-(void)setShowBar:(BOOL)showBar{
+    _showBar = showBar;
+    self.viewSlider.hidden = !_showBar;
+}
 -(void)setShowLine:(BOOL)showLine{
     _showLine = showLine;
-    self.viewSlider.hidden = !_showLine;
+    self.viewSep.hidden = !_showLine;
 }
+-(void)setIsAverage:(BOOL)isAverage{
+    _isAverage = isAverage;
+    if ([self haveData]) [self initUserInterface];
+}
+-(void)setIsAutoScroll:(BOOL)isAutoScroll{
+
+    _isAutoScroll = isAutoScroll;
+}
+
+
+-(void)setTitleFont:(UIFont *)titleFont{
+    _titleFont = titleFont;
+    if ([self haveData]) [self changeTitleFont];
+}
+-(void)setBarColor:(UIColor *)barColor{
+    _barColor = barColor;
+    self.viewSlider.backgroundColor = _barColor;
+}
+-(void)setTitleSeleColor:(UIColor *)titleSeleColor{
+    _titleSeleColor = titleSeleColor;
+    if ([self haveData]) [self changeUnableColor];
+}
+-(void)setTitleDeseleColor:(UIColor *)titleDeseleColor{
+    _titleDeseleColor = titleDeseleColor;
+    if ([self haveData]) [self changeNormalColor];
+}
+
+
+
+
+
+
+-(BOOL)haveData{
+    return self.arTitle.count;
+}
+
 - (void)setArTitle:(NSArray *)arTitle{
     _arTitle = arTitle;
     [self initUserInterface];//初始化视图
 }
 
-- (void)initData{
-    _isAverage = YES;
-    _showLine = YES;
-    _countPerPage = 5;
-    _edgeGap = 10.f;
-    _midGap = 10.f;
-    _scrollWidth = NB_SCREEN_WIDTH;
+
+
+-(void)changeUnableColor{
+    for (int i = 0 ; i < self.totalCount; i++) {
+        UIButton * tempBtn  = [self.arButton objectAtIndex:i];
+        [tempBtn setTitleColor:self.titleSeleColor forState:UIControlStateDisabled];
+    }
+}
+-(void)changeNormalColor{
+    for (int i = 0 ; i < self.totalCount; i++) {
+        UIButton * tempBtn  = [self.arButton objectAtIndex:i];
+        [tempBtn setTitleColor:self.titleDeseleColor forState:UIControlStateNormal];
+    }
+}
+-(void)changeTitleFont{
+    for (int i = 0 ; i < self.totalCount; i++) {
+        UIButton * tempBtn  = [self.arButton objectAtIndex:i];
+        tempBtn.titleLabel.font = self.titleFont;
+    }
 }
 
 #pragma mark ------------------------------------ 初始化界面
 - (void)initUserInterface{
     
-
     self.totalCount = _arTitle.count;
     CGFloat buttonWidth = 0.0;
     if (self.isAverage) {//如果平均则不需要通过title进行计算
@@ -138,15 +224,15 @@
     
     CGFloat buttonHeight = self.bounds.size.height * 0.7;
     CGFloat y = self.bounds.size.height * 0.15;
-
+    
     for (int i = 0 ; i < self.totalCount; i++) {
         
         UIButton * tempBtn  = [self.contentScrollView viewWithTag:i+SLIDER_BTN_TAG];
         if (!tempBtn) {
             tempBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
-            tempBtn.titleLabel.font = [NBTool getFont:14.f];
-            [tempBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [tempBtn setTitleColor:[UIColor redColor] forState:UIControlStateDisabled];
+            tempBtn.titleLabel.font = self.titleFont;
+            [tempBtn setTitleColor:self.titleDeseleColor forState:UIControlStateNormal];
+            [tempBtn setTitleColor:self.titleSeleColor forState:UIControlStateDisabled];
             [tempBtn addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
             tempBtn.tag = i+SLIDER_BTN_TAG;
             [self.arButton addObject:tempBtn];
@@ -154,7 +240,7 @@
         }
         /****当需要采用不平均按钮时****/
         if (!self.isAverage) {
-            buttonWidth = [NBTool autoString:self.arTitle[i] font:[NBTool getFont:14.f] width:self.scrollWidth].width  + 20.f;
+            buttonWidth = [NBTool autoString:self.arTitle[i] font:self.titleFont width:self.scrollWidth].width  + self.btnWidthOffset;
         }
         
         tempBtn.frame = CGRectMake(ori_x,y,buttonWidth, buttonHeight);
@@ -172,7 +258,7 @@
         [tempBtn setTitle:self.arTitle[i] forState:UIControlStateDisabled];
         
     }
-
+    
     self.contentScrollView.contentSize =CGSizeMake(ori_x, self.bounds.size.height);
     
     
@@ -183,8 +269,8 @@
 #pragma mark ------------------------------------ 按钮点击事件
 -(void)buttonClicked:(UIButton *)sender{
     [self sliderToButton:sender];
-    if (self.sliderDelegate && [self.sliderDelegate respondsToSelector:@selector(sliderViewDidClickedButton:atIndex:)]) {
-        [self.sliderDelegate sliderViewDidClickedButton:sender atIndex:(sender.tag - SLIDER_BTN_TAG)];
+    if (self.nbsv_delegate && [self.nbsv_delegate respondsToSelector:@selector(sliderView:didClickedButton:atIndex:)]) {
+        [self.nbsv_delegate sliderView:self didClickedButton:sender atIndex:(sender.tag - SLIDER_BTN_TAG)];
     }
 }
 #pragma mark ------------------------------------ 只读属性的修改
@@ -232,36 +318,39 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         
-        if (self.showLine) {
+        if (self.showBar) {
             self.viewSlider.frame = rectNew;
         }
         
-        if (self.scrollWidth< self.contentScrollView.contentSize.width) {
-            self.contentScrollView.contentOffset =CGPointMake(originX, 0);
+        if (self.isAutoScroll) {
+            if (self.scrollWidth< self.contentScrollView.contentSize.width) {
+                self.contentScrollView.contentOffset =CGPointMake(originX, 0);
+            }
         }
+
     } completion:nil];
 }
 
 -(CGRect)getLineRectWithRect:(CGRect)rect index:(NSInteger)index{
-
+    
     CGRect rectNow = rect;
     NSString  * title = [self.arTitle objectAtIndex:index];
     
-    CGSize size = [NBTool autoString:title font:[NBTool getFont:14.f] width:100.f];
+    CGSize size = [NBTool autoString:title font:self.titleFont width:self.scrollWidth-self.edgeGap * 2.f];
     
     CGFloat widthMax = size.width + 10.f;
-
+    
     if (rect.size.width <= widthMax) {
-
+        
         
     }else{
-    
+        
         rectNow.origin.x+=( rect.size.width - widthMax)/2.f;
         rectNow.size.width = widthMax;
     }
-    rectNow.origin.y = self.bounds.size.height - 2.f;
-    rectNow.size.height = 2.f;
-
+    rectNow.origin.y = self.bounds.size.height - self.barHeight;
+    rectNow.size.height = self.barHeight;
+    
     return rectNow;
 }
 
