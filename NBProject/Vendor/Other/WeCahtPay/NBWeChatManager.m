@@ -204,7 +204,7 @@
             if( [result_code isEqualToString:@"SUCCESS"]) {
                 //验证业务处理状态
                 prepayid = [resParams objectForKey:@"prepay_id"];
-                return_code = @"";
+                
             }
         }else{
             

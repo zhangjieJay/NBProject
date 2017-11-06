@@ -19,7 +19,7 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGRect frame = CGRectMake((rect.size.width - 17.f)/2.f , (rect.size.width - 12.f)/2.f, 17.f, 12.f);
-    [@"NB" drawInRect:frame withAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:10.f],NSForegroundColorAttributeName:[UIColor getColorNumber:410]}];
+    [@"NB" drawInRect:frame withAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:10.f],NSForegroundColorAttributeName:[UIColor getColorNumber:0]}];
     CGContextDrawPath(context, kCGPathStroke);
 }
 

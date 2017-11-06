@@ -108,7 +108,7 @@
         imageView.frame = frame;
     }else{
         
-        width = superFrame.size.width;
+//        width = superFrame.size.width;
         frame.size.width = frame.size.height*imageScale;
         superFrame.size.width = frame.size.width;
         imageView.frame = frame;

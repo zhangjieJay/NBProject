@@ -10,23 +10,33 @@
 #import "NBSliderView.h"
 
 
-@interface NBRootViewController ()<NBSliderViewDelegate>
+@interface NBRootViewController ()<NBSliderViewDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
-@property(nonatomic,strong) UIView * aniView;
+@property(nonatomic,strong)UITableView * mainTableView;
+
+
 
 @end
 
 @implementation NBRootViewController
-@synthesize aniView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    self.view.backgroundColor = [UIColor getColorNumber:125];
+    self.navigationController.navigationBar.translucent = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[UIColor getColorNumber:0] colorWithAlphaComponent:1]] forBarMetrics:UIBarMetricsDefault];
+    self.title = @"测试";
+    
+    
+    [self.view addSubview:self.mainTableView];
     // Do any additional setup after loading the view.
     
 //    [self testSliderView];
     
     
-//    [self testAnimation];
     
     
 }
@@ -36,27 +46,17 @@
 
 -(void)textHudView{
     
-//    [NBHudProgress showText:@"测试中..."];
-    [NBHudProgress showErrorText:@"请求失败"];
+    [NBHudProgress showInView:self.view text:@"加载中..."];
     
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//       
-//        sleep(2);
-//        [NBHudProgress disMiss];
-//    });
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+       
+        sleep(2);
+        [NBHudProgress showErrorText:@"请求失败"];
+
+    });
 
 }
 
-
-
-
--(void)testAnimation{
-
-    aniView = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 40.f, 40.f)];
-    [aniView animateCircleRotation];
-    [self.view addSubview:aniView];
-
-}
 
 
 
@@ -79,6 +79,79 @@
 
 }
 
+
+
+-(UITableView *)mainTableView{
+    
+    if (!_mainTableView) {
+        _mainTableView =[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _mainTableView.delegate = self;
+        _mainTableView.dataSource = self;
+        _mainTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        [_mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+        [self.view addSubview:_mainTableView];
+        
+    }
+    
+    return _mainTableView;
+}
+#pragma mark ------------------------------------ tableviewDelegate
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 10;
+}
+
+
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    return [UIView new];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+
+    return cell;
+}
+
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    return nil;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 100;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 45;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 0.01;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self textHudView];
+
+}
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat alphHeight = 200;
+    CGFloat alpoffset = fabs(scrollView.contentOffset.y);
+    CGFloat alp = alpoffset/alphHeight;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[UIColor getColorNumber:500] colorWithAlphaComponent:alp]] forBarMetrics:UIBarMetricsDefault];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -96,10 +169,14 @@
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
-
-//    [aniView.layer removeAllAnimations];
+    NSArray * ar = self.navigationController.navigationBar.subviews;
     
-    [self textHudView];
+    
+    for (UIView * view in ar) {
+        NSLog(@"类名:%@",NSStringFromClass([view class]));
+        
+    }
+    
 
 }
 

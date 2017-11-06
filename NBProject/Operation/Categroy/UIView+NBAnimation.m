@@ -80,7 +80,7 @@ typedef NS_ENUM(NSInteger){
     
     //创建与View大小相同的正方形
     CALayer *layer = [CALayer layer];
-    layer.backgroundColor = [UIColor getColorNumber:410].CGColor; //圆环底色
+    layer.backgroundColor = [UIColor getColorNumber:10].CGColor; //圆环底色
     layer.frame = self.bounds;
     
     
@@ -91,7 +91,7 @@ typedef NS_ENUM(NSInteger){
     
     
     //颜色渐变的半个矩形
-    NSMutableArray *colors = [NSMutableArray arrayWithObjects:(id)[UIColor getColorNumber:410].CGColor,(id)[UIColor whiteColor].CGColor, nil];
+    NSMutableArray *colors = [NSMutableArray arrayWithObjects:(id)[UIColor getColorNumber:30].CGColor,(id)[UIColor getColorNumber:10].CGColor, nil];
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = CGRectMake(0, NBWidth/2.f, NBWidth, NBWidth/2.f);
     gradientLayer.startPoint = CGPointMake(0, 0);
@@ -100,13 +100,13 @@ typedef NS_ENUM(NSInteger){
     [layer addSublayer:gradientLayer]; //设置颜色渐变
     
     
-    //创建路径3/4个圆
-    UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(NBWidth/2.f, NBWidth/2.f) radius:NBRadius-NBLineWidth/2.f startAngle:0 endAngle:M_PI*1.5 clockwise:YES];
+    //创建路径1个圆
+    UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(NBWidth/2.f, NBWidth/2.f) radius:NBRadius-NBLineWidth/2.f startAngle:0 endAngle:M_PI*2.f clockwise:YES];
     
     //圆环遮罩
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    shapeLayer.strokeColor = [UIColor getColorNumber:410].CGColor;
+    shapeLayer.strokeColor = [UIColor getColorNumber:10].CGColor;
     shapeLayer.lineWidth = NBLineWidth;
     shapeLayer.path = circlePath.CGPath;
     layer.mask = shapeLayer;//设置遮罩,取layer与shapelayer的重叠部分

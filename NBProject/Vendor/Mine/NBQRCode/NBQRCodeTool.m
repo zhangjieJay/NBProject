@@ -88,9 +88,12 @@
 
     // 2.保存bitmap到图片
     CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
+    CGColorSpaceRelease(cs);
     CGContextRelease(bitmapRef);
     CGImageRelease(bitmapImage);
-    return [UIImage imageWithCGImage:scaledImage];
+    UIImage * imageUI = [UIImage imageWithCGImage:scaledImage];
+    CGImageRelease(scaledImage);
+    return imageUI;
 }
 
 

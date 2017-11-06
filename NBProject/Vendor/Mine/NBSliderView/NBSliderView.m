@@ -309,7 +309,6 @@
         }
     }
     /********************/
-    
     sender.enabled = NO;
     self.btnCurrent.enabled = YES;
     self.btnCurrent = sender;

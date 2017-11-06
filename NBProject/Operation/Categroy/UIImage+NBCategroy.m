@@ -221,8 +221,7 @@
     CGColorSpaceRelease(colorSpace); 
     free(pixelBuffer); 
     CFRelease(inBitmapData); 
-    CGColorSpaceRelease(colorSpace); 
-    CGImageRelease(imageRef); 
+    CGImageRelease(imageRef);
     return returnImage;
 }
 
@@ -247,7 +246,9 @@
     
     CIContext *ciContext = [CIContext contextWithOptions:nil];//core image context
     CGImageRef outImage = [ciContext createCGImage:outputImage fromRect:[outputImage extent]];
-    return [UIImage imageWithCGImage:outImage];
+    UIImage * image = [UIImage imageWithCGImage:outImage];
+    CGImageRelease(outImage);
+    return image;
 }
 
 

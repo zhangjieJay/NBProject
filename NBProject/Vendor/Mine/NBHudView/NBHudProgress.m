@@ -80,6 +80,7 @@ typedef NS_ENUM(NSInteger){
     if (!_statusView) {
         _statusView = [[BaseView alloc]initWithFrame:CGRectMake(0, 0, 80.f, 80.f)];
         _statusView.backgroundColor = [UIColor getColorNumber:0];
+        [self.backView addSubview:_statusView];
     }
     return _statusView;
 }
@@ -89,6 +90,8 @@ typedef NS_ENUM(NSInteger){
     if (!_loadingView) {
         _loadingView = [[NBLoadingView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
         _loadingView.backgroundColor = [UIColor getColorNumber:-1];
+        [self.statusView addSubview:_loadingView];
+
     }
     return _loadingView;
 }
@@ -96,8 +99,8 @@ typedef NS_ENUM(NSInteger){
 - (UIImageView *)igvStatus
 {
     if (!_igvStatus) {
-        
         _igvStatus = [[UIImageView alloc]init];
+        [self.statusView addSubview:_igvStatus];
     }
     return _igvStatus;
 }
@@ -108,8 +111,9 @@ typedef NS_ENUM(NSInteger){
         _lbText = [[UILabel alloc]init];
         _lbText.numberOfLines = 0;
         _lbText.textAlignment = NSTextAlignmentCenter;
-        _lbText.textColor = [UIColor getColorNumber:1];
+        _lbText.textColor = [UIColor getColorNumber:0];
         _lbText.font = textFont;
+        [self.statusView addSubview:_lbText];
     }
     return _lbText;
 }
@@ -175,21 +179,6 @@ typedef NS_ENUM(NSInteger){
 }
 
 
-//+ (void)showCenterText:(NSString *)text{
-//    if ([text isKindOfClass:[NSString class]]) {
-//            [[NBHudProgress shareInstance] layoutControlsInView:[NBTool getForfontWindow] text:text image:nil type:NBHudProgressType_Center];
-//    }
-//
-//}
-//
-//+ (void)showTopText:(NSString *)text{
-//    
-//    
-//    [[NBHudProgress shareInstance] layoutControlsInView:[NBTool getForfontWindow] text:text image:nil type:NBHudProgressType_Top];
-//    
-//}
-
-
 + (void)showSuccessText:(NSString *)text
 {
     [NBHudProgress showSuccessText:text inView:[NBTool getForfontWindow]];
@@ -215,58 +204,68 @@ typedef NS_ENUM(NSInteger){
 #pragma mark -------------------------------- 子控件的初始化及定位处理
 - (void)layoutControlsInView:(UIView *)view text:(NSString *)text image:(UIImage *)image type:(NBHudProgressType)type
 {
-    [NBHudProgress shareInstance].hud_Type = type;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self removeAllSubviewInView:self.backView];
     
-    [self removeAllSubviewInView:self.backView];
-    self.currentFrame = view.bounds;//将当前frame置为最大
-    self.backView.frame = self.currentFrame;//
-    [view addSubview:self.backView];
-    [self.backView addSubview:self.statusView];
-    
-    
-    
-    /***计算statusview的尺寸并居中****/
-    CGFloat heightLoad = 40.f;
-    CGSize size = text?[NBTool autoString:text font:textFont width:60]:CGSizeZero;//计算statusView的宽度
-    CGFloat statusWidth = text?MAX(heightLoad, size.width)+gap * 2.f:heightLoad + gap*2.f;
-    CGFloat statusHeight =text?heightLoad+gap*3.f+size.height:heightLoad+gap*2.f;
-    CGFloat lineWidth = MAX(statusWidth, statusHeight);
-    self.statusView.frame = CGRectMake(0, 0, lineWidth, lineWidth);
-    self.statusView.center = self.backView.center;
-    [self.statusView drawBezierCornerWithRatio:5.f];
-
-
-    /***根据各种烈性****/
-    switch (type) {
-        case NBHudProgressType_Loading:
-            [self.statusView addSubview:self.loadingView];
-            self.loadingView.frame = CGRectMake((lineWidth-heightLoad)/2.f, gap, heightLoad, heightLoad);
-            [self.loadingView startLoading];
+        [NBHudProgress shareInstance].hud_Type = type;
+        self.currentFrame = view.bounds;//将当前frame置为最大
+        self.backView.frame = self.currentFrame;//
+        [view addSubview:self.backView];
+        [self.backView addSubview:self.statusView];
+        
+        
+        
+        /***计算statusview的尺寸并居中****/
+        CGFloat heightLoad = 40.f;
+        CGFloat maxWidth = 120.f;
+        CGSize size = text?[NBTool autoString:text font:textFont width:maxWidth height:50]:CGSizeZero;//计算statusView的宽度
+        CGFloat statusWidth = text?MAX(heightLoad, size.width)+gap * 2.f:heightLoad + gap*2.f;
+        CGFloat statusHeight =text?heightLoad+gap*3.f+size.height:heightLoad+gap*2.f;
+        
+        CGFloat lineWidth = MAX(statusWidth, statusHeight);
+        self.statusView.frame = CGRectMake(0, 0, lineWidth, lineWidth);
+        self.statusView.center = self.backView.center;
+        [self.statusView drawBezierCornerWithRatio:5.f];
+        [self.statusView animateWithDuration:0.25 fromScale:0.1 toScale:1.2];
+   
+        /***根据各种烈性****/
+        switch (type) {
+            case NBHudProgressType_Loading:
+                self.igvStatus.hidden = YES;
+                self.loadingView.hidden = NO;
+                self.loadingView.frame = CGRectMake((lineWidth-heightLoad)/2.f, gap, heightLoad, heightLoad);
+                [self.loadingView startLoading];
+                
+                
+                break;
+            case NBHudProgressType_Success:
+            case NBHudProgressType_Error:
+                [self.loadingView endLoading];
+                self.igvStatus.hidden = NO;
+                self.loadingView.hidden = YES;
+                self.igvStatus.frame = CGRectMake((lineWidth-heightLoad)/2.f, gap, heightLoad, heightLoad);
+                self.igvStatus.image = image;
+                [self performSelector:@selector(disMissSelf) withObject:nil afterDelay:aferDelay];
+                
+                break;
+            default:
+                break;
+        }
+        
+        self.lbText.text = text;
+        if (text) {
+            self.lbText.text = text;
+            self.lbText.frame = CGRectMake((lineWidth-size.width)/2.f, heightLoad + gap +(lineWidth - heightLoad - gap -size.height)/2.f, size.width, size.height);
+            self.statusView.backgroundColor = [[UIColor getColorNumber:1] colorWithAlphaComponent:0.4];
             
+        }else{
+            self.lbText.text = nil;
+            self.statusView.backgroundColor = [UIColor getColorNumber:-1] ;
             
-            break;
-        case NBHudProgressType_Success:
-        case NBHudProgressType_Error:
-            [self.statusView addSubview:self.igvStatus];
-            self.igvStatus.frame = CGRectMake((lineWidth-heightLoad)/2.f, gap, heightLoad, heightLoad);
-            self.igvStatus.image = image;
-            [self performSelector:@selector(disMissSelf) withObject:nil afterDelay:aferDelay];
-
-            break;
-        default:
-            break;
-    }
+        }
+    });
     
-    self.lbText.text = text;
-    if (text) {
-        self.lbText.frame = CGRectMake(0, heightLoad+gap*2.f, lineWidth, size.height);
-        [self.statusView addSubview:self.lbText];
-        self.statusView.backgroundColor = [[UIColor getColorNumber:1] colorWithAlphaComponent:0.4];
 
-    }else{
-        self.statusView.backgroundColor = [UIColor getColorNumber:-1] ;
-    
-    }
     
 }
 
@@ -276,11 +275,8 @@ typedef NS_ENUM(NSInteger){
     
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NBHudProgress shareInstance]  removeAllSubviewInView:[NBHudProgress shareInstance].backView];
-        [[NBHudProgress shareInstance].backView removeFromSuperview];
-        [NBHudProgress shareInstance].backView =nil;
-        
-        [[NBHudProgress shareInstance].loadingView endLoading];
+        [self.backView removeFromSuperview];
+        self.backView =nil;
     });
 
 }
@@ -294,15 +290,8 @@ typedef NS_ENUM(NSInteger){
 #pragma mark --------------------------------递归删除子视图
 - (void)removeAllSubviewInView:(UIView *)superView
 {
-
-    [[NBHudProgress shareInstance].loadingView removeFromSuperview];
-    [NBHudProgress shareInstance].loadingView =nil;
-    [[NBHudProgress shareInstance].lbText removeFromSuperview];
-    [NBHudProgress shareInstance].lbText =nil;
-    [[NBHudProgress shareInstance].statusView removeFromSuperview];;
-    [NBHudProgress shareInstance].statusView =nil;
-    [[NBHudProgress shareInstance].backView removeFromSuperview];
-    [NBHudProgress shareInstance].backView =nil;
+    [self.backView removeFromSuperview];
+    self.backView =nil;
     
 }
 

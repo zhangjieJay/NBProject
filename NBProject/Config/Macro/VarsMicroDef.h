@@ -10,6 +10,8 @@
 #define VarsMicroDef_h
 
 #define Param(id) id?id:@""
+#define  WEAKSELF __weak typeof(self)weakSelf = self;
+
 
 #define NB_SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
 #define NB_SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height

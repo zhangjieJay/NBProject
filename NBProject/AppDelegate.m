@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "NBRootViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,15 @@
     // Override point for customization after application launch.
     
     [NBSystemObserver defaultObserver];
+    
+    if (!_window) {
+        _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    }
+    
+    UINavigationController * na = [[UINavigationController alloc]initWithRootViewController:[NBRootViewController new]];
+    
+    self.window.rootViewController = na;
+    [self.window makeKeyAndVisible];
     
     return YES;
 }
