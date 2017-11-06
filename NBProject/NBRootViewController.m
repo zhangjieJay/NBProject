@@ -35,8 +35,8 @@
     // Do any additional setup after loading the view.
     
 //    [self testSliderView];
-    
-    
+    [self.mainTableView reloadData];
+    CGSize size = self.mainTableView.contentSize;
     
     
 }
@@ -47,7 +47,8 @@
 -(void)textHudView{
     
     [NBHudProgress showInView:self.view text:@"加载中..."];
-    
+    CGSize size = self.mainTableView.contentSize;
+
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
        
         sleep(2);
@@ -84,7 +85,9 @@
 -(UITableView *)mainTableView{
     
     if (!_mainTableView) {
-        _mainTableView =[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+//        _mainTableView =[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _mainTableView =[[UITableView alloc] initWithFrame:CGRectMake(0, 100, NB_SCREEN_WIDTH, 100) style:UITableViewStyleGrouped];
+
         _mainTableView.delegate = self;
         _mainTableView.dataSource = self;
         _mainTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -124,7 +127,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 100;
+    return 0.1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
