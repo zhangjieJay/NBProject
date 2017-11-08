@@ -91,6 +91,7 @@
 		6971DB871FB1ABD9006B5242 /* NBRECViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB851FB1ABD9006B5242 /* NBRECViewController.m */; };
 		697F331C1FB2B28F005B368E /* NBRECManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 697F331B1FB2B28F005B368E /* NBRECManager.m */; };
 		697F331D1FB2B28F005B368E /* NBRECManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 697F331B1FB2B28F005B368E /* NBRECManager.m */; };
+		E60E840D1FB34D830081D05E /* BannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E60E840C1FB34D830081D05E /* BannerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -256,6 +257,8 @@
 		6971DB851FB1ABD9006B5242 /* NBRECViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRECViewController.m; sourceTree = "<group>"; };
 		697F331A1FB2B28F005B368E /* NBRECManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRECManager.h; sourceTree = "<group>"; };
 		697F331B1FB2B28F005B368E /* NBRECManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRECManager.m; sourceTree = "<group>"; };
+		E60E840B1FB34D830081D05E /* BannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerView.h; sourceTree = "<group>"; };
+		E60E840C1FB34D830081D05E /* BannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -581,6 +584,8 @@
 				697F331A1FB2B28F005B368E /* NBRECManager.h */,
 				697F331B1FB2B28F005B368E /* NBRECManager.m */,
 				3125C77A1F46EE7700D89D37 /* NBPrefix.pch */,
+				E60E840B1FB34D830081D05E /* BannerView.h */,
+				E60E840C1FB34D830081D05E /* BannerView.m */,
 				312429EA1EF7768F002B82A1 /* Main.storyboard */,
 				312429ED1EF7768F002B82A1 /* Assets.xcassets */,
 				312429EF1EF7768F002B82A1 /* LaunchScreen.storyboard */,
@@ -1051,6 +1056,7 @@
 				693A88161FA81CE500763555 /* NBSliderView.m in Sources */,
 				311EE5601F594D1B00DC582B /* NBQRCodeTool.m in Sources */,
 				31168BB71F565EB3007E2BF8 /* PreCCell.m in Sources */,
+				E60E840D1FB34D830081D05E /* BannerView.m in Sources */,
 				3125C7781F46EB6000D89D37 /* NBNotification.m in Sources */,
 				31CB3CB41F57F009002380F1 /* NBSheetView.m in Sources */,
 				312429E31EF7768F002B82A1 /* main.m in Sources */,
