@@ -7,28 +7,30 @@
 //
 
 #import "BaseView.h"
-
+#import "UIView+NBExtension.h"
+#import "UIScrollView+NBExtension.h"
+#import "NBRefreshConst.h"
 
 /** 刷新控件的状态 */
-typedef NS_ENUM(NSInteger, MJRefreshState) {
+typedef NS_ENUM(NSInteger, NBRefreshState) {
     /** 普通闲置状态 */
-    MJRefreshStateIdle = 1,
+    NBRefreshStateIdle = 1,
     /** 松开就可以进行刷新的状态 */
-    MJRefreshStatePulling,
+    NBRefreshStatePulling,
     /** 正在刷新中的状态 */
-    MJRefreshStateRefreshing,
+    NBRefreshStateRefreshing,
     /** 即将刷新的状态 */
-    MJRefreshStateWillRefresh,
+    NBRefreshStateWillRefresh,
     /** 所有数据加载完毕，没有更多的数据了 */
-    MJRefreshStateNoMoreData
+    NBRefreshStateNoMoreData
 };
 
 /** 进入刷新状态的回调 */
-typedef void (^MJRefreshComponentRefreshingBlock)();
+typedef void (^NBRefreshComponentRefreshingBlock)();
 /** 开始刷新后的回调(进入刷新状态后的回调) */
-typedef void (^MJRefreshComponentbeginRefreshingCompletionBlock)();
+typedef void (^NBRefreshComponentbeginRefreshingCompletionBlock)();
 /** 结束刷新后的回调 */
-typedef void (^MJRefreshComponentEndRefreshingCompletionBlock)();
+typedef void (^NBRefreshComponentEndRefreshingCompletionBlock)();
 
 /** 刷新控件的基类 */
 
@@ -43,7 +45,7 @@ typedef void (^MJRefreshComponentEndRefreshingCompletionBlock)();
 }
 #pragma mark - 刷新回调
 /** 正在刷新的回调 */
-@property (copy, nonatomic) MJRefreshComponentRefreshingBlock refreshingBlock;
+@property (copy, nonatomic) NBRefreshComponentRefreshingBlock refreshingBlock;
 /** 设置回调对象和回调方法 */
 - (void)setRefreshingTarget:(id)target refreshingAction:(SEL)action;
 
@@ -59,9 +61,9 @@ typedef void (^MJRefreshComponentEndRefreshingCompletionBlock)();
 - (void)beginRefreshing;
 - (void)beginRefreshingWithCompletionBlock:(void (^)())completionBlock;
 /** 开始刷新后的回调(进入刷新状态后的回调) */
-@property (copy, nonatomic) MJRefreshComponentbeginRefreshingCompletionBlock beginRefreshingCompletionBlock;
+@property (copy, nonatomic) NBRefreshComponentbeginRefreshingCompletionBlock beginRefreshingCompletionBlock;
 /** 结束刷新的回调 */
-@property (copy, nonatomic) MJRefreshComponentEndRefreshingCompletionBlock endRefreshingCompletionBlock;
+@property (copy, nonatomic) NBRefreshComponentEndRefreshingCompletionBlock endRefreshingCompletionBlock;
 /** 结束刷新状态 */
 - (void)endRefreshing;
 - (void)endRefreshingWithCompletionBlock:(void (^)())completionBlock;
@@ -69,7 +71,7 @@ typedef void (^MJRefreshComponentEndRefreshingCompletionBlock)();
 @property (assign, nonatomic, readonly, getter=isRefreshing) BOOL refreshing;
 //- (BOOL)isRefreshing;
 /** 刷新状态 一般交给子类内部实现 */
-@property (assign, nonatomic) MJRefreshState state;
+@property (assign, nonatomic) NBRefreshState state;
 
 #pragma mark - 交给子类去访问
 /** 记录scrollView刚开始的inset */
@@ -94,12 +96,12 @@ typedef void (^MJRefreshComponentEndRefreshingCompletionBlock)();
 /** 拉拽的百分比(交给子类重写) */
 @property (assign, nonatomic) CGFloat pullingPercent;
 /** 根据拖拽比例自动切换透明度 */
-@property (assign, nonatomic, getter=isAutoChangeAlpha) BOOL autoChangeAlpha MJRefreshDeprecated("请使用automaticallyChangeAlpha属性");
+@property (assign, nonatomic, getter=isAutoChangeAlpha) BOOL autoChangeAlpha NBRefreshDeprecated("请使用automaticallyChangeAlpha属性");
 /** 根据拖拽比例自动切换透明度 */
 @property (assign, nonatomic, getter=isAutomaticallyChangeAlpha) BOOL automaticallyChangeAlpha;
 @end
 
-@interface UILabel(MJRefresh)
-+ (instancetype)mj_label;
-- (CGFloat)mj_textWith;
+@interface UILabel(NBRefresh)
++ (instancetype)nb_label;
+- (CGFloat)nb_textWith;
 @end

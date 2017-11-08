@@ -422,6 +422,25 @@
 }
 
 
++ (NSString *)getSandBoxDcoumentPath{
+    return [NBTool getSandBoxPath:NSDocumentDirectory];
+}
+
++ (NSString *)getSandBoxLibraryPath{
+    return [NBTool getSandBoxPath:NSLibraryDirectory];
+}
+
++(NSString *)getSandBoxCachestPath{
+    return [NBTool getSandBoxPath:NSCachesDirectory];
+}
++(NSString *)getSandBoxPath:(NSSearchPathDirectory)type{
+    
+    NSArray * paths=NSSearchPathForDirectoriesInDomains(type,NSUserDomainMask,YES);
+
+    return paths.firstObject;
+}
+
+
 /**
  *  将NSData类型的 DeviceToken 转换为字符串
  *  @param deviceToken 设备的devicetoken数据

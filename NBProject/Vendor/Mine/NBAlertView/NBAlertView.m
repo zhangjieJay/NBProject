@@ -134,7 +134,7 @@
 
 - (void)show:(NSString *)info{
     self.igvInfo.image = [UIImage imageNamed:@"NB_skull_icon"];
-    [self show:info title:@"提示" options:@[@"确定"]];
+    [self show:info title:@"温馨提示" options:@[@"确定"]];
 }
 
 
@@ -145,7 +145,7 @@
 
 -(void)showError:(NSString *)info options:(NSArray <NSString *>*)options{
     self.igvInfo.image = [UIImage imageNamed:@"NB_crying_icon"];
-    [self show:info title:@"错误" options:options];
+    [self show:info title:@"出错啦~" options:options];
 }
 
 - (void)showSuccess:(NSString *)info{
@@ -153,7 +153,7 @@
 }
 -(void)showSuccess:(NSString *)info options:(NSArray <NSString *> *)options{
     self.igvInfo.image = [UIImage imageNamed:@"NB_completed_icon"];
-    [self show:info title:@"完成" options:options];
+    [self show:info title:@"温馨提示" options:options];
 }
 
 #pragma mark -------------------------------------------------------- 初始化控件及主要方法

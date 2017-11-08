@@ -4,18 +4,44 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NBProject/NBRootViewController.m"
-            timestampString = "531645438.90307"
+            filePath = "NBProject/Vendor/Mine/NBRefresh/UIView+NBExtension.m"
+            timestampString = "531709099.614308"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "-touchesBegan:withEvent:"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-setNb_h:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NBProject/Vendor/Mine/NBRefresh/UIView+NBExtension.m"
+            timestampString = "531709102.094342"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "-setNb_w:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NBProject/Vendor/Mine/NBHudView/NBHudProgress.m"
-            timestampString = "531643369.203205"
+            timestampString = "531729142.674339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "-layoutControlsInView:text:image:type:"
             landmarkType = "7">
          </BreakpointContent>
@@ -41,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NBProject/NBRootViewController.m"
-            timestampString = "531645398.734625"
+            filePath = "NBProject/Vendor/Mine/NBHudView/NBHudProgress.m"
+            timestampString = "531729142.674339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "-layoutControlsInView:text:image:type:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,44 +83,59 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NBProject/NBRootViewController.m"
-            timestampString = "531645431.288057"
+            filePath = "NBProject/NBRECViewController.m"
+            timestampString = "531825304.2998"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-textHudView"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-rightBarButtonClicked"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[NBRootViewController textHudView]"
+                  symbolName = "__44-[NBRECViewController rightBarButtonClicked]_block_invoke"
                   moduleName = "NBProject"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/scuser/Desktop/%E5%BC%A0%E6%9D%B0/%E7%A7%81%E4%BA%BA%E6%96%87%E4%BB%B6/NBProject/NBProject/NBRootViewController.m"
-                  timestampString = "531645556.624762"
+                  urlString = "file:///Users/scuser/Desktop/%E5%BC%A0%E6%9D%B0/%E7%A7%81%E4%BA%BA%E6%96%87%E4%BB%B6/NBProject/NBProject/NBRECViewController.m"
+                  timestampString = "531825356.719175"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "195">
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "136">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__35-[NBRootViewController textHudView]_block_invoke"
+                  symbolName = "__copy_helper_block_"
                   moduleName = "NBProject"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/scuser/Desktop/%E5%BC%A0%E6%9D%B0/%E7%A7%81%E4%BA%BA%E6%96%87%E4%BB%B6/NBProject/NBProject/NBRootViewController.m"
-                  timestampString = "531645556.627501"
+                  urlString = "file:///Users/scuser/Desktop/%E5%BC%A0%E6%9D%B0/%E7%A7%81%E4%BA%BA%E6%96%87%E4%BB%B6/NBProject/NBProject/NBRECViewController.m"
+                  timestampString = "531825356.720952"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "21">
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "NBProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/scuser/Desktop/%E5%BC%A0%E6%9D%B0/%E7%A7%81%E4%BA%BA%E6%96%87%E4%BB%B6/NBProject/NBProject/NBRECViewController.m"
+                  timestampString = "531825356.722848"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "36">
                </Location>
             </Locations>
          </BreakpointContent>

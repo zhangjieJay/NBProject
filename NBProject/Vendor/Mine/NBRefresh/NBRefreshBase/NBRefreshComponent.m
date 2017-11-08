@@ -8,12 +8,8 @@
 
 #import "NBRefreshComponent.h"
 
-#import "UIView+NBExtension.h"
-
-
 @interface NBRefreshComponent()
 @property (strong, nonatomic) UIPanGestureRecognizer *pan;
-
 
 @end
 
@@ -26,7 +22,7 @@
         [self prepare];
         
         // 默认是普通状态
-        self.state = MJRefreshStateIdle;
+        self.state = NBRefreshStateIdle;
     }
     return self;
 }
@@ -59,16 +55,16 @@
     
     if (newSuperview) { // 新的父控件
         // 设置宽度
-        self.mj_w = newSuperview.mj_w;
+        self.nb_w = newSuperview.nb_w;
         // 设置位置
-        self.mj_x = 0;
+        self.nb_x = 0;
         
         // 记录UIScrollView
         _scrollView = (UIScrollView *)newSuperview;
         // 设置永远支持垂直弹簧效果
         _scrollView.alwaysBounceVertical = YES;
         // 记录UIScrollView最开始的contentInset
-        _scrollViewOriginalInset = _scrollView.mj_inset;
+        _scrollViewOriginalInset = _scrollView.nb_inset;
         
         // 添加监听
         [self addObservers];
@@ -79,9 +75,9 @@
 {
     [super drawRect:rect];
     
-    if (self.state == MJRefreshStateWillRefresh) {
+    if (self.state == NBRefreshStateWillRefresh) {
         // 预防view还没显示出来就调用了beginRefreshing
-        self.state = MJRefreshStateRefreshing;
+        self.state = NBRefreshStateRefreshing;
     }
 }
 
@@ -89,17 +85,17 @@
 - (void)addObservers
 {
     NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
-    [self.scrollView addObserver:self forKeyPath:MJRefreshKeyPathContentOffset options:options context:nil];
-    [self.scrollView addObserver:self forKeyPath:MJRefreshKeyPathContentSize options:options context:nil];
+    [self.scrollView addObserver:self forKeyPath:NBRefreshKeyPathContentOffset options:options context:nil];
+    [self.scrollView addObserver:self forKeyPath:NBRefreshKeyPathContentSize options:options context:nil];
     self.pan = self.scrollView.panGestureRecognizer;
-    [self.pan addObserver:self forKeyPath:MJRefreshKeyPathPanState options:options context:nil];
+    [self.pan addObserver:self forKeyPath:NBRefreshKeyPathPanState options:options context:nil];
 }
 
 - (void)removeObservers
 {
-    [self.superview removeObserver:self forKeyPath:MJRefreshKeyPathContentOffset];
-    [self.superview removeObserver:self forKeyPath:MJRefreshKeyPathContentSize];
-    [self.pan removeObserver:self forKeyPath:MJRefreshKeyPathPanState];
+    [self.superview removeObserver:self forKeyPath:NBRefreshKeyPathContentOffset];
+    [self.superview removeObserver:self forKeyPath:NBRefreshKeyPathContentSize];
+    [self.pan removeObserver:self forKeyPath:NBRefreshKeyPathPanState];
     self.pan = nil;
 }
 
@@ -109,15 +105,15 @@
     if (!self.userInteractionEnabled) return;
     
     // 这个就算看不见也需要处理
-    if ([keyPath isEqualToString:MJRefreshKeyPathContentSize]) {
+    if ([keyPath isEqualToString:NBRefreshKeyPathContentSize]) {
         [self scrollViewContentSizeDidChange:change];
     }
     
     // 看不见
     if (self.hidden) return;
-    if ([keyPath isEqualToString:MJRefreshKeyPathContentOffset]) {
+    if ([keyPath isEqualToString:NBRefreshKeyPathContentOffset]) {
         [self scrollViewContentOffsetDidChange:change];
-    } else if ([keyPath isEqualToString:MJRefreshKeyPathPanState]) {
+    } else if ([keyPath isEqualToString:NBRefreshKeyPathPanState]) {
         [self scrollViewPanStateDidChange:change];
     }
 }
@@ -134,7 +130,7 @@
     self.refreshingAction = action;
 }
 
-- (void)setState:(MJRefreshState)state
+- (void)setState:(NBRefreshState)state
 {
     _state = state;
     
@@ -147,17 +143,17 @@
 #pragma mark 进入刷新状态
 - (void)beginRefreshing
 {
-    [UIView animateWithDuration:MJRefreshFastAnimationDuration animations:^{
+    [UIView animateWithDuration:NBRefreshFastAnimationDuration animations:^{
         self.alpha = 1.0;
     }];
     self.pullingPercent = 1.0;
     // 只要正在刷新，就完全显示
     if (self.window) {
-        self.state = MJRefreshStateRefreshing;
+        self.state = NBRefreshStateRefreshing;
     } else {
         // 预防正在刷新中时，调用本方法使得header inset回置失败
-        if (self.state != MJRefreshStateRefreshing) {
-            self.state = MJRefreshStateWillRefresh;
+        if (self.state != NBRefreshStateRefreshing) {
+            self.state = NBRefreshStateWillRefresh;
             // 刷新(预防从另一个控制器回到这个控制器的情况，回来要重新刷新一下)
             [self setNeedsDisplay];
         }
@@ -174,7 +170,7 @@
 #pragma mark 结束刷新状态
 - (void)endRefreshing
 {
-    self.state = MJRefreshStateIdle;
+    self.state = NBRefreshStateIdle;
 }
 
 - (void)endRefreshingWithCompletionBlock:(void (^)())completionBlock
@@ -187,7 +183,7 @@
 #pragma mark 是否正在刷新
 - (BOOL)isRefreshing
 {
-    return self.state == MJRefreshStateRefreshing || self.state == MJRefreshStateWillRefresh;
+    return self.state == NBRefreshStateRefreshing || self.state == NBRefreshStateWillRefresh;
 }
 
 #pragma mark 自动切换透明度
@@ -234,7 +230,7 @@
             self.refreshingBlock();
         }
         if ([self.refreshingTarget respondsToSelector:self.refreshingAction]) {
-            MJRefreshMsgSend(MJRefreshMsgTarget(self.refreshingTarget), self.refreshingAction, self);
+            NBRefreshMsgSend(NBRefreshMsgTarget(self.refreshingTarget), self.refreshingAction, self);
         }
         if (self.beginRefreshingCompletionBlock) {
             self.beginRefreshingCompletionBlock();
@@ -243,19 +239,19 @@
 }
 @end
 
-@implementation UILabel(MJRefresh)
-+ (instancetype)mj_label
+@implementation UILabel(NBRefresh)
++ (instancetype)nb_label
 {
     UILabel *label = [[self alloc] init];
-    label.font = MJRefreshLabelFont;
-    label.textColor = MJRefreshLabelTextColor;
+    label.font = NBRefreshLabelFont;
+    label.textColor = NBRefreshLabelTextColor;
     label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     label.textAlignment = NSTextAlignmentCenter;
     label.backgroundColor = [UIColor clearColor];
     return label;
 }
 
-- (CGFloat)mj_textWith {
+- (CGFloat)nb_textWith {
     CGFloat stringWidth = 0;
     CGSize size = CGSizeMake(MAXFLOAT, MAXFLOAT);
     if (self.text.length > 0) {

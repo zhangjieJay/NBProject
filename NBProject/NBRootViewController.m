@@ -9,6 +9,7 @@
 #import "NBRootViewController.h"
 #import "NBSliderView.h"
 
+#import "NBRECViewController.h"
 
 @interface NBRootViewController ()<NBSliderViewDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
@@ -24,19 +25,15 @@
     [super viewDidLoad];
     
     
-    self.view.backgroundColor = [UIColor getColorNumber:125];
-    self.navigationController.navigationBar.translucent = YES;
+    self.view.backgroundColor = [UIColor getColorNumber:0];
+    self.navigationController.navigationBar.translucent = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[UIColor getColorNumber:0] colorWithAlphaComponent:1]] forBarMetrics:UIBarMetricsDefault];
     self.title = @"测试";
     
-    
     [self.view addSubview:self.mainTableView];
     // Do any additional setup after loading the view.
     
-//    [self testSliderView];
-    [self.mainTableView reloadData];
-    CGSize size = self.mainTableView.contentSize;
     
     
 }
@@ -46,13 +43,13 @@
 
 -(void)textHudView{
     
-    [NBHudProgress showInView:self.view text:@"加载中..."];
-    CGSize size = self.mainTableView.contentSize;
-
+    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-       
         sleep(2);
-        [NBHudProgress showErrorText:@"请求失败"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.mainTableView.nb_header endRefreshing];
+            [self.mainTableView.nb_footer endRefreshingWithNoMoreData];
+        });
 
     });
 
@@ -85,8 +82,30 @@
 -(UITableView *)mainTableView{
     
     if (!_mainTableView) {
-//        _mainTableView =[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-        _mainTableView =[[UITableView alloc] initWithFrame:CGRectMake(0, 100, NB_SCREEN_WIDTH, 100) style:UITableViewStyleGrouped];
+        WEAKSELF
+        CGRect rect = self.view.bounds;
+        rect.size.height = NB_SCREEN_HEIGHT- 64;
+        _mainTableView =[[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
+        
+        NBRefreshNormalHeader * header = [NBRefreshNormalHeader headerWithRefreshingBlock:^{
+            [weakSelf textHudView];
+        }];
+        _mainTableView.nb_header = header;
+        header.lastUpdatedTimeLabel.hidden = YES;
+
+        
+        
+        NBRefreshAutoNormalFooter * footer = [NBRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            [weakSelf textHudView];
+
+        }];
+        [footer setTitle:@"~~~~~~~~~~我是有底线的~~~~~~~~~~" forState:NBRefreshStateNoMoreData];
+        [footer setTitle:@"拼命加载中..." forState:NBRefreshStateRefreshing];
+
+        _mainTableView.nb_footer = footer;
+        
+        
+        
 
         _mainTableView.delegate = self;
         _mainTableView.dataSource = self;
@@ -142,7 +161,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    [self textHudView];
+    [self startREC];
 
 }
 
@@ -152,7 +171,7 @@
     CGFloat alphHeight = 200;
     CGFloat alpoffset = fabs(scrollView.contentOffset.y);
     CGFloat alp = alpoffset/alphHeight;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[UIColor getColorNumber:500] colorWithAlphaComponent:alp]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[UIColor getColorNumber:0] colorWithAlphaComponent:alp]] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -179,8 +198,21 @@
         NSLog(@"类名:%@",NSStringFromClass([view class]));
         
     }
+}
+
+
+
+-(void)startREC{
+
+    NBRECViewController * recVC = [NBRECViewController new];
+    [self.navigationController pushViewController:recVC animated:YES];
+    
     
 
+
+
 }
+
+
 
 @end

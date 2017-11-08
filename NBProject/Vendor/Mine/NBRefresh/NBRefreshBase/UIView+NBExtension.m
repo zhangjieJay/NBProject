@@ -9,74 +9,74 @@
 #import "UIView+NBExtension.h"
 
 @implementation UIView (NBExtension)
-- (void)setMj_x:(CGFloat)mj_x
+- (void)setNb_x:(CGFloat)nb_x
 {
     CGRect frame = self.frame;
-    frame.origin.x = mj_x;
+    frame.origin.x = nb_x;
     self.frame = frame;
 }
 
-- (CGFloat)mj_x
+- (CGFloat)nb_x
 {
     return self.frame.origin.x;
 }
 
-- (void)setMj_y:(CGFloat)mj_y
+- (void)setNb_y:(CGFloat)nb_y
 {
     CGRect frame = self.frame;
-    frame.origin.y = mj_y;
+    frame.origin.y = nb_y;
     self.frame = frame;
 }
 
-- (CGFloat)mj_y
+- (CGFloat)nb_y
 {
     return self.frame.origin.y;
 }
 
-- (void)setMj_w:(CGFloat)mj_w
+- (void)setNb_w:(CGFloat)nb_w
 {
     CGRect frame = self.frame;
-    frame.size.width = mj_w;
+    frame.size.width = nb_w;
     self.frame = frame;
 }
 
-- (CGFloat)mj_w
+- (CGFloat)nb_w
 {
     return self.frame.size.width;
 }
 
-- (void)setMj_h:(CGFloat)mj_h
+- (void)setNb_h:(CGFloat)nb_h
 {
     CGRect frame = self.frame;
-    frame.size.height = mj_h;
+    frame.size.height = nb_h;
     self.frame = frame;
 }
 
-- (CGFloat)mj_h
+- (CGFloat)nb_h
 {
     return self.frame.size.height;
 }
 
-- (void)setMj_size:(CGSize)mj_size
+- (void)setNb_size:(CGSize)nb_size
 {
     CGRect frame = self.frame;
-    frame.size = mj_size;
+    frame.size = nb_size;
     self.frame = frame;
 }
 
-- (CGSize)mj_size
+- (CGSize)nb_size
 {
     return self.frame.size;
 }
 
-- (void)setMj_origin:(CGPoint)mj_origin
+- (void)setNb_origin:(CGPoint)nb_origin
 {
     CGRect frame = self.frame;
-    frame.origin = mj_origin;
+    frame.origin = nb_origin;
     self.frame = frame;
 }
 
-- (CGPoint)mj_origin
+- (CGPoint)nb_origin
 {
     return self.frame.origin;
 }

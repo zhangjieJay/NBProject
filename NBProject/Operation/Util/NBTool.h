@@ -79,6 +79,10 @@ typedef enum {
 + (NSString *)getFutureDateSinceNow:(NSString *)timeStamp;
 + (NSString *)getDateWithTimeStamp:(NSString *)timeStamp formatter:(NSString *)formatter;
 + (NSString *)getDistanceWithMeters:(NSString *)meters;
+
++ (NSString *)getSandBoxDcoumentPath;
++ (NSString *)getSandBoxLibraryPath;
++ (NSString *)getSandBoxCachestPath;
 /**
  *  根据生日计算年龄
  *  @param birthday 生日(格式：yyyy-MM-dd)

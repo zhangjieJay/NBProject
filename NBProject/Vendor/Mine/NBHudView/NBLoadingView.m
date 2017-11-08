@@ -8,19 +8,40 @@
 
 #import "NBLoadingView.h"
 
-@implementation NBLoadingView
+@interface NBLoadingView()
 
+
+@end
+
+@implementation NBLoadingView
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
+ 
 */
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGRect frame = CGRectMake((rect.size.width - 17.f)/2.f , (rect.size.width - 12.f)/2.f, 17.f, 12.f);
-    [@"NB" drawInRect:frame withAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:10.f],NSForegroundColorAttributeName:[UIColor getColorNumber:0]}];
+    NSMutableParagraphStyle *textStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+    textStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    textStyle.alignment = NSTextAlignmentCenter;//水平居中
+    //字体
+    UIFont  *font = [UIFont boldSystemFontOfSize:10];
+    
+    //构建属性集合
+    NSDictionary *attributes = @{NSFontAttributeName:font,NSParagraphStyleAttributeName:textStyle,NSForegroundColorAttributeName:[UIColor getColorNumber:30]};
+    //获得size
+    NSString * centerString = @"NB";
+    CGSize strSize = [centerString sizeWithAttributes:attributes];
+    CGFloat marginTop = (rect.size.height - strSize.height)/2;
+    //垂直居中要自己计算
+    CGRect rectText = CGRectMake((rect.size.width-strSize.width)/2.f, marginTop,strSize.width, strSize.height);
+    
+    [centerString drawInRect:rectText withAttributes:attributes];
     CGContextDrawPath(context, kCGPathStroke);
+    
+    
 }
 
 
@@ -29,10 +50,12 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-
+        self.mainColor = [UIColor getColorNumber:30];
     }
     return self;
 }
+
+
 
 -(void)startLoading{
     
@@ -46,7 +69,10 @@
         [layer removeFromSuperlayer];
     }
     [self.layer removeAllAnimations];
+    [self setNeedsDisplay];
 
 }
+
+
 
 @end

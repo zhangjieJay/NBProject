@@ -270,7 +270,7 @@ static NSString *notice1 = @"建议与镜头保持100CM距离，尽量避免逆�
 
 -(void)startToScan{
 
-    // 9、启动会话
+    // 启动会话
     [self.session startRunning];
 
 }
@@ -329,8 +329,8 @@ static NSString *notice1 = @"建议与镜头保持100CM距离，尽量避免逆�
         // 1、如果扫描完成，停止会话
         [self.session stopRunning];
         
-        // 2、删除预览图层
-        [self.previewLayer removeFromSuperlayer];
+//        // 2、删除预览图层
+//        [self.previewLayer removeFromSuperlayer];
         
         // 3、设置界面显示扫描结果
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
@@ -392,7 +392,7 @@ void soundCompleteCallback(SystemSoundID soundID, void *clientData){
         CIQRCodeFeature *feature = [features objectAtIndex:index];
         NSString *scannedResult = feature.messageString;
         //SGQRCodeLog(@"scannedResult - - %@", scannedResult);
-        // 在此发通知，告诉子类二维码数据
+        // 处理图片扫描解析的数据
         [self dealImageQRCodeResult:scannedResult];
     }
 }

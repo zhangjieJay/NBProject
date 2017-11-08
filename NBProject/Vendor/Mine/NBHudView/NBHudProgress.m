@@ -39,9 +39,7 @@ typedef NS_ENUM(NSInteger){
 /**中间放置LoadingView或igvStatus及lbText**/
 @property(nonatomic,strong)BaseView * statusView;
 
-/**转圈的视图(不能与igvStatus并存)**/
-//@property(nonatomic,strong)NBLoadView * loadingView;
-
+/***加载的视图**/
 @property(nonatomic,strong)NBLoadingView * loadingView;
 
 
@@ -240,9 +238,9 @@ typedef NS_ENUM(NSInteger){
                 break;
             case NBHudProgressType_Success:
             case NBHudProgressType_Error:
-                [self.loadingView endLoading];
                 self.igvStatus.hidden = NO;
                 self.loadingView.hidden = YES;
+                [self.loadingView endLoading];
                 self.igvStatus.frame = CGRectMake((lineWidth-heightLoad)/2.f, gap, heightLoad, heightLoad);
                 self.igvStatus.image = image;
                 [self performSelector:@selector(disMissSelf) withObject:nil afterDelay:aferDelay];
@@ -277,6 +275,7 @@ typedef NS_ENUM(NSInteger){
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.backView removeFromSuperview];
         self.backView =nil;
+        self.loadingView.hidden = YES;
     });
 
 }

@@ -59,7 +59,7 @@
         
         [self.hostReachability startNotifier];
         [self addObservers];
-        [self getSystemVolumSlider];
+//        [self getSystemVolumSlider];
     }
     return self;
 }
@@ -83,7 +83,7 @@
  */
 -(void)addObservers{
     //系统声音变化
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(volumeChanged:) name:NBSystemVolumeChangedNotification object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(volumeChanged:) name:NBSystemVolumeChangedNotification object:nil];
     
     //系统网络变化
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
