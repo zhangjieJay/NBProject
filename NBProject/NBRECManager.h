@@ -16,10 +16,7 @@ typedef void(^RecordBlock)(UIImage *movieImage);
 @property(nonatomic,strong)AVAssetWriterInput * videoInput;//
 @property(nonatomic,strong)AVAssetWriterInput * audioInput;//
 
-
 - (instancetype)initPath:(NSString*)path Height:(NSInteger)cy width:(NSInteger)cx channels:(int)ch samples:(Float64) rate;
 
 
--(void)finishWithCompletionHandler:(RecordBlock)block;
-- (void)movieToImageHandler:(RecordBlock)firstImageBlock;//第一张图
 @end

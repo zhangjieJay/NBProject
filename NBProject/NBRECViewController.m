@@ -60,10 +60,18 @@ static NSString * notice = @"点击开始按钮进行录制";
 
 @property(nonatomic,assign)BOOL isCapturing;//是否在录制
 @property(nonatomic,assign)BOOL isPaused;//是否处于暂停状态
-
+@property(nonatomic,assign)BOOL discont;//是否中断过
+@property(nonatomic,assign)CMTime startTime;//
+@property(nonatomic,assign)Float64 currentRecordTime;
+@property(nonatomic,assign)Float64 maxRecordTime;
 @end
 
-@implementation NBRECViewController
+@implementation NBRECViewController{
+
+    CMTime _timeOffset;
+    CMTime _lastVideo;
+    CMTime _lastAudio;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -131,6 +139,8 @@ static NSString * notice = @"点击开始按钮进行录制";
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             
             [self.writeManager.writer finishWritingWithCompletionHandler:^{
+                
+                NSData * data = [NSData dataWithContentsOfFile:path];
                 
                 [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
                     [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:url];
@@ -339,7 +349,7 @@ static NSString * notice = @"点击开始按钮进行录制";
         
         NSString *betaCompressionDirectory = [NSHomeDirectory()stringByAppendingPathComponent:@"Documents/Movie.mp4"];
         
-        _writeManager = [[NBRECManager alloc]initPath:betaCompressionDirectory Height:720 width:720 channels:1 samples:44100];
+        _writeManager = [[NBRECManager alloc]initPath:betaCompressionDirectory Height:480 width:480 channels:1 samples:44100];
     }
     return _writeManager;
     
@@ -511,124 +521,120 @@ static NSString * notice = @"点击开始按钮进行录制";
 - (void) captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
     
     
-    if (!self.isCapturing || self.isPaused) {
-        //如果未录制或者处于暂停状态  则不处理
-        return;
-    }
+//    if (!self.isCapturing || self.isPaused) {
+//        //如果未录制或者处于暂停状态  则不处理
+//        return;
+//    }
+//    
+//    
+//    
+//    //如果正在录制
+//    if (self.isCapturing) {
+//        //如果是视频
+//        if ([captureOutput isEqual:self.videoOutput]) {
+//            NSLog(@"正在录制视频...");
+//            [self encodeFrame:sampleBuffer isVideo:YES];
+//            
+//            
+//        }
+//        //如果是语音
+//        else if ([captureOutput isEqual:self.audioOutput]){
+//            NSLog(@"正在录制语音...");
+//            
+//            [self encodeFrame:sampleBuffer isVideo:NO];
+//
+//        }
+//    }else{
+//        
+//        NSLog(@"未进入录制状态");
+//        
+//    }
     
     
     
-    //如果正在录制
-    if (self.isCapturing) {
-        //如果是视频
-        if ([captureOutput isEqual:self.videoOutput]) {
-            NSLog(@"正在录制视频...");
-            [self encodeFrame:sampleBuffer isVideo:YES];
-            
-            
+        BOOL isVideo = YES;
+        @synchronized(self) {
+            if (!self.isCapturing  || self.isPaused) {
+                return;
+            }
+            if (captureOutput != self.videoOutput) {
+                isVideo = NO;
+            }
+    
+            //初始化编码器，当有音频和视频参数时创建编码器
+//            if ((self.recordEncoder == nil) && !isVideo)
+//            {
+//                CMFormatDescriptionRef fmt = CMSampleBufferGetFormatDescription(sampleBuffer);
+//                [self setAudioFormat:fmt];
+//                NSString *videoName = [NSString getUploadFile_type:@"video" fileType:@"mp4"];
+//                self.videoPath = [[self getVideoCachePath] stringByAppendingPathComponent:videoName];
+//                self.recordEncoder = [WCLRecordEncoder encoderForPath:self.videoPath Height:_cy width:_cx channels:_channels samples:_samplerate];
+//            }
+    
+            //判断是否中断录制过
+            if (self.discont) {
+
+                self.discont = NO;
+                // 计算暂停的时间
+                CMTime pts = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+                CMTime last = isVideo ? _lastVideo : _lastAudio;
+                if (last.flags & kCMTimeFlags_Valid) {
+                    if (_timeOffset.flags & kCMTimeFlags_Valid) {
+                        pts = CMTimeSubtract(pts, _timeOffset);
+                    }
+                    CMTime offset = CMTimeSubtract(pts, last);
+                    if (_timeOffset.value == 0) {
+                        _timeOffset = offset;
+                    }else {
+                        _timeOffset = CMTimeAdd(_timeOffset, offset);
+                    }
+                }
+                _lastVideo.flags = 0;
+                _lastAudio.flags = 0;
+            }
+            // 增加sampleBuffer的引用计时,这样我们可以释放这个或修改这个数据，防止在修改时被释放
+            CFRetain(sampleBuffer);
+            if (_timeOffset.value > 0) {
+                CFRelease(sampleBuffer);
+                //根据得到的timeOffset调整
+                sampleBuffer = [self adjustTime:sampleBuffer by:_timeOffset];
+            }
+            // 记录暂停上一次录制的时间
+            CMTime pts = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+            CMTime dur = CMSampleBufferGetDuration(sampleBuffer);
+            if (dur.value > 0) {
+                pts = CMTimeAdd(pts, dur);
+            }
+            if (isVideo) {
+                _lastVideo = pts;
+            }else {
+                _lastAudio = pts;
+            }
         }
-        //如果是语音
-        else if ([captureOutput isEqual:self.audioOutput]){
-            NSLog(@"正在录制语音...");
-            
-            [self encodeFrame:sampleBuffer isVideo:NO];
-            
-            
-            
+        CMTime dur = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+        if (self.startTime.value == 0) {
+            self.startTime = dur;
         }
-    }else{
-        
-        NSLog(@"未进入录制状态");
-        
-    }
-    
-    
-    
-    //    BOOL isVideo = YES;
-    //    @synchronized(self) {
-    //        if (!self.isCapturing  || self.isPaused) {
-    //            return;
-    //        }
-    //        if (captureOutput != self.videoOutput) {
-    //            isVideo = NO;
-    //        }
-    //
-    //        //初始化编码器，当有音频和视频参数时创建编码器
-    //        if ((self.recordEncoder == nil) && !isVideo)
-    //        {
-    //            CMFormatDescriptionRef fmt = CMSampleBufferGetFormatDescription(sampleBuffer);
-    //            [self setAudioFormat:fmt];
-    //            NSString *videoName = [NSString getUploadFile_type:@"video" fileType:@"mp4"];
-    //            self.videoPath = [[self getVideoCachePath] stringByAppendingPathComponent:videoName];
-    //            self.recordEncoder = [WCLRecordEncoder encoderForPath:self.videoPath Height:_cy width:_cx channels:_channels samples:_samplerate];
-    //        }
-    //
-    //        //判断是否中断录制过
-    //        if (self.discont) {
-    //            if (isVideo) {
-    //                return;
-    //            }
-    //            self.discont = NO;
-    //            // 计算暂停的时间
-    //            CMTime pts = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
-    //            CMTime last = isVideo ? _lastVideo : _lastAudio;
-    //            if (last.flags & kCMTimeFlags_Valid) {
-    //                if (_timeOffset.flags & kCMTimeFlags_Valid) {
-    //                    pts = CMTimeSubtract(pts, _timeOffset);
-    //                }
-    //                CMTime offset = CMTimeSubtract(pts, last);
-    //                if (_timeOffset.value == 0) {
-    //                    _timeOffset = offset;
-    //                }else {
-    //                    _timeOffset = CMTimeAdd(_timeOffset, offset);
-    //                }
-    //            }
-    //            _lastVideo.flags = 0;
-    //            _lastAudio.flags = 0;
-    //        }
-    //        // 增加sampleBuffer的引用计时,这样我们可以释放这个或修改这个数据，防止在修改时被释放
-    //        CFRetain(sampleBuffer);
-    //        if (_timeOffset.value > 0) {
-    //            CFRelease(sampleBuffer);
-    //            //根据得到的timeOffset调整
-    //            sampleBuffer = [self adjustTime:sampleBuffer by:_timeOffset];
-    //        }
-    //        // 记录暂停上一次录制的时间
-    //        CMTime pts = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
-    //        CMTime dur = CMSampleBufferGetDuration(sampleBuffer);
-    //        if (dur.value > 0) {
-    //            pts = CMTimeAdd(pts, dur);
-    //        }
-    //        if (isVideo) {
-    //            _lastVideo = pts;
-    //        }else {
-    //            _lastAudio = pts;
-    //        }
-    //    }
-    //    CMTime dur = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
-    //    if (self.startTime.value == 0) {
-    //        self.startTime = dur;
-    //    }
-    //    CMTime sub = CMTimeSubtract(dur, self.startTime);
-    //    self.currentRecordTime = CMTimeGetSeconds(sub);
-    //    if (self.currentRecordTime > self.maxRecordTime) {
-    //        if (self.currentRecordTime - self.maxRecordTime < 0.1) {
-    //            if ([self.delegate respondsToSelector:@selector(recordProgress:)]) {
-    //                dispatch_async(dispatch_get_main_queue(), ^{
-    //                    [self.delegate recordProgress:self.currentRecordTime/self.maxRecordTime];
-    //                });
-    //            }
-    //        }
-    //        return;
-    //    }
-    //    if ([self.delegate respondsToSelector:@selector(recordProgress:)]) {
-    //        dispatch_async(dispatch_get_main_queue(), ^{
-    //            [self.delegate recordProgress:self.currentRecordTime/self.maxRecordTime];
-    //        });
-    //    }
-    //    // 进行数据编码
-    //    [self.recordEncoder encodeFrame:sampleBuffer isVideo:isVideo];
-    //    CFRelease(sampleBuffer);
+        CMTime sub = CMTimeSubtract(dur, self.startTime);
+//        self.currentRecordTime = CMTimeGetSeconds(sub);
+//        if (self.currentRecordTime > self.maxRecordTime) {
+//            if (self.currentRecordTime - self.maxRecordTime < 0.1) {
+//                if ([self.delegate respondsToSelector:@selector(recordProgress:)]) {
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [self.delegate recordProgress:self.currentRecordTime/self.maxRecordTime];
+//                    });
+//                }
+//            }
+//            return;
+//        }
+//        if ([self.delegate respondsToSelector:@selector(recordProgress:)]) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self.delegate recordProgress:self.currentRecordTime/self.maxRecordTime];
+//            });
+//        }
+        // 进行数据编码
+        [self encodeFrame:sampleBuffer isVideo:isVideo];
+        CFRelease(sampleBuffer);
 }
 
 
@@ -652,47 +658,6 @@ static NSString * notice = @"点击开始按钮进行录制";
     sender.selected = !sender.selected;
     self.isCapturing = sender.selected;
 }
-
-//// 通过抽样缓存数据创建一个UIImage对象
-//- (UIImage *) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer
-//{
-//    // 为媒体数据设置一个CMSampleBuffer的Core Video图像缓存对象
-//    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-//    // 锁定pixel buffer的基地址
-//    CVPixelBufferLockBaseAddress(imageBuffer, 0);
-//
-//    // 得到pixel buffer的基地址
-//    void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
-//
-//    // 得到pixel buffer的行字节数
-//    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
-//    // 得到pixel buffer的宽和高
-//    size_t width = CVPixelBufferGetWidth(imageBuffer);
-//    size_t height = CVPixelBufferGetHeight(imageBuffer);
-//
-//    // 创建一个依赖于设备的RGB颜色空间
-//    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-//
-//    // 用抽样缓存的数据创建一个位图格式的图形上下文（graphics context）对象
-//    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8,
-//                                                 bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
-//    // 根据这个位图context中的像素数据创建一个Quartz image对象
-//    CGImageRef quartzImage = CGBitmapContextCreateImage(context);
-//    // 解锁pixel buffer
-//    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
-//
-//    // 释放context和颜色空间
-//    CGContextRelease(context);
-//    CGColorSpaceRelease(colorSpace);
-//
-//    // 用Quartz image创建一个UIImage对象image
-//    UIImage *image = [UIImage imageWithCGImage:quartzImage];
-//
-//    // 释放Quartz image对象
-//    CGImageRelease(quartzImage);
-//
-//    return (image);
-//}
 
 
 //通过这个方法写入数据

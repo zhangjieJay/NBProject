@@ -84,58 +84,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NBProject/NBRECViewController.m"
-            timestampString = "531825304.2998"
+            timestampString = "531826574.69951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "-rightBarButtonClicked"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "-stopCaptureHandler:"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__44-[NBRECViewController rightBarButtonClicked]_block_invoke"
+                  symbolName = "__42-[NBRECViewController stopCaptureHandler:]_block_invoke_2"
                   moduleName = "NBProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/scuser/Desktop/%E5%BC%A0%E6%9D%B0/%E7%A7%81%E4%BA%BA%E6%96%87%E4%BB%B6/NBProject/NBProject/NBRECViewController.m"
-                  timestampString = "531825356.719175"
+                  timestampString = "531826582.913794"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "136">
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "100">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_"
+                  symbolName = "__42-[NBRECViewController stopCaptureHandler:]_block_invoke_3"
                   moduleName = "NBProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/scuser/Desktop/%E5%BC%A0%E6%9D%B0/%E7%A7%81%E4%BA%BA%E6%96%87%E4%BB%B6/NBProject/NBProject/NBRECViewController.m"
-                  timestampString = "531825356.720952"
+                  timestampString = "531826582.915206"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_"
-                  moduleName = "NBProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/scuser/Desktop/%E5%BC%A0%E6%9D%B0/%E7%A7%81%E4%BA%BA%E6%96%87%E4%BB%B6/NBProject/NBProject/NBRECViewController.m"
-                  timestampString = "531825356.722848"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "36">
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "32">
                </Location>
             </Locations>
          </BreakpointContent>
