@@ -28,8 +28,7 @@
     
     
     self.navigationItem.title =@"嘿嘿";
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"点击" style:UIBarButtonItemStylePlain target:nil action:NULL];
-    [self.navigationController showViewController:[NBRECViewController new] sender:nil];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"点击" style:UIBarButtonItemStylePlain target:self action:@selector(dosomething)];
     
     self.view.backgroundColor = [UIColor getColorNumber:0];
     self.navigationController.navigationBar.translucent = NO;
@@ -50,7 +49,11 @@
 }
 
 
+-(void)dosomething{
 
+    [self.navigationController showViewController:[NBRECViewController new] sender:nil];
+
+}
 
 -(void)textHudView{
     
@@ -134,7 +137,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    return 20;
 }
 
 

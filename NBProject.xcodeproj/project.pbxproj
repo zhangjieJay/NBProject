@@ -102,6 +102,8 @@
 		69821B061FB4248B0075B70A /* NBCustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 69821B041FB4248B0075B70A /* NBCustomTabBar.m */; };
 		69821B081FB42C1C0075B70A /* tabbar_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 69821B071FB42C1C0075B70A /* tabbar_background.jpeg */; };
 		69821B091FB42C1C0075B70A /* tabbar_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 69821B071FB42C1C0075B70A /* tabbar_background.jpeg */; };
+		69821B0D1FB459230075B70A /* NBViewControllerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 69821B0C1FB459230075B70A /* NBViewControllerAnimation.m */; };
+		69821B0E1FB459230075B70A /* NBViewControllerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 69821B0C1FB459230075B70A /* NBViewControllerAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -278,6 +280,8 @@
 		69821B031FB4248B0075B70A /* NBCustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBCustomTabBar.h; sourceTree = "<group>"; };
 		69821B041FB4248B0075B70A /* NBCustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBCustomTabBar.m; sourceTree = "<group>"; };
 		69821B071FB42C1C0075B70A /* tabbar_background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tabbar_background.jpeg; sourceTree = "<group>"; };
+		69821B0B1FB459230075B70A /* NBViewControllerAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBViewControllerAnimation.h; sourceTree = "<group>"; };
+		69821B0C1FB459230075B70A /* NBViewControllerAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBViewControllerAnimation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -721,6 +725,8 @@
 				31168BC91F56C5E4007E2BF8 /* NSDictionary+NBSerializing.m */,
 				6948FE1E1FAAE99100EBC44D /* UIColor+NBCategory.h */,
 				6948FE1F1FAAE99100EBC44D /* UIColor+NBCategory.m */,
+				69821B0B1FB459230075B70A /* NBViewControllerAnimation.h */,
+				69821B0C1FB459230075B70A /* NBViewControllerAnimation.m */,
 			);
 			path = Categroy;
 			sourceTree = "<group>";
@@ -1139,6 +1145,7 @@
 				6971DB7E1FB18F7B006B5242 /* NBRefreshAutoNormalFooter.m in Sources */,
 				6971DB5F1FB13EC1006B5242 /* NBRefreshNormalHeader.m in Sources */,
 				31168BB41F565E93007E2BF8 /* ImageModel.m in Sources */,
+				69821B0D1FB459230075B70A /* NBViewControllerAnimation.m in Sources */,
 				31CB48341F4ADF190046E4DB /* NBTool.m in Sources */,
 				311416D61F4FC69E00C6A13B /* NBWeChatManager.m in Sources */,
 				311BF9BD1F4D897200E0E5D5 /* TestViewController.m in Sources */,
@@ -1157,6 +1164,7 @@
 				69821B061FB4248B0075B70A /* NBCustomTabBar.m in Sources */,
 				697F331D1FB2B28F005B368E /* NBRECManager.m in Sources */,
 				69821B011FB4072A0075B70A /* NBTabBarController.m in Sources */,
+				69821B0E1FB459230075B70A /* NBViewControllerAnimation.m in Sources */,
 				6971DB6C1FB1434C006B5242 /* NSBundle+NBRefresh.m in Sources */,
 				312429FC1EF7768F002B82A1 /* NBProjectTests.m in Sources */,
 				6971DB601FB13EC1006B5242 /* NBRefreshNormalHeader.m in Sources */,

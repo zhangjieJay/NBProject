@@ -8,6 +8,7 @@
 
 #import "NBTabBarController.h"
 #import "NBCustomTabBar.h"
+#import "NBViewControllerAnimation.h"
 @interface NBTabBarController ()<UITabBarDelegate,UINavigationControllerDelegate>
 
 @property(nonatomic,strong)NBCustomTabBar * customBar;//
@@ -95,13 +96,39 @@
 
 }
 
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+- (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                            animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                         fromViewController:(UIViewController *)fromVC
+                                                           toViewController:(UIViewController *)toVC{
 
-
-
-    [viewController.view animateWithDuration:0.25f fromPositionY:NB_SCREEN_HEIGHT/2.f+NB_SCREEN_HEIGHT toPositionY:NB_SCREEN_HEIGHT/2.f];
-
+    /**
+     
+     *  typedef NS_ENUM(NSInteger, UINavigationControllerOperation) {
+     
+     *     UINavigationControllerOperationNone,
+     
+     *     UINavigationControllerOperationPush,
+     
+     *     UINavigationControllerOperationPop,
+     
+     *  };
+     
+     */
+    //push的时候用我们自己定义的customPush
+    if (operation == UINavigationControllerOperationPush) {
+        
+        return [NBViewControllerAnimation new];
+        
+    }else{
+        
+        return nil;
+        
+    }
+    
 }
+
+
+
 
 
 - (void)didReceiveMemoryWarning {
