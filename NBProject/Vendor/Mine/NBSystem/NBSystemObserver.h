@@ -2,7 +2,7 @@
 //  NBSystemObserver.h
 //  NBProject
 //
-//  Created by 峥刘 on 17/8/22.
+//  Created by JayZhang on 17/8/22.
 //  Copyright © 2017年 Jay. All rights reserved.
 //
 
@@ -10,7 +10,8 @@
 
 @interface NBSystemObserver : NSObject
 
-@property(nonatomic,assign)BOOL isConnectted;
+@property(nonatomic,assign)BOOL isConnectted;//是否连接网络
+@property(nonatomic,assign)BOOL showNetInfo;//是否提示网络信息 默认为提醒
 
 +(instancetype)defaultObserver;
 

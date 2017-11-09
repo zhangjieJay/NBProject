@@ -96,6 +96,12 @@
 		69821AEA1FB3EFA30075B70A /* pig.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 69821ADB1FB3EFA30075B70A /* pig.jpeg */; };
 		69821AEB1FB3EFA30075B70A /* rabbit.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 69821ADC1FB3EFA30075B70A /* rabbit.jpeg */; };
 		69821AEC1FB3EFA30075B70A /* NB_scan_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 69821ADE1FB3EFA30075B70A /* NB_scan_line.png */; };
+		69821B001FB4072A0075B70A /* NBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69821AFF1FB4072A0075B70A /* NBTabBarController.m */; };
+		69821B011FB4072A0075B70A /* NBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69821AFF1FB4072A0075B70A /* NBTabBarController.m */; };
+		69821B051FB4248B0075B70A /* NBCustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 69821B041FB4248B0075B70A /* NBCustomTabBar.m */; };
+		69821B061FB4248B0075B70A /* NBCustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 69821B041FB4248B0075B70A /* NBCustomTabBar.m */; };
+		69821B081FB42C1C0075B70A /* tabbar_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 69821B071FB42C1C0075B70A /* tabbar_background.jpeg */; };
+		69821B091FB42C1C0075B70A /* tabbar_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 69821B071FB42C1C0075B70A /* tabbar_background.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -267,6 +273,11 @@
 		69821ADB1FB3EFA30075B70A /* pig.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pig.jpeg; sourceTree = "<group>"; };
 		69821ADC1FB3EFA30075B70A /* rabbit.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rabbit.jpeg; sourceTree = "<group>"; };
 		69821ADE1FB3EFA30075B70A /* NB_scan_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NB_scan_line.png; sourceTree = "<group>"; };
+		69821AFE1FB4072A0075B70A /* NBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBTabBarController.h; sourceTree = "<group>"; };
+		69821AFF1FB4072A0075B70A /* NBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBTabBarController.m; sourceTree = "<group>"; };
+		69821B031FB4248B0075B70A /* NBCustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBCustomTabBar.h; sourceTree = "<group>"; };
+		69821B041FB4248B0075B70A /* NBCustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBCustomTabBar.m; sourceTree = "<group>"; };
+		69821B071FB42C1C0075B70A /* tabbar_background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tabbar_background.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +320,8 @@
 		311416AF1F4FC69E00C6A13B /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				69821B0A1FB4451B0075B70A /* NBLayoutButton */,
+				69821B021FB4248B0075B70A /* NBTabBar */,
 				69821AC91FB3EB230075B70A /* NBBannerView */,
 				692CEAF11FB050D900785ACA /* NBRefresh */,
 				6948FE211FAAF1CB00EBC44D /* NBHudView */,
@@ -319,7 +332,6 @@
 				311416B01F4FC69E00C6A13B /* NBAlertView */,
 				311416B31F4FC69E00C6A13B /* NBSqlite */,
 				311416B61F4FC69E00C6A13B /* NBSystem */,
-				311416B91F4FC69E00C6A13B /* NBTouch */,
 				311416BA1F4FC69E00C6A13B /* NBVolumeBar */,
 			);
 			path = Mine;
@@ -350,13 +362,6 @@
 				311416B81F4FC69E00C6A13B /* NBSystemObserver.m */,
 			);
 			path = NBSystem;
-			sourceTree = "<group>";
-		};
-		311416B91F4FC69E00C6A13B /* NBTouch */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NBTouch;
 			sourceTree = "<group>";
 		};
 		311416BA1F4FC69E00C6A13B /* NBVolumeBar */ = {
@@ -575,6 +580,8 @@
 				312429E51EF7768F002B82A1 /* AppDelegate.m */,
 				693A881A1FA84CCC00763555 /* NBRootViewController.h */,
 				693A881B1FA84CCC00763555 /* NBRootViewController.m */,
+				69821AFE1FB4072A0075B70A /* NBTabBarController.h */,
+				69821AFF1FB4072A0075B70A /* NBTabBarController.m */,
 				6971DB801FB1A711006B5242 /* NBImagePickerViewController.h */,
 				6971DB811FB1A711006B5242 /* NBImagePickerViewController.m */,
 				6971DB841FB1ABD9006B5242 /* NBRECViewController.h */,
@@ -870,6 +877,7 @@
 		69821ACD1FB3EFA30075B70A /* banner */ = {
 			isa = PBXGroup;
 			children = (
+				69821B071FB42C1C0075B70A /* tabbar_background.jpeg */,
 				69821ACE1FB3EFA30075B70A /* banner_01.jpeg */,
 				69821ACF1FB3EFA30075B70A /* banner_02.jpeg */,
 				69821AD01FB3EFA30075B70A /* banner_03.jpeg */,
@@ -907,6 +915,22 @@
 				69821ADE1FB3EFA30075B70A /* NB_scan_line.png */,
 			);
 			path = scan;
+			sourceTree = "<group>";
+		};
+		69821B021FB4248B0075B70A /* NBTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				69821B031FB4248B0075B70A /* NBCustomTabBar.h */,
+				69821B041FB4248B0075B70A /* NBCustomTabBar.m */,
+			);
+			path = NBTabBar;
+			sourceTree = "<group>";
+		};
+		69821B0A1FB4451B0075B70A /* NBLayoutButton */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NBLayoutButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1035,6 +1059,7 @@
 				312429EC1EF7768F002B82A1 /* Main.storyboard in Resources */,
 				69821AE01FB3EFA30075B70A /* banner_02.jpeg in Resources */,
 				69821AE61FB3EFA30075B70A /* NB_remind_icon.png in Resources */,
+				69821B081FB42C1C0075B70A /* tabbar_background.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,6 +1068,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6971DB6F1FB14493006B5242 /* NBRefresh.bundle in Resources */,
+				69821B091FB42C1C0075B70A /* tabbar_background.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1085,6 +1111,7 @@
 				6971DB5B1FB13E95006B5242 /* UIScrollView+NBRefresh.m in Sources */,
 				311EE5611F594D1B00DC582B /* QRCodeViewController.m in Sources */,
 				311BF9BA1F4D88F700E0E5D5 /* BaseView.m in Sources */,
+				69821B001FB4072A0075B70A /* NBTabBarController.m in Sources */,
 				311416D11F4FC69E00C6A13B /* NBVolumeBar.m in Sources */,
 				3125C7841F46F1B900D89D37 /* UIImage+NBCategroy.m in Sources */,
 				3125C7791F46EB6000D89D37 /* NBUserDefaulUtil.m in Sources */,
@@ -1092,6 +1119,7 @@
 				311416D41F4FC69E00C6A13B /* ApiXml.mm in Sources */,
 				697F331C1FB2B28F005B368E /* NBRECManager.m in Sources */,
 				693A881C1FA84CCC00763555 /* NBRootViewController.m in Sources */,
+				69821B051FB4248B0075B70A /* NBCustomTabBar.m in Sources */,
 				3125C7861F46F1B900D89D37 /* UIView+NBCategory.m in Sources */,
 				311BF9B71F4D88F700E0E5D5 /* BaseButton.m in Sources */,
 				6948FE281FAAF1CB00EBC44D /* NBHudProgress.m in Sources */,
@@ -1126,7 +1154,9 @@
 			files = (
 				6971DB831FB1A711006B5242 /* NBImagePickerViewController.m in Sources */,
 				6971DB7B1FB18EB1006B5242 /* NBRefreshStateFooter.m in Sources */,
+				69821B061FB4248B0075B70A /* NBCustomTabBar.m in Sources */,
 				697F331D1FB2B28F005B368E /* NBRECManager.m in Sources */,
+				69821B011FB4072A0075B70A /* NBTabBarController.m in Sources */,
 				6971DB6C1FB1434C006B5242 /* NSBundle+NBRefresh.m in Sources */,
 				312429FC1EF7768F002B82A1 /* NBProjectTests.m in Sources */,
 				6971DB601FB13EC1006B5242 /* NBRefreshNormalHeader.m in Sources */,

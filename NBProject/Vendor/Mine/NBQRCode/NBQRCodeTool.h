@@ -5,7 +5,10 @@
 //  Created by Jay on 17/5/8.
 //  Copyright © 2017年 Jay. All rights reserved.
 //
-
+/**
+ *  主要用于二维码的处理
+ *
+ */
 #import <Foundation/Foundation.h>
 
 @interface NBQRCodeTool : NSObject

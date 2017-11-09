@@ -52,8 +52,9 @@
     self = [super init];
     if (self) {
         self.hostReachability = [Reachability reachabilityWithHostName:@"www.apple.com"];
+        self.showNetInfo = YES;
+        self.isConnectted = YES;
         if ([self.hostReachability currentReachabilityStatus] == NotReachable) {
-            [NBTool showMessage:@"当前网络不可用，请检查你的网络设置"];
             self.isConnectted = NO;
         }
         
@@ -180,24 +181,30 @@
 {
     Reachability * curReach = [note object];
     NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
-    
+    NSString * message;
     if([curReach currentReachabilityStatus] == NotReachable){
         [NBSystemObserver defaultObserver].isConnectted = NO;
-        [NBTool showMessage:@"网络不可用,请检查网络设置"];
+        message = @"网络不可用,请检查网络设置";
     }
     else if ([curReach currentReachabilityStatus]== ReachableViaWiFi){
         [NBSystemObserver defaultObserver].isConnectted = YES;
-        [NBTool showMessage:@"当前通过WiFi连接"];
+        message = @"当前通过WiFi连接";
     }
     else if ([curReach currentReachabilityStatus]== ReachableViaWWAN){
         [NBSystemObserver defaultObserver].isConnectted = YES;
-        [NBTool showMessage:@"当前通过手机网络连接"];
+        message =  @"当前通过手机网络连接";
     }
     else {
         [NBSystemObserver defaultObserver].isConnectted = NO;
-        [NBTool showMessage:@"网络不可用"];
-        
+        message = @"网络不可用,请检查网络设置";
     }
+    
+    if (self.showNetInfo) {
+        [NBTool showMessage:message];
+    }else{
+        NSLog(@"目前网络变化提示未打开");
+    }
+    
     
 }
 

@@ -1,8 +1,8 @@
 //
 //  BannerView.m
-//  allKindsOfTest
+//  NBProject
 //
-//  Created by 峥刘 on 17/3/23.
+//  Created by JayZhang on 17/3/23.
 //  Copyright © 2017年 none. All rights reserved.
 //
 
@@ -203,12 +203,13 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(bannerView:didClickedIndex:)]) {
         if (self.canTunrPage) {
             [self.delegate bannerView:self.baseScrollView didClickedIndex:currentPage -1];
-            
         }else{
             
             [self.delegate bannerView:self.baseScrollView didClickedIndex:0];
         }
     }
+    NSLog(@"点击了第%ld张",currentPage -1);
+
 }
 
 #pragma mark----------------------------滚动视图的代理方法<UIScrollViewDelegate>

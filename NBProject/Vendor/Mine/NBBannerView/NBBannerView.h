@@ -1,10 +1,16 @@
 //
-//  BannerView.h
-//  allKindsOfTest
+//  NBBannerView.h
+//  NBProject
 //
-//  Created by 峥刘 on 17/3/23.
+//  Created by JayZhang on 17/3/23.
 //  Copyright © 2017年 none. All rights reserved.
 //
+
+/**
+ *  此类未轮播滚动视图
+ *
+ */
+
 
 #import <UIKit/UIKit.h>
 

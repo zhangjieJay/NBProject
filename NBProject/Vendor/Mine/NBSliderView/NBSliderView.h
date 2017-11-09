@@ -6,6 +6,11 @@
 //  Copyright © 2017年 JayZhang. All rights reserved.
 //
 
+/**
+ *  常用可滑动按钮组视图 如订单状态等视图运用
+ *
+ */
+
 #import <UIKit/UIKit.h>
 @class NBSliderView;
 

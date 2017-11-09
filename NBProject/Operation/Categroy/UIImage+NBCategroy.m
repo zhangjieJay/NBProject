@@ -2,7 +2,7 @@
 //  UIImage+NBCategroy.m
 //  wenzhong
 //
-//  Created by 峥刘 on 17/5/9.
+//  Created by JayZhang on 17/5/9.
 //  Copyright © 2017年 Jay. All rights reserved.
 //
 

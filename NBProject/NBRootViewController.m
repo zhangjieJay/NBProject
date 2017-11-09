@@ -2,7 +2,7 @@
 //  BTRootViewController.m
 //  NBProject
 //
-//  Created by scuser on 2017/10/31.
+//  Created by JayZhang on 2017/10/31.
 //  Copyright © 2017年 Jay. All rights reserved.
 //
 
@@ -27,21 +27,26 @@
     [super viewDidLoad];
     
     
+    self.navigationItem.title =@"嘿嘿";
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"点击" style:UIBarButtonItemStylePlain target:nil action:NULL];
+    [self.navigationController showViewController:[NBRECViewController new] sender:nil];
+    
     self.view.backgroundColor = [UIColor getColorNumber:0];
     self.navigationController.navigationBar.translucent = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[UIColor getColorNumber:0] colorWithAlphaComponent:1]] forBarMetrics:UIBarMetricsDefault];
-    self.title = @"测试";
     
     [self.view addSubview:self.mainTableView];
     // Do any additional setup after loading the view.
     
     NBBannerView * banner = [[NBBannerView alloc]init];
+    banner.stopInterval = 4.f;
     banner.frame = CGRectMake(0, 0, NB_SCREEN_WIDTH, 200);
     NSArray * arImages = @[@"banner_01.jpeg",@"banner_02.jpeg",@"banner_03.jpeg",@"banner_04.jpeg"];
     banner.arImages = arImages;
     [self.view addSubview:banner];
-    
+
 }
 
 
@@ -55,6 +60,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.mainTableView.nb_header endRefreshing];
             [self.mainTableView.nb_footer endRefreshingWithNoMoreData];
+
         });
 
     });
@@ -168,7 +174,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    [self startREC];
+//    [self startREC];
 
 }
 

@@ -2,7 +2,7 @@
 //  UIColor+NBCategory.h
 //  NBProject
 //
-//  Created by scuser on 2017/11/2.
+//  Created by JayZhang on 2017/11/2.
 //  Copyright © 2017年 Jay. All rights reserved.
 //
 

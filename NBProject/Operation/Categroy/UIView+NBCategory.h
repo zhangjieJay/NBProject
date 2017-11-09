@@ -2,7 +2,7 @@
 //  UIView+NBCategory.h
 //  wenzhong
 //
-//  Created by 峥刘 on 17/5/10.
+//  Created by JayZhang on 17/5/10.
 //  Copyright © 2017年 Jay. All rights reserved.
 //
 

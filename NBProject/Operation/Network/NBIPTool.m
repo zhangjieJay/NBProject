@@ -2,7 +2,7 @@
 //  NBIPTool.m
 //  NBProject
 //
-//  Created by 峥刘 on 17/8/21.
+//  Created by JayZhang on 17/8/21.
 //  Copyright © 2017年 Jay. All rights reserved.
 //
 
@@ -65,8 +65,7 @@
     NSDictionary *addresses = [NBIPTool getIPAddresses];
     
     __block NSString *address;
-    [searchArray enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop)
-     {
+    [searchArray enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop){
          address = addresses[key];
          if(address) *stop = YES;
      } ];

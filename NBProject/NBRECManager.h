@@ -2,7 +2,7 @@
 //  NBRECManager.h
 //  NBProject
 //
-//  Created by scuser on 2017/11/8.
+//  Created by JayZhang on 2017/11/8.
 //  Copyright © 2017年 Jay. All rights reserved.
 //
 

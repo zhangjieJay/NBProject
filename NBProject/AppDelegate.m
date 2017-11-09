@@ -2,12 +2,13 @@
 //  AppDelegate.m
 //  NBProject
 //
-//  Created by 峥刘 on 17/6/19.
+//  Created by JayZhang on 17/6/19.
 //  Copyright © 2017年 Jay. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "NBRootViewController.h"
+#import "NBTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -20,15 +21,17 @@
     NSLog_Method
     // Override point for customization after application launch.
     
-    [NBSystemObserver defaultObserver];
+    [NBSystemObserver defaultObserver].showNetInfo = NO;//关闭网络提示
     
     if (!_window) {
         _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     }
+    NBTabBarController * tabvc =[NBTabBarController new];
     
-    UINavigationController * na = [[UINavigationController alloc]initWithRootViewController:[NBRootViewController new]];
     
-    self.window.rootViewController = na;
+    
+    
+    self.window.rootViewController = tabvc;
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -65,7 +68,6 @@
     NSLog_Method
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     [NB_KEYWINDOW removeBlurEffect];
-
 }
 
 /**
