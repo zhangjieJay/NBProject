@@ -10,6 +10,8 @@
 #import "NBSliderView.h"
 
 #import "NBRECViewController.h"
+#import "NBBannerView.h"
+
 
 @interface NBRootViewController ()<NBSliderViewDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
@@ -34,7 +36,11 @@
     [self.view addSubview:self.mainTableView];
     // Do any additional setup after loading the view.
     
-    
+    NBBannerView * banner = [[NBBannerView alloc]init];
+    banner.frame = CGRectMake(0, 0, NB_SCREEN_WIDTH, 200);
+    NSArray * arImages = @[@"banner_01.jpeg",@"banner_02.jpeg",@"banner_03.jpeg",@"banner_04.jpeg"];
+    banner.arImages = arImages;
+    [self.view addSubview:banner];
     
 }
 
@@ -84,7 +90,8 @@
     if (!_mainTableView) {
         WEAKSELF
         CGRect rect = self.view.bounds;
-        rect.size.height = NB_SCREEN_HEIGHT- 64;
+        rect.size.height = NB_SCREEN_HEIGHT- 64-200;
+        rect.origin.y = 200;
         _mainTableView =[[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
         
         NBRefreshNormalHeader * header = [NBRefreshNormalHeader headerWithRefreshingBlock:^{

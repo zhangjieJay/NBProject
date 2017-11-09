@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@protocol BannerViewScrollDelegate<NSObject>
+@protocol NBBannerViewDelegate<NSObject>
 @optional
 
 -(void)bannerView:(UIScrollView *)scrollView didScrollToIndex:(NSInteger)index;
@@ -18,13 +18,13 @@
 
 @end
 
-@interface BannerView : UIView
+@interface NBBannerView : UIView
 
 @property(nonatomic,assign)CGFloat stopInterval;
 
 - (instancetype)initWithFrame:(CGRect)frame ImageUrl:(NSArray <NSString *>*)arUrls;
 
-@property(nonatomic,assign)id<BannerViewScrollDelegate>delegate;
+@property(nonatomic,assign)id<NBBannerViewDelegate>delegate;
 
-
+@property(nonatomic,assign)NSArray * arImages;//图片数组
 @end
