@@ -33,12 +33,10 @@
     static NBSystemObserver * observer = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
         if (observer == nil) {
             observer = [[NBSystemObserver alloc] initInstance];
         }
     });
-    
     return observer;
 }
 

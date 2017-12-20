@@ -104,6 +104,7 @@
 		69821B091FB42C1C0075B70A /* tabbar_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 69821B071FB42C1C0075B70A /* tabbar_background.jpeg */; };
 		69821B0D1FB459230075B70A /* NBViewControllerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 69821B0C1FB459230075B70A /* NBViewControllerAnimation.m */; };
 		69821B0E1FB459230075B70A /* NBViewControllerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 69821B0C1FB459230075B70A /* NBViewControllerAnimation.m */; };
+		E659C2621FE9FAC800B327B4 /* NBAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = E659C2611FE9FAC800B327B4 /* NBAudio.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,6 +283,8 @@
 		69821B071FB42C1C0075B70A /* tabbar_background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tabbar_background.jpeg; sourceTree = "<group>"; };
 		69821B0B1FB459230075B70A /* NBViewControllerAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBViewControllerAnimation.h; sourceTree = "<group>"; };
 		69821B0C1FB459230075B70A /* NBViewControllerAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBViewControllerAnimation.m; sourceTree = "<group>"; };
+		E659C2601FE9FAC800B327B4 /* NBAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBAudio.h; sourceTree = "<group>"; };
+		E659C2611FE9FAC800B327B4 /* NBAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBAudio.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,7 +327,6 @@
 		311416AF1F4FC69E00C6A13B /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				69821B0A1FB4451B0075B70A /* NBLayoutButton */,
 				69821B021FB4248B0075B70A /* NBTabBar */,
 				69821AC91FB3EB230075B70A /* NBBannerView */,
 				692CEAF11FB050D900785ACA /* NBRefresh */,
@@ -704,6 +706,7 @@
 		3125C77C1F46F1B900D89D37 /* Operation */ = {
 			isa = PBXGroup;
 			children = (
+				E659C25F1FE9FAAB00B327B4 /* NBAudio */,
 				315517E21F4BDD6C00184791 /* Device */,
 				31CB48301F4ADEFC0046E4DB /* Network */,
 				31CB48311F4ADEFC0046E4DB /* Util */,
@@ -932,11 +935,13 @@
 			path = NBTabBar;
 			sourceTree = "<group>";
 		};
-		69821B0A1FB4451B0075B70A /* NBLayoutButton */ = {
+		E659C25F1FE9FAAB00B327B4 /* NBAudio */ = {
 			isa = PBXGroup;
 			children = (
+				E659C2601FE9FAC800B327B4 /* NBAudio.h */,
+				E659C2611FE9FAC800B327B4 /* NBAudio.m */,
 			);
-			path = NBLayoutButton;
+			path = NBAudio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1106,6 +1111,7 @@
 				31168BBE1F56654F007E2BF8 /* NBPImageView.m in Sources */,
 				31CB3CBB1F57F3BC002380F1 /* SheetModel.m in Sources */,
 				312429E61EF7768F002B82A1 /* AppDelegate.m in Sources */,
+				E659C2621FE9FAC800B327B4 /* NBAudio.m in Sources */,
 				31168BBB1F566507007E2BF8 /* BaseImgView.m in Sources */,
 				6971DB591FB13E95006B5242 /* NBRefreshHeader.m in Sources */,
 				6948FE201FAAE99100EBC44D /* UIColor+NBCategory.m in Sources */,

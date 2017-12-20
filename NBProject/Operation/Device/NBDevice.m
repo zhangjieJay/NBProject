@@ -147,6 +147,10 @@
     if ([platform isEqualToString:@"iPhone8,4"]) return @"iPhone SE";
     if ([platform isEqualToString:@"iPhone9,1"]) return @"iPhone 7";
     if ([platform isEqualToString:@"iPhone9,2"]) return @"iPhone 7Plus";
+    if ([platform isEqualToString:@"iPhone10,1"]) return @"iPhone 8";
+    if ([platform isEqualToString:@"iPhone10,2"]) return @"iPhone 8Plus";
+    if ([platform isEqualToString:@"iPhone10,3"]) return @"iPhone X";
+
     //iPod Touch
     if ([platform isEqualToString:@"iPod1,1"]) return @"iPod Touch";
     if ([platform isEqualToString:@"iPod2,1"]) return @"iPod Touch2G";

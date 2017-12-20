@@ -27,6 +27,9 @@
     [super viewDidLoad];
     
     
+    NSString * name = [NBDevice getDeviceName];
+    
+    
     self.navigationItem.title =@"嘿嘿";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"点击" style:UIBarButtonItemStylePlain target:self action:@selector(dosomething)];
     

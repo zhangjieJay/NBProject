@@ -27,13 +27,8 @@
         _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     }
     NBTabBarController * tabvc =[NBTabBarController new];
-    
-    
-    
-    
     self.window.rootViewController = tabvc;
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 
