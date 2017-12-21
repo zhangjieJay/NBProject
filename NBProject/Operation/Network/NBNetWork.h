@@ -10,4 +10,7 @@
 
 @interface NBNetWork : NSObject
 +(NSURLSessionDataTask *)postToUrl:(NSString *)sUrl param:(NSDictionary *)dicParam success:(successBlock)success failure:(failureBlock)failure;
+
++(NSURLSessionDataTask *)AFPostToUrl:(NSString *)sUrl param:(NSDictionary *)dicParam success:(successBlock)success failure:(failureBlock)failure;
+
 @end

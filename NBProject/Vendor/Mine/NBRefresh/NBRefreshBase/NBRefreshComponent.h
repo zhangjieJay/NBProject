@@ -26,11 +26,11 @@ typedef NS_ENUM(NSInteger, NBRefreshState) {
 };
 
 /** 进入刷新状态的回调 */
-typedef void (^NBRefreshComponentRefreshingBlock)();
+typedef void (^NBRefreshComponentRefreshingBlock)(void);
 /** 开始刷新后的回调(进入刷新状态后的回调) */
-typedef void (^NBRefreshComponentbeginRefreshingCompletionBlock)();
+typedef void (^NBRefreshComponentbeginRefreshingCompletionBlock)(void);
 /** 结束刷新后的回调 */
-typedef void (^NBRefreshComponentEndRefreshingCompletionBlock)();
+typedef void (^NBRefreshComponentEndRefreshingCompletionBlock)(void);
 
 /** 刷新控件的基类 */
 
@@ -59,14 +59,14 @@ typedef void (^NBRefreshComponentEndRefreshingCompletionBlock)();
 #pragma mark - 刷新状态控制
 /** 进入刷新状态 */
 - (void)beginRefreshing;
-- (void)beginRefreshingWithCompletionBlock:(void (^)())completionBlock;
+- (void)beginRefreshingWithCompletionBlock:(void (^)(void))completionBlock;
 /** 开始刷新后的回调(进入刷新状态后的回调) */
 @property (copy, nonatomic) NBRefreshComponentbeginRefreshingCompletionBlock beginRefreshingCompletionBlock;
 /** 结束刷新的回调 */
 @property (copy, nonatomic) NBRefreshComponentEndRefreshingCompletionBlock endRefreshingCompletionBlock;
 /** 结束刷新状态 */
 - (void)endRefreshing;
-- (void)endRefreshingWithCompletionBlock:(void (^)())completionBlock;
+- (void)endRefreshingWithCompletionBlock:(void (^)(void))completionBlock;
 /** 是否正在刷新 */
 @property (assign, nonatomic, readonly, getter=isRefreshing) BOOL refreshing;
 //- (BOOL)isRefreshing;

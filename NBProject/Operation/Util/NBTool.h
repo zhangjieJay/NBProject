@@ -19,6 +19,8 @@ typedef enum {
     Dividing,
 }calucateWay;
 
+
+
 #pragma mark ------------------------------- 文本自适应高度
 + (CGSize)autoString:(NSString *)string size:(CGFloat )size width:(CGFloat)width;
 + (CGSize)autoString:(NSString *)string size:(CGFloat )size width:(CGFloat)width height:(CGFloat)height;
@@ -60,6 +62,8 @@ typedef enum {
  */
 +(BOOL)isAppStoreVersion:(NSString *)appStoreVersion;
 
+/*是否打开推送通知*/
++(BOOL)isOpenNotification;
 
 
 
@@ -124,13 +128,13 @@ typedef enum {
 #pragma mark ------------------------------- 获取当前视图控制器
 +(UIViewController *)getCurrentViewController;
 
-+(void)showMessage:(NSString *)message;
 
 #pragma mark ------------------------------- 递归查找子视图的父视图
 +(UIView *)recurseTogetSuperView:(NSString *)sClass childView:(UIView *)child;
 #pragma mark ------------------------------- 循环查找子视图的父视图
 +(UIView *)circulateTogetSuperView:(NSString *)sClass childView:(UIView *)child;
 
-
-
++(void)openSetting;
++(void)showMessage:(NSString *)message;
++(void)exitAppAnimated:(BOOL)animated;
 @end

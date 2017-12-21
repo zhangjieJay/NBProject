@@ -12,7 +12,6 @@
 
 @implementation NBTool
 
-
 + (CGSize)autoString:(NSString *)string font:(UIFont *)font width:(CGFloat)width
 {
     return [NBTool autoString:string font:font width:width height:MAXFLOAT];
@@ -210,12 +209,33 @@
     return need;
     
 }
+#pragma mark ------------------------------- 是否打开推送通知
++(BOOL)isOpenNotification{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    if ([[UIDevice currentDevice].systemVersion floatValue]>=8.0f) {
+        UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
+        if (UIUserNotificationTypeNone == setting.types) {
+            return NO;
+        }else{
+            return YES;
+        }
+    }else{
+        UIRemoteNotificationType type = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+        if(UIRemoteNotificationTypeNone == type){
+            return NO;
+        }else{
+            return YES;
+        }
+    }
+#pragma clang diagnostic pop
+    
+}
 
 
 
 
-
-//md5转码
+#pragma mark ------------------------------- md5转码
 + (NSString *)MD5String:(NSString *)string
 {
     const char *cStr = [string UTF8String];
@@ -225,7 +245,7 @@
              result[0], result[1], result[2], result[3],result[4], result[5], result[6], result[7],result[8], result[9], result[10], result[11],result[12], result[13], result[14], result[15]] uppercaseString];
 }
 
-
+#pragma mark ------------------------------- 转化为两位小数 向上取舍
 + (NSString *)decimalNumber:(NSString *)num {
     
     /*关于精度的bug*/
@@ -264,7 +284,7 @@
  *  @param way 枚举值 + - * /
  *  @return 计算结果
  */
-
+#pragma mark ------------------------------- 数字四则运算
 + (NSString *)decimalValue1:(NSString *)value1 value2:(NSString *)value2 byWay:(calucateWay)way{
     
     NSDecimalNumberHandler *handler = [[NSDecimalNumberHandler alloc] initWithRoundingMode:NSRoundDown scale:2 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
@@ -291,7 +311,7 @@
     }
     return [self decimalNumber:[product stringValue]];
 }
-
+#pragma mark ------------------------------- 获取本机的IPV4或者IPV6
 + (NSString *)getIPAddressIsIPV4:(BOOL)preferIPv4
 {
     return [NBIPTool getIPAddressIsIPV4:preferIPv4];
@@ -642,6 +662,56 @@
     return atString;
 }
 
+
+
+/**
+ *  返回找到的俯视图没找到则返回空
+ *  @param sClass 想要查找的父视图类的名称
+ *  @param child 子视图
+ *  @return 查找的结果
+ */
++(UIView *)recurseTogetSuperView:(NSString *)sClass childView:(UIView *)child{
+    
+    UIView * view = child.superview;
+    
+    if (view && [sClass isEqualToString:NSStringFromClass([view class])]) {
+        
+        return view;
+    }else{
+        
+        return [NBTool recurseTogetSuperView:sClass childView:view];
+    }
+    
+}
+/**
+ *  返回找到的俯视图没找到则返回空
+ *  @param sClass 想要查找的父视图类的名称
+ *  @param child 子视图
+ *  @return 查找的结果
+ */
++(UIView *)circulateTogetSuperView:(NSString *)sClass childView:(UIView *)child{
+    
+    UIView * view = child.superview;
+    
+    while (![NSStringFromClass([view class]) isEqualToString:sClass]) {
+        view = view.superview;
+    }
+    return view;
+    
+}
++(void)openSetting{
+    if ([[UIApplication sharedApplication]canOpenURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]]) {//iOS >= 8.0
+        if ([UIDevice currentDevice].systemVersion.floatValue<10.0) {
+            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }else{
+            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:nil];
+        }
+    }
+}
+
+
+
+#pragma mark ------------------------------- keywindow显示提示信息
 /**
  *  keyWindow展示提示信息
  *  @param message 提示信息
@@ -685,44 +755,23 @@
     
 }
 
-/**
- *  返回找到的俯视图没找到则返回空
- *  @param sClass 想要查找的父视图类的名称
- *  @param child 子视图
- *  @return 查找的结果
- */
-+(UIView *)recurseTogetSuperView:(NSString *)sClass childView:(UIView *)child{
-    
-    UIView * view = child.superview;
-    
-    if (view && [sClass isEqualToString:NSStringFromClass([view class])]) {
-        
-        return view;
+
++(void)exitAppAnimated:(BOOL)animated{
+    if (animated) {
+        [UIView beginAnimations:@"exitApplication" context:nil];
+        [UIView setAnimationDuration:0.75];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationTransition:UIViewAnimationTransitionNone forView:NB_KEYWINDOW cache:NO];
+        [UIView setAnimationDidStopSelector:@selector(exitApp)];
+        NB_KEYWINDOW.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.01, 0.01);
+        [UIView commitAnimations];
     }else{
-        
-        return [NBTool recurseTogetSuperView:sClass childView:view];
+        [NBTool exitApp];
     }
-    
 }
-/**
- *  返回找到的俯视图没找到则返回空
- *  @param sClass 想要查找的父视图类的名称
- *  @param child 子视图
- *  @return 查找的结果
- */
-+(UIView *)circulateTogetSuperView:(NSString *)sClass childView:(UIView *)child{
-    
-    UIView * view = child.superview;
-    
-    while (![NSStringFromClass([view class]) isEqualToString:sClass]) {
-        view = view.superview;
-    }
-    return view;
-    
++(void)exitApp{
+    exit(EXIT_SUCCESS);
 }
-
-
-
 
 
 

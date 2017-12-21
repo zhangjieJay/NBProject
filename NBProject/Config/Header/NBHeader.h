@@ -27,6 +27,7 @@
 /*第三方的库文件*/
 #import "JSONKit.h"
 #import "Reachability.h"
+#import "AFNetworking.h"
 
 
 /*自定义封装*/
@@ -50,6 +51,7 @@
 #import "NBVolumeBar.h"//
 #import "NBSystemObserver.h"//系统观察类
 #import "NBRefresh.h"
+
 
 
 

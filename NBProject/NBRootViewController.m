@@ -26,10 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    NSString * name = [NBDevice getDeviceName];
-    
-    
     self.navigationItem.title =@"嘿嘿";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"点击" style:UIBarButtonItemStylePlain target:self action:@selector(dosomething)];
     
@@ -48,14 +44,15 @@
     NSArray * arImages = @[@"banner_01.jpeg",@"banner_02.jpeg",@"banner_03.jpeg",@"banner_04.jpeg"];
     banner.arImages = arImages;
     [self.view addSubview:banner];
-
+    
 }
 
 
 -(void)dosomething{
 
-    [self.navigationController showViewController:[NBRECViewController new] sender:nil];
-
+    
+   
+    //    [self.navigationController showViewController:[NBRECViewController new] sender:nil];
 }
 
 -(void)textHudView{
@@ -66,11 +63,11 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.mainTableView.nb_header endRefreshing];
             [self.mainTableView.nb_footer endRefreshingWithNoMoreData];
-
+            
         });
-
+        
     });
-
+    
 }
 
 
@@ -84,15 +81,15 @@
     sliderView.isAverage = YES;
     sliderView.showLine = YES;
     sliderView.showBar= YES;
-
+    
     
     [self.view addSubview:sliderView];
 }
 
 -(void)sliderView:(NBSliderView *)sliderView didClickedButton:(UIButton *)sender atIndex:(NSInteger)index{
-
+    
     NSLog(@"滚动到第%ld个",index);
-
+    
 }
 
 
@@ -111,21 +108,21 @@
         }];
         _mainTableView.nb_header = header;
         header.lastUpdatedTimeLabel.hidden = YES;
-
+        
         
         
         NBRefreshAutoNormalFooter * footer = [NBRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             [weakSelf textHudView];
-
+            
         }];
         [footer setTitle:@"~~~~~~~~~~我是有底线的~~~~~~~~~~" forState:NBRefreshStateNoMoreData];
         [footer setTitle:@"拼命加载中..." forState:NBRefreshStateRefreshing];
-
+        
         _mainTableView.nb_footer = footer;
         
         
         
-
+        
         _mainTableView.delegate = self;
         _mainTableView.dataSource = self;
         _mainTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -154,7 +151,7 @@
     
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-
+    
     return cell;
 }
 
@@ -180,8 +177,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    [self startREC];
-
+    //    [self startREC];
+    
 }
 
 
@@ -199,14 +196,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
@@ -222,14 +219,14 @@
 
 
 -(void)startREC{
-
+    
     NBRECViewController * recVC = [NBRECViewController new];
     [self.navigationController pushViewController:recVC animated:YES];
     
     
-
-
-
+    
+    
+    
 }
 
 

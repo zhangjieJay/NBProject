@@ -140,8 +140,6 @@ static NSString * notice = @"点击开始按钮进行录制";
             
             [self.writeManager.writer finishWritingWithCompletionHandler:^{
                 
-                NSData * data = [NSData dataWithContentsOfFile:path];
-                
                 [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
                     [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:url];
                 } completionHandler:^(BOOL success, NSError * _Nullable error) {

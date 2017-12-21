@@ -57,7 +57,26 @@
     [dataTask resume];//启动网络请求
     return dataTask;
 }
++(NSURLSessionDataTask *)AFPostToUrl:(NSString *)sUrl param:(NSDictionary *)dicParam success:(successBlock)success failure:(failureBlock)failure{
+    
+    NSURLSessionDataTask * task = [[self manager] POST:sUrl parameters:dicParam progress:^(NSProgress * uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * task, id  responseObject) {
+        
+    } failure:^(NSURLSessionDataTask * task, NSError * error) {
+        
+    }];
+    return task;
+}
 
++ (AFHTTPSessionManager *)manager{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    //        防止返回<null>造成程序崩溃, 会把值为<null>的字段移除
+    ((AFJSONResponseSerializer *)manager.responseSerializer).removesKeysWithNullValues = YES;
+    manager.requestSerializer.timeoutInterval = 15;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", @"text/xml", @"application/json", @"text/json", @"text/javascript", nil];
+    return manager;
+}
 
 //-(void)code:(NSString *)url{
 //
