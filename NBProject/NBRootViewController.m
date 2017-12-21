@@ -50,6 +50,8 @@
 
 -(void)dosomething{
 
+    NSString * pinyin = [NBTool transform:@"每一天"];
+    
     
    
     //    [self.navigationController showViewController:[NBRECViewController new] sender:nil];

@@ -485,7 +485,14 @@
     
     
 }
-
+#pragma mark ------------------------------- 将汉字转化为拼音
++ (NSString *)transform:(NSString *)chinese{
+    NSMutableString *pinyin = [chinese mutableCopy];
+    CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformMandarinLatin, NO);
+    CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformStripCombiningMarks, NO);
+    NSLog(@"%@", pinyin);
+    return [pinyin uppercaseString];
+}
 
 #pragma mark -------------------------------------------------------- 将传入的字符串转化为Jason
 /**

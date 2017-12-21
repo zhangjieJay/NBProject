@@ -101,6 +101,7 @@ typedef enum {
  */
 + (NSString *)getDeviceToken:(NSData *)deviceToken;
 
++ (NSString *)transform:(NSString *)chinese;
 
 /**
  *  根据生日计算年龄

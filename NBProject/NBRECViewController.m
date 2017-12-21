@@ -133,9 +133,6 @@ static NSString * notice = @"点击开始按钮进行录制";
     @synchronized(self) {
         NSString* path = self.writeManager.videoPath;
         NSURL* url = [NSURL fileURLWithPath:path];
-        
-        
-        
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             
             [self.writeManager.writer finishWritingWithCompletionHandler:^{
