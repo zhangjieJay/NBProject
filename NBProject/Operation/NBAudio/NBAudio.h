@@ -16,5 +16,6 @@
 //根据文字播放语音
 -(void)playVoiceString:(NSString *)sString;
 
+-(void)playVoice;
 
 @end

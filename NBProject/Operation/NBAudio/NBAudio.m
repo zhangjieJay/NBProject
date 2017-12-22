@@ -100,7 +100,13 @@
     
 }
 
-
+-(void)playVoice{
+    SystemSoundID soundID;
+    NSString *strSoundFile = [[NSBundle mainBundle] pathForResource:@"noticeMusic" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:strSoundFile],&soundID);
+//    AudioServicesPlaySystemSound(soundID);
+    AudioServicesPlayAlertSound(soundID);
+}
 
 
 @end

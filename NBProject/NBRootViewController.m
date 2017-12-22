@@ -50,7 +50,7 @@
 
 -(void)dosomething{
 
-    NSString * pinyin = [NBTool transform:@"每一天"];
+    [[NBAudio shareInstance]playVoice];
     
     
    

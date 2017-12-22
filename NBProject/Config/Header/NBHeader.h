@@ -34,6 +34,7 @@
 //#import "NBSQLManager.h"
 
 #import "NBDevice.h"
+#import "NBAudio.h"
 #import "UIView+NBCategory.h"
 #import "UIImage+NBCategroy.h"
 #import "UIView+NBAnimation.h"

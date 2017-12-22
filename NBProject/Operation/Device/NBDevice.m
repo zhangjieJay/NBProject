@@ -18,30 +18,67 @@
 
 
 
-
-
-+(NSString *)getName{
-
-    return [NBDevice getPropertyWithType:NBDeviceType_Name];
-
+#pragma mark -------------------------------- 单例方法
++(instancetype)defaultDevice
+{
+    static NBDevice * instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (instance == nil) {
+            instance = [[NBDevice alloc] initSelfObject];
+        }
+    });
+    return instance;
 }
-+(NSString *)getModel{
-    return [NBDevice getPropertyWithType:NBDeviceType_Model];
-}
-
-+(NSString *)getSystemName{
-    return [NBDevice getPropertyWithType:NBDeviceType_SystemName];
-}
-
-+(NSString *)getSystemVersion{
-    return [NBDevice getPropertyWithType:NBDeviceType_SystemVersion];
-}
-
-+(NSString *)getUUID{
-    return [NBDevice getPropertyWithType:NBDeviceType_UUID];
+#pragma mark -------------------------------- 禁止使用init
+- (instancetype)init
+{
+    @throw @"请使用+defaultDevice方法进行初始化";
 }
 
-+(NSString *)getPropertyWithType:(NBDeviceType)type{
+
+#pragma mark -------------------------------- 自定义初始化方法
+- (instancetype)initSelfObject
+{
+    self = [super init];
+    if (self) {
+        
+        self.isIphoneX = [UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] bounds].size) : NO;
+        
+        if (self.isIphoneX) {
+            self.statuBarHeight = 44.f;
+            self.tabBarHeight = 83.f;
+        }else{
+            self.statuBarHeight = 20.f;
+            self.tabBarHeight = 49.f;
+        }
+        self.navigationBarHeight = self.statuBarHeight + 44.f;
+    }
+    return self;
+}
+
+-(NSString *)getName{
+
+    return [self getPropertyWithType:NBDeviceType_Name];
+
+}
+-(NSString *)getModel{
+    return [self getPropertyWithType:NBDeviceType_Model];
+}
+
+-(NSString *)getSystemName{
+    return [self getPropertyWithType:NBDeviceType_SystemName];
+}
+
+-(NSString *)getSystemVersion{
+    return [self getPropertyWithType:NBDeviceType_SystemVersion];
+}
+
+-(NSString *)getUUID{
+    return [self getPropertyWithType:NBDeviceType_UUID];
+}
+
+-(NSString *)getPropertyWithType:(NBDeviceType)type{
     
     UIDevice * device = [UIDevice currentDevice];
     NSString * value = @"";
@@ -71,7 +108,7 @@
 }
 
 
-+ (NSString *)getMachineSystem{
+- (NSString *)getMachineSystem{
     struct utsname systemInfo;
     uname(&systemInfo);
     NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];

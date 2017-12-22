@@ -16,9 +16,19 @@
 
 #define NB_SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
 #define NB_SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
-#define NB_ESTIMATESCREEN_HEGHT  [UIScreen mainScreen].bounds.size.height -64.f
-#define NB_SCALE_5 [UIScreen mainScreen].bounds.size.width/320.f
-#define NB_SCALE_6 [UIScreen mainScreen].bounds.size.width/375.f
+
+
+#define BIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define NB_TABBAR_HEIGHT         (BIsiPhoneX ? 83.f : 49.f)
+#define NB_NAVI_HEIGHT           (BIsiPhoneX ? 88.f : 64.f)
+
+#define NB_BOMMAX_HEIGHT  (NB_SCREEN_HEIGHT - NB_NAVI_HEIGHT)
+#define NB_MIDMAX_HEIGHT  (NB_SCREEN_HEIGHT - NB_NAVI_HEIGHT - NB_TABBAR_HEIGHT)
+
+
+
+
 
 
 #define NB_KEYWINDOW [UIApplication sharedApplication].keyWindow

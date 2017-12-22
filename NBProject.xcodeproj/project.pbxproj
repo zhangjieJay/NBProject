@@ -119,6 +119,7 @@
 		E63395161FEB4D230075B8C0 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = E63395051FEB4D230075B8C0 /* AFURLRequestSerialization.m */; };
 		E63395171FEB4D230075B8C0 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E63395071FEB4D230075B8C0 /* AFNetworkReachabilityManager.m */; };
 		E63395181FEB4D230075B8C0 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = E63395081FEB4D230075B8C0 /* AFSecurityPolicy.m */; };
+		E64C42E61FECAD7600418319 /* noticeMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = E64C42E51FECAD7600418319 /* noticeMusic.wav */; };
 		E659C2621FE9FAC800B327B4 /* NBAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = E659C2611FE9FAC800B327B4 /* NBAudio.m */; };
 /* End PBXBuildFile section */
 
@@ -331,6 +332,7 @@
 		E63395071FEB4D230075B8C0 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		E63395081FEB4D230075B8C0 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
 		E63395091FEB4D230075B8C0 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		E64C42E51FECAD7600418319 /* noticeMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = noticeMusic.wav; sourceTree = "<group>"; };
 		E659C2601FE9FAC800B327B4 /* NBAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBAudio.h; sourceTree = "<group>"; };
 		E659C2611FE9FAC800B327B4 /* NBAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBAudio.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -816,6 +818,7 @@
 		31CB481F1F4AB9C70046E4DB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E64C42E41FECAD7600418319 /* Music */,
 				31CB48211F4AB9C70046E4DB /* Pictures */,
 			);
 			path = Resource;
@@ -1032,6 +1035,14 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		E64C42E41FECAD7600418319 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				E64C42E51FECAD7600418319 /* noticeMusic.wav */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
 		E659C25F1FE9FAAB00B327B4 /* NBAudio */ = {
 			isa = PBXGroup;
 			children = (
@@ -1151,6 +1162,7 @@
 			files = (
 				69821AEB1FB3EFA30075B70A /* rabbit.jpeg in Resources */,
 				6971DB6E1FB14493006B5242 /* NBRefresh.bundle in Resources */,
+				E64C42E61FECAD7600418319 /* noticeMusic.wav in Resources */,
 				69821AE31FB3EFA30075B70A /* NB_completed_icon.png in Resources */,
 				69821AE71FB3EFA30075B70A /* NB_skull_icon.png in Resources */,
 				69821ADF1FB3EFA30075B70A /* banner_01.jpeg in Resources */,

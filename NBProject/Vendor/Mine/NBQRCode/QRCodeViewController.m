@@ -11,7 +11,7 @@
 #import <Photos/Photos.h>
 
 
-#define length 240 * NB_SCALE_6
+#define length 240.f
 static NSString *notice = @"将二维码置于取景框内系统会自动扫描";
 static NSString *notice1 = @"建议与镜头保持100CM距离，尽量避免逆光和阴影";
 
