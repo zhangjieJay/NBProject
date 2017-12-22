@@ -33,6 +33,22 @@
     return theImage;
 }
 
++(UIImage *)addImage:(UIImage *)image1 toImage:(UIImage *)image2{
+    UIGraphicsBeginImageContext(image1.size);
+    //两张照片合成
+    
+    // Draw image1
+    [image1 drawInRect:CGRectMake(10, 100, image1.size.width, image1.size.height)];
+    
+    // Draw image2
+    [image2 drawInRect:CGRectMake(200, 200, image2.size.width, image2.size.height)];
+    
+    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return resultingImage;
+}
 
 
 
@@ -58,12 +74,12 @@
     
     
     //计算文字所占的size,文字居中显示在画布上
-//    CGSize sizeText = [NBTool autoSizeWithString:title font:[NBTool getFont:fontSize] width:size.width];
+    //    CGSize sizeText = [NBTool autoSizeWithString:title font:[NBTool getFont:fontSize] width:size.width];
     
     
     
     CGSize sizeText = [NBTool autoString:title font:[NBTool getFont:fontSize] width:size.width];
-
+    
     CGFloat width = self.size.width;
     
     CGFloat height = self.size.height;
@@ -207,20 +223,20 @@
     }
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef ctx = CGBitmapContextCreate(
-                                             outBuffer.data, 
-                                             outBuffer.width, 
-                                             outBuffer.height, 
-                                             8, 
-                                             outBuffer.rowBytes, 
-                                             colorSpace, 
-                                             kCGImageAlphaNoneSkipLast); 
-    CGImageRef imageRef = CGBitmapContextCreateImage (ctx); 
-    UIImage *returnImage = [UIImage imageWithCGImage:imageRef]; 
-    //clean up 
-    CGContextRelease(ctx); 
-    CGColorSpaceRelease(colorSpace); 
-    free(pixelBuffer); 
-    CFRelease(inBitmapData); 
+                                             outBuffer.data,
+                                             outBuffer.width,
+                                             outBuffer.height,
+                                             8,
+                                             outBuffer.rowBytes,
+                                             colorSpace,
+                                             kCGImageAlphaNoneSkipLast);
+    CGImageRef imageRef = CGBitmapContextCreateImage (ctx);
+    UIImage *returnImage = [UIImage imageWithCGImage:imageRef];
+    //clean up
+    CGContextRelease(ctx);
+    CGColorSpaceRelease(colorSpace);
+    free(pixelBuffer);
+    CFRelease(inBitmapData);
     CGImageRelease(imageRef);
     return returnImage;
 }
@@ -242,7 +258,7 @@
     //    [filter setValue:[NSNumber numberWithFloat:blur] forKey:kCIInputRadiusKey];
     
     CIImage *outputImage = filter.outputImage;//获取滤镜过滤后的图片[filter valueForKey:kCIOutputImageKey];
-
+    
     
     CIContext *ciContext = [CIContext contextWithOptions:nil];//core image context
     CGImageRef outImage = [ciContext createCGImage:outputImage fromRect:[outputImage extent]];
@@ -252,6 +268,49 @@
 }
 
 
+- (UIImage *)thumbnailToSize:(CGSize)asize
+{
+    
+    UIImage * newImage = [self copy];
+    
+    CGSize oldsize = self.size;
+    
+    CGRect rect;
+    
+    //判断是否变形 进行处理 裁剪宽或者高吧
+    
+    if (asize.width/asize.height > oldsize.width/oldsize.height) {
+        
+        rect.size.width = asize.height*oldsize.width/oldsize.height;
+        
+        rect.size.height = asize.height;
+        
+        rect.origin.x = (asize.width - rect.size.width)/2;
+        
+        rect.origin.y = 0;
+        
+    }
+    else{
+        
+        rect.size.width = asize.width;
+        
+        rect.size.height = asize.width*oldsize.height/oldsize.width;
+        
+        rect.origin.x = 0;
+        
+        rect.origin.y = (asize.height - rect.size.height)/2;
+    }
+    
+    UIGraphicsBeginImageContext(asize);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [[UIColor clearColor] CGColor]);
+    UIRectFill(CGRectMake(0, 2, asize.width, asize.height));//clear background
+    [self drawInRect:rect];
+    newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+    
+}
 
 
 

@@ -13,9 +13,11 @@
 
 #ifdef NB_Debug
 
+#define All_Constellation @"http://web.juhe.cn:8080/constellation/getAll"
 
 #else/*********************************/
 
+#define All_Constellation @"http://web.juhe.cn:8080/constellation/getAll"
 
 
 #endif

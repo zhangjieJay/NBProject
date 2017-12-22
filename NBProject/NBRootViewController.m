@@ -44,13 +44,26 @@
     NSArray * arImages = @[@"banner_01.jpeg",@"banner_02.jpeg",@"banner_03.jpeg",@"banner_04.jpeg"];
     banner.arImages = arImages;
     [self.view addSubview:banner];
+    [self requestAllConstellation];
+    
+}
+
+
+-(void)requestAllConstellation{
+//    http://web.juhe.cn:8080/constellation/getAll
+    
+    [NBNetWork postToUrl:All_Constellation param:nil success:^(id obj) {
+        
+    } failure:^(NSString *error) {
+        
+    }];
     
 }
 
 
 -(void)dosomething{
 
-    [[NBAudio shareInstance]playVoice];
+    [[NBAudio shareInstance] playVoice];
     
     
    

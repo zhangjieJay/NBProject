@@ -9,17 +9,13 @@
 #ifndef VarsMicroDef_h
 #define VarsMicroDef_h
 
+#define NB_Debug
+
 #define Param(id) id?id:@""
-
 #define  WEAKSELF __weak typeof(self)weakSelf = self;
-
-
 #define NB_SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
 #define NB_SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
-
-
 #define BIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
-
 #define NB_TABBAR_HEIGHT         (BIsiPhoneX ? 83.f : 49.f)
 #define NB_NAVI_HEIGHT           (BIsiPhoneX ? 88.f : 64.f)
 

@@ -33,6 +33,8 @@
 	<string>是否同意访问麦克风</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>是否同意访问相册</string>
+	<key>NSContactsUsageDescription</key>
+	<string>是否同意访问通讯录</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
