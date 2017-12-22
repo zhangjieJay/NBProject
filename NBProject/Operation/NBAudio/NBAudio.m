@@ -57,19 +57,19 @@
     
     if (!_speaker) {
         _speaker = [AVSpeechSynthesizer new];
-        _speaker.delegate             = self;
+        _speaker.delegate= self;
     }
     return _speaker;
 }
 -(void)playVoiceString:(NSString *)sString{
-    AVSpeechUtterance *utterance    = [[AVSpeechUtterance alloc] initWithString:sString];
-    utterance.rate                  = 0.5;
-    utterance.pitchMultiplier       = 1;
-    utterance.volume                = 1;
-    utterance.preUtteranceDelay     = 1;
-    utterance.postUtteranceDelay    = 1;
-    AVSpeechSynthesisVoice * voice   = [AVSpeechSynthesisVoice voiceWithLanguage:@"zh-CN"];//中文
-    utterance.voice                 = voice;
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:sString];
+    utterance.rate = 0.5;
+    utterance.pitchMultiplier = 1;
+    utterance.volume = 1;
+    utterance.preUtteranceDelay = 1;
+    utterance.postUtteranceDelay  = 1;
+    AVSpeechSynthesisVoice * voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"zh-CN"];//中文
+    utterance.voice = voice;
     [self.speaker speakUtterance:utterance];
     
 }
@@ -104,8 +104,8 @@
     SystemSoundID soundID;
     NSString *strSoundFile = [[NSBundle mainBundle] pathForResource:@"noticeMusic" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:strSoundFile],&soundID);
-//    AudioServicesPlaySystemSound(soundID);
-    AudioServicesPlayAlertSound(soundID);
+//    AudioServicesPlaySystemSound(soundID);//声音
+    AudioServicesPlayAlertSound(soundID);//震动+声音
 }
 
 

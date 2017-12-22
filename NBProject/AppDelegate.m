@@ -107,25 +107,26 @@
 #pragma mark ------------------------------- 收到远程(本地)通知
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     /**iOS 3.0 - 10.0*/
+    [self dealRomoteNotification:userInfo];
 }
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
     /**iOS 4.0 - 10.0*/
 }
-#pragma mark ------------------------------- 收到远程通知推送
+#pragma mark ------------------------------- 收到远程通知推送(目前10.0测试此方法不调用)
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     /**iOS 7.0以后**/
     completionHandler(UIBackgroundFetchResultNoData);
 }
 
-#pragma mark ------------------------------- 即将推送通知
+#pragma mark ------------------------------- 即将推送通知(iOS 10.0以后在App内部收到通知)
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
-    
+    [self dealRomoteNotification:notification.request.content.userInfo];
     //功能：可设置是否在应用内弹出通知
     completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
 }
-#pragma mark ------------------------------- 点击推送消息后回调
+#pragma mark ------------------------------- 点击推送消息后回调(iOS 10.0及以后)
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler{
-    NSLog(@"Userinfo %@",response.notification.request.content.userInfo);
+    [self dealRomoteNotification:response.notification.request.content.userInfo];
     completionHandler();
 }
 #pragma mark ------------------------------- 请求推送权限
@@ -164,6 +165,12 @@
 }
 #pragma mark ------------------------------- 系统时间发生改变
 -(void)applicationSignificantTimeChange:(UIApplication*)application{
+    
+}
+
+-(void)dealRomoteNotification:(NSDictionary *)info{
+    NSLog(@"info:%@",info);
+
     
 }
 @end

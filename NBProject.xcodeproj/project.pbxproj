@@ -120,6 +120,10 @@
 		E63395171FEB4D230075B8C0 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E63395071FEB4D230075B8C0 /* AFNetworkReachabilityManager.m */; };
 		E63395181FEB4D230075B8C0 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = E63395081FEB4D230075B8C0 /* AFSecurityPolicy.m */; };
 		E64C42E61FECAD7600418319 /* noticeMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = E64C42E51FECAD7600418319 /* noticeMusic.wav */; };
+		E64C42F01FECF11700418319 /* apns-dev.pem in Resources */ = {isa = PBXBuildFile; fileRef = E64C42EC1FECF11700418319 /* apns-dev.pem */; };
+		E64C42F11FECF11700418319 /* aps_development.cer in Resources */ = {isa = PBXBuildFile; fileRef = E64C42ED1FECF11700418319 /* aps_development.cer */; };
+		E64C42F21FECF11700418319 /* push_dev.p12 in Resources */ = {isa = PBXBuildFile; fileRef = E64C42EE1FECF11700418319 /* push_dev.p12 */; };
+		E64C42F31FECF11700418319 /* Jay_APNS.php in Resources */ = {isa = PBXBuildFile; fileRef = E64C42EF1FECF11700418319 /* Jay_APNS.php */; };
 		E659C2621FE9FAC800B327B4 /* NBAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = E659C2611FE9FAC800B327B4 /* NBAudio.m */; };
 /* End PBXBuildFile section */
 
@@ -333,6 +337,11 @@
 		E63395081FEB4D230075B8C0 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
 		E63395091FEB4D230075B8C0 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		E64C42E51FECAD7600418319 /* noticeMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = noticeMusic.wav; sourceTree = "<group>"; };
+		E64C42E71FECD1C400418319 /* NBProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NBProject.entitlements; sourceTree = "<group>"; };
+		E64C42EC1FECF11700418319 /* apns-dev.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "apns-dev.pem"; sourceTree = "<group>"; };
+		E64C42ED1FECF11700418319 /* aps_development.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = aps_development.cer; sourceTree = "<group>"; };
+		E64C42EE1FECF11700418319 /* push_dev.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = push_dev.p12; sourceTree = "<group>"; };
+		E64C42EF1FECF11700418319 /* Jay_APNS.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Jay_APNS.php; sourceTree = "<group>"; };
 		E659C2601FE9FAC800B327B4 /* NBAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBAudio.h; sourceTree = "<group>"; };
 		E659C2611FE9FAC800B327B4 /* NBAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBAudio.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -628,6 +637,7 @@
 		312429E01EF7768F002B82A1 /* NBProject */ = {
 			isa = PBXGroup;
 			children = (
+				E64C42E71FECD1C400418319 /* NBProject.entitlements */,
 				311416AE1F4FC69E00C6A13B /* Vendor */,
 				31CB481F1F4AB9C70046E4DB /* Resource */,
 				3125C77C1F46F1B900D89D37 /* Operation */,
@@ -818,6 +828,7 @@
 		31CB481F1F4AB9C70046E4DB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E64C42E81FECD25000418319 /* Files */,
 				E64C42E41FECAD7600418319 /* Music */,
 				31CB48211F4AB9C70046E4DB /* Pictures */,
 			);
@@ -1043,6 +1054,17 @@
 			path = Music;
 			sourceTree = "<group>";
 		};
+		E64C42E81FECD25000418319 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				E64C42EC1FECF11700418319 /* apns-dev.pem */,
+				E64C42ED1FECF11700418319 /* aps_development.cer */,
+				E64C42EF1FECF11700418319 /* Jay_APNS.php */,
+				E64C42EE1FECF11700418319 /* push_dev.p12 */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
 		E659C25F1FE9FAAB00B327B4 /* NBAudio */ = {
 			isa = PBXGroup;
 			children = (
@@ -1121,6 +1143,14 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = W2E229X4MZ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					312429F61EF7768F002B82A1 = {
 						CreatedOnToolsVersion = 8.0;
@@ -1169,17 +1199,21 @@
 				69821AE11FB3EFA30075B70A /* banner_03.jpeg in Resources */,
 				69821AEC1FB3EFA30075B70A /* NB_scan_line.png in Resources */,
 				69821AE81FB3EFA30075B70A /* beauty.jpg in Resources */,
+				E64C42F11FECF11700418319 /* aps_development.cer in Resources */,
 				69821AE41FB3EFA30075B70A /* NB_crying_icon.png in Resources */,
 				69821AE51FB3EFA30075B70A /* NB_error_icon.png in Resources */,
 				69821AE21FB3EFA30075B70A /* banner_04.jpeg in Resources */,
 				312429F11EF7768F002B82A1 /* LaunchScreen.storyboard in Resources */,
 				312429EE1EF7768F002B82A1 /* Assets.xcassets in Resources */,
+				E64C42F21FECF11700418319 /* push_dev.p12 in Resources */,
 				69821AE91FB3EFA30075B70A /* long.png in Resources */,
 				69821AEA1FB3EFA30075B70A /* pig.jpeg in Resources */,
 				312429EC1EF7768F002B82A1 /* Main.storyboard in Resources */,
+				E64C42F01FECF11700418319 /* apns-dev.pem in Resources */,
 				69821AE01FB3EFA30075B70A /* banner_02.jpeg in Resources */,
 				69821AE61FB3EFA30075B70A /* NB_remind_icon.png in Resources */,
 				69821B081FB42C1C0075B70A /* tabbar_background.jpeg in Resources */,
+				E64C42F31FECF11700418319 /* Jay_APNS.php in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1456,6 +1490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NBProject/NBProject.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = W2E229X4MZ;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NBProject/NBPrefix.pch";
@@ -1465,7 +1500,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NBProject/Vendor/Other/WeCahtPay",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Jay-Zhang-nbtool.NBProject";
+				PRODUCT_BUNDLE_IDENTIFIER = JayZhangnbtool.NBProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1476,6 +1511,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NBProject/NBProject.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = W2E229X4MZ;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NBProject/NBPrefix.pch";
@@ -1485,7 +1521,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NBProject/Vendor/Other/WeCahtPay",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Jay-Zhang-nbtool.NBProject";
+				PRODUCT_BUNDLE_IDENTIFIER = JayZhangnbtool.NBProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
