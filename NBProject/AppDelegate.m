@@ -57,6 +57,8 @@
     NSLog_Method
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     [NB_KEYWINDOW removeBlurEffect];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
 }
 
 #pragma mark ------------------------------- APP已经被激活
@@ -129,6 +131,8 @@
     [self dealRomoteNotification:response.notification.request.content.userInfo];
     completionHandler();
 }
+
+
 #pragma mark ------------------------------- 请求推送权限
 -(void)setupAPNS{
     /**
@@ -170,6 +174,7 @@
 
 -(void)dealRomoteNotification:(NSDictionary *)info{
     NSLog(@"info:%@",info);
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
     
 }

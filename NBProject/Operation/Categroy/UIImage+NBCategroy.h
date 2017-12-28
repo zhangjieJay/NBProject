@@ -15,6 +15,8 @@
 + (UIImage *)imageWithColor:(UIColor *)color;
 
 
++(UIImage *)addImage:(UIImage *)image1 toImage:(UIImage *)image2;
+
 - (UIImage *)imageWithTitle:(NSString *)title fontSize:(CGFloat)fontSize;//在当前图片上绘制文字
 
 //生成一张在原来图片带模糊效果的图片
@@ -23,5 +25,5 @@
 #pragma mark ----------------------采用CoreImage 高斯模糊图片
 - (UIImage *)blurryByVImageWithBlurLevel:(CGFloat)blur;
 - (UIImage *)blurryByCoreImageWithBlurLevel:(CGFloat)blur;
-
+- (UIImage *)thumbnailToSize:(CGSize)asize;
 @end

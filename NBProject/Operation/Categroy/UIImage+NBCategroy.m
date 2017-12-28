@@ -32,7 +32,7 @@
     
     return theImage;
 }
-
+#pragma mark ------------------------------- 合成两张图片暂时未测试
 +(UIImage *)addImage:(UIImage *)image1 toImage:(UIImage *)image2{
     UIGraphicsBeginImageContext(image1.size);
     //两张照片合成
@@ -267,7 +267,7 @@
     return image;
 }
 
-
+#pragma mark ------------------------------- 暂时未检验(压缩图片到制定尺寸)
 - (UIImage *)thumbnailToSize:(CGSize)asize
 {
     

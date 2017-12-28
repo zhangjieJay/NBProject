@@ -461,6 +461,75 @@
 }
 
 
++ (NSString *)getFirstDayOfThisMonth{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    formatter.dateFormat = @"YYYY-MM-dd";
+    NSDate *dateNow= [NSDate date];//获取到当前日期
+    NSCalendar *calendar = [NSCalendar currentCalendar];//获取日历
+    NSDate *firstDay;
+    /*从月份当中取出第一天*/
+    if (iOS8_Later) {
+        [calendar rangeOfUnit:NSCalendarUnitMonth startDate:&firstDay interval:nil forDate:dateNow];
+    }else{
+        [calendar rangeOfUnit:NSMonthCalendarUnit startDate:&firstDay interval:nil forDate:dateNow];
+    }
+    NSString * sFirstDay = [formatter stringFromDate:firstDay];
+#pragma clang diagnostic pop
+    
+    return sFirstDay;
+    
+}
+
++ (NSString *)getLastDayOfThisMonth{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    formatter.dateFormat = @"YYYY-MM-dd";
+    NSDate *dateNow = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *firstDay;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    if (iOS8_Later) {
+        [calendar rangeOfUnit:NSCalendarUnitMonth startDate:&firstDay interval:nil forDate:dateNow];
+    }else{
+        [calendar rangeOfUnit:NSMonthCalendarUnit startDate:&firstDay interval:nil forDate:[NSDate date]];
+    }
+    
+    NSDateComponents *lastDateComponents;
+    if (iOS8_Later) {
+        lastDateComponents = [calendar components:NSCalendarUnitMonth | NSCalendarUnitYear |NSCalendarUnitDay fromDate:firstDay];
+    }else{
+        lastDateComponents = [calendar components:NSMonthCalendarUnit | NSYearCalendarUnit |NSDayCalendarUnit fromDate:firstDay];
+    }
+    
+    
+    NSUInteger dayNumberOfMonth;
+    if (iOS8_Later) {
+        dayNumberOfMonth   = [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:dateNow].length;
+    }else{
+        dayNumberOfMonth  = [calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:dateNow].length;
+    }
+#pragma clang diagnostic pop
+    
+    NSInteger day = [lastDateComponents day];
+    [lastDateComponents setDay:day+dayNumberOfMonth-1];
+    NSDate *lastDay = [calendar dateFromComponents:lastDateComponents];
+    NSString * sLastDay = [formatter stringFromDate:lastDay];
+    
+    return sLastDay;
+}
+
++ (NSString *)getCurrentDayOfThisMonth{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    formatter.dateFormat = @"YYYY-MM-dd";
+    NSDate *dateNow= [NSDate date];//获取到当前日期
+    NSString * sDateNow = [formatter stringFromDate:dateNow];
+    return sDateNow;
+}
+
+
+
 /**
  *  将NSData类型的 DeviceToken 转换为字符串
  *  @param deviceToken 设备的devicetoken数据
@@ -652,7 +721,7 @@
  */
 +(NSMutableAttributedString *)getmuAttributedString:(NSString *)string font:(CGFloat)size textColor:(UIColor *)color{
     
-    return [[NSMutableAttributedString alloc]initWithAttributedString:[NBTool getmuAttributedString:string font:size textColor:color]];
+    return [[NSMutableAttributedString alloc]initWithAttributedString:[NBTool getAttributedString:string font:size textColor:color]];
 }
 /**
  *  根据字符串生成可变富文本
@@ -662,14 +731,17 @@
  *  @return 可变富文本信息
  */
 +(NSAttributedString *)getAttributedString:(NSString *)string font:(CGFloat)size textColor:(UIColor *)color{
-    if ([NBTool isEmpty:string]) {
-        string = @"";
-    }
-    NSAttributedString * atString = [[NSAttributedString alloc]initWithString:string attributes:@{NSFontAttributeName :[NBTool getFont:size],NSForegroundColorAttributeName:color}];
-    return atString;
+    return [NBTool getAttributedString:string fontobj:[NBTool getFont:size] textColor:color];
 }
 
 
++(NSAttributedString *)getAttributedString:(NSString *)string fontobj:(UIFont *)font textColor:(UIColor *)color{
+    if ([NBTool isEmpty:string]) {
+        string = @"";
+    }
+    NSAttributedString * atString = [[NSAttributedString alloc]initWithString:string attributes:@{NSFontAttributeName: font,NSForegroundColorAttributeName:color}];
+    return atString;
+}
 
 /**
  *  返回找到的俯视图没找到则返回空
