@@ -125,6 +125,7 @@
 		E64C42F21FECF11700418319 /* push_dev.p12 in Resources */ = {isa = PBXBuildFile; fileRef = E64C42EE1FECF11700418319 /* push_dev.p12 */; };
 		E64C42F31FECF11700418319 /* Jay_APNS.php in Resources */ = {isa = PBXBuildFile; fileRef = E64C42EF1FECF11700418319 /* Jay_APNS.php */; };
 		E659C2621FE9FAC800B327B4 /* NBAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = E659C2611FE9FAC800B327B4 /* NBAudio.m */; };
+		E6773ECC1FFB868E008729B8 /* NBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6773ECA1FFB868E008729B8 /* NBWebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -344,6 +345,8 @@
 		E64C42EF1FECF11700418319 /* Jay_APNS.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Jay_APNS.php; sourceTree = "<group>"; };
 		E659C2601FE9FAC800B327B4 /* NBAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBAudio.h; sourceTree = "<group>"; };
 		E659C2611FE9FAC800B327B4 /* NBAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBAudio.m; sourceTree = "<group>"; };
+		E6773ECA1FFB868E008729B8 /* NBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBWebViewController.m; sourceTree = "<group>"; };
+		E6773ECB1FFB868E008729B8 /* NBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBWebViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -578,6 +581,8 @@
 		311BF9AE1F4D88F700E0E5D5 /* BaseController */ = {
 			isa = PBXGroup;
 			children = (
+				E6773ECB1FFB868E008729B8 /* NBWebViewController.h */,
+				E6773ECA1FFB868E008729B8 /* NBWebViewController.m */,
 				311BF9AF1F4D88F700E0E5D5 /* BaseViewController.h */,
 				311BF9B01F4D88F700E0E5D5 /* BaseViewController.m */,
 			);
@@ -1315,6 +1320,7 @@
 				6971DB581FB13E95006B5242 /* NBRefreshFooter.m in Sources */,
 				E63395121FEB4D230075B8C0 /* AFImageDownloader.m in Sources */,
 				311416D31F4FC69E00C6A13B /* JSONKit.m in Sources */,
+				E6773ECC1FFB868E008729B8 /* NBWebViewController.m in Sources */,
 				6971DB861FB1ABD9006B5242 /* NBRECViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

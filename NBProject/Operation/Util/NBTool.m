@@ -456,7 +456,7 @@
 +(NSString *)getSandBoxPath:(NSSearchPathDirectory)type{
     
     NSArray * paths=NSSearchPathForDirectoriesInDomains(type,NSUserDomainMask,YES);
-
+    
     return paths.firstObject;
 }
 
@@ -528,6 +528,21 @@
     return sDateNow;
 }
 
+-(NSDate *)getFistDayINMonthframDate:(NSDate*)date {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+
+    // 指定日历单位，如日期和月份。(这里指定了年月日，还有其他字段添加单位.特别齐全 ：世纪，年月日时分秒等等等)
+    NSCalendarUnit dayInfoUnits  = NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+    // NSDateComponents封装了日期的组件,年月日时分秒等(个人感觉像是平时用的model模型)
+    NSDateComponents *components = [calendar components: dayInfoUnits fromDate:date];
+    // 指定1号
+    components.day = 1;
+    // 指定月份(我这里是获取当前月份的下1个月的1号的date对象,所以用的++，其上个月或者其他同理)
+//    components.month++；
+    // 转成需要的date对象return
+    NSDate * nextMonthDate =[calendar dateFromComponents:components];
+    return nextMonthDate;
+}
 
 
 /**

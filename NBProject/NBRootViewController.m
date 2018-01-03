@@ -16,6 +16,7 @@
 @interface NBRootViewController ()<NBSliderViewDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
 @property(nonatomic,strong)UITableView * mainTableView;
+@property(nonatomic,weak)UILabel * fffff;
 
 
 
@@ -45,6 +46,8 @@
     banner.arImages = arImages;
     [self.view addSubview:banner];
     [self requestAllConstellation];
+
+    
     
 }
 
@@ -63,11 +66,23 @@
 
 -(void)dosomething{
 
-    [[NBAudio shareInstance] playVoice];
+
+    NSArray * array = [@[@"谢谢", @"感谢"] copy];
+    
+    NSLog(@"%p   %@",&array,array);
     
     
-   
-    //    [self.navigationController showViewController:[NBRECViewController new] sender:nil];
+
+
+    
+    
+    
+    NSMutableArray *otherArray = [array mutableCopy];
+    
+    [otherArray addObject:@"fff"];
+    NSLog(@"%p   %@",&otherArray,otherArray);
+//    [[NBAudio shareInstance] playVoice];
+//    [self.navigationController showViewController:[NBRECViewController new] sender:nil];
 }
 
 -(void)textHudView{

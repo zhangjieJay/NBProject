@@ -26,7 +26,7 @@
 
 
 
-@property(nonatomic,assign)id<NBSliderViewDelegate>nbsv_delegate;
+@property(nonatomic,weak)id<NBSliderViewDelegate>nbsv_delegate;
 
 @property(nonatomic,copy)NSArray * arTitle;//此属性设置会初始化界面的控件
 

@@ -17,7 +17,7 @@
 @end
 
 @interface NBSheetView : BaseView
-@property(nonatomic,assign)id<NBSheetViewDelegate>sDelegate;
+@property(nonatomic,weak)id<NBSheetViewDelegate>sDelegate;
 -(void)showWithArray:(NSArray *)arData;//mark 数组中存放的是SheetModel对象
 
 

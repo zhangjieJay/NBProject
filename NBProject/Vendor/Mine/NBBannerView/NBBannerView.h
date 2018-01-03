@@ -30,7 +30,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame ImageUrl:(NSArray <NSString *>*)arUrls;
 
-@property(nonatomic,assign)id<NBBannerViewDelegate>delegate;
+@property(nonatomic,weak)id<NBBannerViewDelegate>delegate;
 
 @property(nonatomic,assign)NSArray * arImages;//图片数组
 @end

@@ -31,7 +31,7 @@
         if (!_customBar) {
             _customBar = [[NBCustomTabBar alloc]initWithFrame:CGRectZero];
             [self setValue:_customBar forKey:@"tabBar"];
-            NSArray * arCls = @[@"NBRootViewController",@"NBRECViewController",@"QRCodeViewController"];
+            NSArray * arCls = @[@"NBRootViewController",/*@"NBRECViewController",*/@"QRCodeViewController"];
             NSArray * arTitles = @[@"首页",@"摄像视图",@"二维码扫描"];
             NSArray * arImagesNormal = @[@"classify_1",@"cart_1",@"home_1"];
             NSArray * arImagesSelected = @[@"classify_2",@"cart_2",@"home_2"];

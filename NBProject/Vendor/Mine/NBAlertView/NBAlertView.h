@@ -25,7 +25,7 @@
 
 @interface NBAlertView : UIView
 
-@property(nonatomic,assign)id<NBAlertViewDelegate>delegate;
+@property(nonatomic,weak)id<NBAlertViewDelegate>delegate;
 
 /*默认为提示*/
 /*info  为展示的信息提示

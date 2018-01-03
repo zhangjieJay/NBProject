@@ -22,7 +22,7 @@
 
 #import "BaseModel.h"
 #import "BaseViewController.h"
-
+#import "NBWebViewController.h"
 #import "UIColor+NBCategory.h"//颜色类拓展
 
 

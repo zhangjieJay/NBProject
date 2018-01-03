@@ -84,12 +84,14 @@ typedef enum {
 + (NSString *)getDateWithTimeStamp:(NSString *)timeStamp formatter:(NSString *)formatter;
 + (NSString *)getDistanceWithMeters:(NSString *)meters;
 
+
 /**
  *  得到这个月的第一天和最后一天
  */
 + (NSString *)getFirstDayOfThisMonth;
 + (NSString *)getLastDayOfThisMonth;
 + (NSString *)getCurrentDayOfThisMonth;
+
 
 + (NSString *)getSandBoxDcoumentPath;
 + (NSString *)getSandBoxLibraryPath;

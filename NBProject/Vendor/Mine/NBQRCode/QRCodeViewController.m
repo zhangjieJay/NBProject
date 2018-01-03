@@ -43,67 +43,7 @@ static NSString *notice1 = @"建议与镜头保持100CM距离，尽量避免逆�
 
 @implementation QRCodeViewController
 
-// 1、获取摄像设备
-- (AVCaptureDevice *)device {
-    if (!_device) {
-        
-        _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    }
-    return _device;
-}
-
-// 2、创建输入流
-- (AVCaptureDeviceInput *)input {
-    if (!_input) {
-        NSError *error = nil;
-        _input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:&error];
-        if (error) {
-            NSLog(@"%@", error);
-        }
-    }
-    return _input;
-}
-// 3、创建输出流
-- (AVCaptureMetadataOutput *)output {
-    if (!_output) {
-        _output = [[AVCaptureMetadataOutput alloc] init];
-        [_output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
-        
-    }
-    return _output;
-    
-}
-
-
-- (AVCaptureSession *)session {
-    if (!_session) {
-        _session = [[AVCaptureSession alloc] init];
-        // 高质量采集率
-        [_session setSessionPreset:AVCaptureSessionPresetHigh];
-    }
-    return _session;
-}
-
-- (AVCaptureVideoPreviewLayer *)previewLayer {
-    if (!_previewLayer) {
-        _previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
-        _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-        _previewLayer.frame = CGRectMake(0, 0, NB_SCREEN_WIDTH, NB_SCREEN_HEIGHT);
-    }
-    return _previewLayer;
-}
-
-
-- (UIImageView *)lineImageView {
-    if (!_lineImageView) {
-        _lineImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NB_scan_line"]];
-        _lineImageView.bounds = CGRectMake(0, 0, length, 10);
-    }
-    return _lineImageView;
-}
-
 - (void)viewDidLoad {
-    
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -112,6 +52,20 @@ static NSString *notice1 = @"建议与镜头保持100CM距离，尽量避免逆�
     
     [self getAuthorityToCamera];
 
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (![self.session isRunning]) {
+        [self.session startRunning];
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if ([self.session isRunning]) {
+        [self.session stopRunning];
+    }
 }
 
 
@@ -130,7 +84,12 @@ static NSString *notice1 = @"建议与镜头保持100CM距离，尽量避免逆�
                     [self initUserInterface];
 
                 } else {
-                    [self dismissViewControllerAnimated:YES completion:nil];//
+                    if (self.presentedViewController) {
+                        [self dismissViewControllerAnimated:YES completion:nil];//
+
+                    }else{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }
                     NBAlertView * alertView = [NBAlertView new];
                     [alertView showError:@"拒绝访问相机!"];
                     // 用户第一次拒绝了访问相机权限
@@ -198,16 +157,6 @@ static NSString *notice1 = @"建议与镜头保持100CM距离，尽量避免逆�
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
-
-- (void)viewWillDisappear:(BOOL)animated{
-
-    [super viewWillDisappear:animated];
-    // 1、如果扫描完成，停止会话
-    [self.session stopRunning];
-    
-    self.navigationController.navigationBar.translucent = NO;
-}
 
 
 
@@ -410,8 +359,71 @@ void soundCompleteCallback(SystemSoundID soundID, void *clientData){
     
     
     
+    NBWebViewController * webVC = [NBWebViewController new];
+    webVC.hidesBottomBarWhenPushed = YES;
+    webVC.sLinkUrl = sResult;
+    
+    [self.navigationController pushViewController:webVC animated:YES];
     
     
+}
+
+// 1、获取摄像设备
+- (AVCaptureDevice *)device {
+    if (!_device) {
+        _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    }
+    return _device;
+}
+
+// 2、创建输入流
+- (AVCaptureDeviceInput *)input {
+    if (!_input) {
+        NSError *error = nil;
+        _input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:&error];
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }
+    return _input;
+}
+// 3、创建输出流
+- (AVCaptureMetadataOutput *)output {
+    if (!_output) {
+        _output = [[AVCaptureMetadataOutput alloc] init];
+        [_output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
+        
+    }
+    return _output;
+    
+}
+
+
+- (AVCaptureSession *)session {
+    if (!_session) {
+        _session = [[AVCaptureSession alloc] init];
+        // 高质量采集率
+        [_session setSessionPreset:AVCaptureSessionPresetHigh];
+    }
+    return _session;
+}
+
+- (AVCaptureVideoPreviewLayer *)previewLayer {
+    if (!_previewLayer) {
+        _previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
+        _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        _previewLayer.frame = CGRectMake(0, 0, NB_SCREEN_WIDTH, NB_SCREEN_HEIGHT);
+    }
+    return _previewLayer;
+}
+
+
+- (UIImageView *)lineImageView {
+    if (!_lineImageView) {
+        _lineImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NB_scan_line"]];
+        _lineImageView.bounds = CGRectMake(0, 0, length, 10);
+    }
+    return _lineImageView;
 }
 
 

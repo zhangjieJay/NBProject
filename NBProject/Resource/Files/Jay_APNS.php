@@ -5,9 +5,9 @@
      * <c>获取到一个apns-dev.pem的文件后,文件名称将用于方法stream_context_set_option($ctx, 'ssl', 'local_cert', 'apns-dev.pem')最后一个参数
      * <d>终端运行 php -f Jay_APNS.php
      */
-    
+
     //手机注册应用返回唯一的deviceToken
-    $deviceToken = '9a20d17b4a1c82f2c62e63b42670b689245a70f9abb0e21d095c7476474e472c';//需要发送推送的设备ID
+    $deviceToken = '12dca1f5edea6809a6e15b903522c432b867289a00d0be8480920c177a20a964';//需要发送推送的设备ID
     //ck.pem通关密码 p12文件密码
     $pass = '8517690';//推送证书密码
     //消息内容
@@ -44,7 +44,7 @@
     else {
         print "Connection OK\n";
     }
-    
+
     // send message
     $msg = chr(0) . pack("n",32) . pack('H*', str_replace(' ', '', $deviceToken)) . pack("n",strlen($payload)) . $payload;
     print "Sending message :" . $payload . "\n";
