@@ -14,9 +14,6 @@
 		311416D11F4FC69E00C6A13B /* NBVolumeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 311416BC1F4FC69E00C6A13B /* NBVolumeBar.m */; };
 		311416D21F4FC69E00C6A13B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 311416C01F4FC69E00C6A13B /* Reachability.m */; };
 		311416D31F4FC69E00C6A13B /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 311416C41F4FC69E00C6A13B /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		311416D41F4FC69E00C6A13B /* ApiXml.mm in Sources */ = {isa = PBXBuildFile; fileRef = 311416C71F4FC69E00C6A13B /* ApiXml.mm */; };
-		311416D51F4FC69E00C6A13B /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 311416C81F4FC69E00C6A13B /* libWeChatSDK.a */; };
-		311416D61F4FC69E00C6A13B /* NBWeChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 311416CA1F4FC69E00C6A13B /* NBWeChatManager.m */; };
 		311416D91F50167D00C6A13B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 311416D81F50167D00C6A13B /* libsqlite3.tbd */; };
 		31168BB11F5658F9007E2BF8 /* NBPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31168BB01F5658F9007E2BF8 /* NBPreView.m */; };
 		31168BB41F565E93007E2BF8 /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 31168BB31F565E93007E2BF8 /* ImageModel.m */; };
@@ -104,6 +101,8 @@
 		69821B091FB42C1C0075B70A /* tabbar_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 69821B071FB42C1C0075B70A /* tabbar_background.jpeg */; };
 		69821B0D1FB459230075B70A /* NBViewControllerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 69821B0C1FB459230075B70A /* NBViewControllerAnimation.m */; };
 		69821B0E1FB459230075B70A /* NBViewControllerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 69821B0C1FB459230075B70A /* NBViewControllerAnimation.m */; };
+		BAA32FB72575A61047B5C02A /* libPods-NBProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EB74A299A564C56485F034 /* libPods-NBProject.a */; };
+		E61921D91FFE1B7000985EE7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E61921D81FFE1B7000985EE7 /* icon.png */; };
 		E633950A1FEB4D230075B8C0 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E63394E81FEB4D230075B8C0 /* UIProgressView+AFNetworking.m */; };
 		E633950B1FEB4D230075B8C0 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E63394EA1FEB4D230075B8C0 /* UIRefreshControl+AFNetworking.m */; };
 		E633950C1FEB4D230075B8C0 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E63394ED1FEB4D230075B8C0 /* AFNetworkActivityIndicatorManager.m */; };
@@ -125,7 +124,11 @@
 		E64C42F21FECF11700418319 /* push_dev.p12 in Resources */ = {isa = PBXBuildFile; fileRef = E64C42EE1FECF11700418319 /* push_dev.p12 */; };
 		E64C42F31FECF11700418319 /* Jay_APNS.php in Resources */ = {isa = PBXBuildFile; fileRef = E64C42EF1FECF11700418319 /* Jay_APNS.php */; };
 		E659C2621FE9FAC800B327B4 /* NBAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = E659C2611FE9FAC800B327B4 /* NBAudio.m */; };
+		E664D7062003576700611931 /* NBPlayCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E664D7052003576700611931 /* NBPlayCenter.m */; };
 		E6773ECC1FFB868E008729B8 /* NBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6773ECA1FFB868E008729B8 /* NBWebViewController.m */; };
+		E683D8711FFF5FB200D23FDC /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E683D8701FFF5FB200D23FDC /* UserEntity.m */; };
+		E683D8751FFF659400D23FDC /* NBStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E683D8741FFF659400D23FDC /* NBStoreManager.m */; };
+		E683D8781FFF82DF00D23FDC /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E683D8761FFF82DF00D23FDC /* KeychainItemWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,14 +163,6 @@
 		311416C01F4FC69E00C6A13B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		311416C31F4FC69E00C6A13B /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		311416C41F4FC69E00C6A13B /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		311416C61F4FC69E00C6A13B /* ApiXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiXml.h; sourceTree = "<group>"; };
-		311416C71F4FC69E00C6A13B /* ApiXml.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApiXml.mm; sourceTree = "<group>"; };
-		311416C81F4FC69E00C6A13B /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		311416C91F4FC69E00C6A13B /* NBWeChatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBWeChatManager.h; sourceTree = "<group>"; };
-		311416CA1F4FC69E00C6A13B /* NBWeChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBWeChatManager.m; sourceTree = "<group>"; };
-		311416CB1F4FC69E00C6A13B /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		311416CC1F4FC69E00C6A13B /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		311416CD1F4FC69E00C6A13B /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		311416D81F50167D00C6A13B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		31168BAF1F5658F9007E2BF8 /* NBPreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPreView.h; sourceTree = "<group>"; };
 		31168BB01F5658F9007E2BF8 /* NBPreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPreView.m; sourceTree = "<group>"; };
@@ -304,6 +299,9 @@
 		69821B071FB42C1C0075B70A /* tabbar_background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tabbar_background.jpeg; sourceTree = "<group>"; };
 		69821B0B1FB459230075B70A /* NBViewControllerAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBViewControllerAnimation.h; sourceTree = "<group>"; };
 		69821B0C1FB459230075B70A /* NBViewControllerAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBViewControllerAnimation.m; sourceTree = "<group>"; };
+		96B24EBDC4AF3D718F5236F6 /* Pods-NBProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-NBProject/Pods-NBProject.release.xcconfig"; sourceTree = "<group>"; };
+		E4CD030534102FCF7B3D4731 /* Pods-NBProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NBProject/Pods-NBProject.debug.xcconfig"; sourceTree = "<group>"; };
+		E61921D81FFE1B7000985EE7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		E63394E81FEB4D230075B8C0 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		E63394E91FEB4D230075B8C0 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AFNetworking.h"; sourceTree = "<group>"; };
 		E63394EA1FEB4D230075B8C0 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
@@ -345,8 +343,17 @@
 		E64C42EF1FECF11700418319 /* Jay_APNS.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Jay_APNS.php; sourceTree = "<group>"; };
 		E659C2601FE9FAC800B327B4 /* NBAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBAudio.h; sourceTree = "<group>"; };
 		E659C2611FE9FAC800B327B4 /* NBAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBAudio.m; sourceTree = "<group>"; };
+		E664D7042003576700611931 /* NBPlayCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBPlayCenter.h; sourceTree = "<group>"; };
+		E664D7052003576700611931 /* NBPlayCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBPlayCenter.m; sourceTree = "<group>"; };
 		E6773ECA1FFB868E008729B8 /* NBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBWebViewController.m; sourceTree = "<group>"; };
 		E6773ECB1FFB868E008729B8 /* NBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBWebViewController.h; sourceTree = "<group>"; };
+		E683D86F1FFF5FB200D23FDC /* UserEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserEntity.h; sourceTree = "<group>"; };
+		E683D8701FFF5FB200D23FDC /* UserEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserEntity.m; sourceTree = "<group>"; };
+		E683D8731FFF659400D23FDC /* NBStoreManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBStoreManager.h; sourceTree = "<group>"; };
+		E683D8741FFF659400D23FDC /* NBStoreManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBStoreManager.m; sourceTree = "<group>"; };
+		E683D8761FFF82DF00D23FDC /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		E683D8771FFF82DF00D23FDC /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		F4EB74A299A564C56485F034 /* libPods-NBProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NBProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,7 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				311416D91F50167D00C6A13B /* libsqlite3.tbd in Frameworks */,
-				311416D51F4FC69E00C6A13B /* libWeChatSDK.a in Frameworks */,
+				BAA32FB72575A61047B5C02A /* libPods-NBProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +396,8 @@
 		311416AF1F4FC69E00C6A13B /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				E664D7032003573100611931 /* NBNowView */,
+				E683D8721FFF654E00D23FDC /* NBCodeFileManager */,
 				69821B021FB4248B0075B70A /* NBTabBar */,
 				69821AC91FB3EB230075B70A /* NBBannerView */,
 				692CEAF11FB050D900785ACA /* NBRefresh */,
@@ -463,7 +472,6 @@
 			children = (
 				E63394E61FEB4D230075B8C0 /* AFNetWorking */,
 				311416C21F4FC69E00C6A13B /* JsonKit */,
-				311416C51F4FC69E00C6A13B /* WeCahtPay */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -477,25 +485,11 @@
 			path = JsonKit;
 			sourceTree = "<group>";
 		};
-		311416C51F4FC69E00C6A13B /* WeCahtPay */ = {
-			isa = PBXGroup;
-			children = (
-				311416C61F4FC69E00C6A13B /* ApiXml.h */,
-				311416C71F4FC69E00C6A13B /* ApiXml.mm */,
-				311416C81F4FC69E00C6A13B /* libWeChatSDK.a */,
-				311416C91F4FC69E00C6A13B /* NBWeChatManager.h */,
-				311416CA1F4FC69E00C6A13B /* NBWeChatManager.m */,
-				311416CB1F4FC69E00C6A13B /* WechatAuthSDK.h */,
-				311416CC1F4FC69E00C6A13B /* WXApi.h */,
-				311416CD1F4FC69E00C6A13B /* WXApiObject.h */,
-			);
-			path = WeCahtPay;
-			sourceTree = "<group>";
-		};
 		311416D71F50167D00C6A13B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				311416D81F50167D00C6A13B /* libsqlite3.tbd */,
+				F4EB74A299A564C56485F034 /* libPods-NBProject.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -594,6 +588,8 @@
 			children = (
 				311BF9B21F4D88F700E0E5D5 /* BaseModel.h */,
 				311BF9B31F4D88F700E0E5D5 /* BaseModel.m */,
+				E683D86F1FFF5FB200D23FDC /* UserEntity.h */,
+				E683D8701FFF5FB200D23FDC /* UserEntity.m */,
 			);
 			path = BaseModel;
 			sourceTree = "<group>";
@@ -626,6 +622,7 @@
 				31242A051EF7768F002B82A1 /* NBProjectUITests */,
 				312429DF1EF7768F002B82A1 /* Products */,
 				311416D71F50167D00C6A13B /* Frameworks */,
+				3177F2587317DA6B41DA77EC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -642,6 +639,7 @@
 		312429E01EF7768F002B82A1 /* NBProject */ = {
 			isa = PBXGroup;
 			children = (
+				E61921D81FFE1B7000985EE7 /* icon.png */,
 				E64C42E71FECD1C400418319 /* NBProject.entitlements */,
 				311416AE1F4FC69E00C6A13B /* Vendor */,
 				31CB481F1F4AB9C70046E4DB /* Resource */,
@@ -807,6 +805,15 @@
 				315517E41F4BDD6C00184791 /* NBDevice.m */,
 			);
 			path = Device;
+			sourceTree = "<group>";
+		};
+		3177F2587317DA6B41DA77EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E4CD030534102FCF7B3D4731 /* Pods-NBProject.debug.xcconfig */,
+				96B24EBDC4AF3D718F5236F6 /* Pods-NBProject.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		31CB3CB11F57EFEE002380F1 /* NBSheetView */ = {
@@ -1079,6 +1086,26 @@
 			path = NBAudio;
 			sourceTree = "<group>";
 		};
+		E664D7032003573100611931 /* NBNowView */ = {
+			isa = PBXGroup;
+			children = (
+				E664D7042003576700611931 /* NBPlayCenter.h */,
+				E664D7052003576700611931 /* NBPlayCenter.m */,
+			);
+			path = NBNowView;
+			sourceTree = "<group>";
+		};
+		E683D8721FFF654E00D23FDC /* NBCodeFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				E683D8731FFF659400D23FDC /* NBStoreManager.h */,
+				E683D8741FFF659400D23FDC /* NBStoreManager.m */,
+				E683D8771FFF82DF00D23FDC /* KeychainItemWrapper.h */,
+				E683D8761FFF82DF00D23FDC /* KeychainItemWrapper.m */,
+			);
+			path = NBCodeFileManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1086,9 +1113,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31242A0B1EF7768F002B82A1 /* Build configuration list for PBXNativeTarget "NBProject" */;
 			buildPhases = (
+				78B8EDB3A25A9CE3C53E7407 /* [CP] Check Pods Manifest.lock */,
 				312429DA1EF7768F002B82A1 /* Sources */,
 				312429DB1EF7768F002B82A1 /* Frameworks */,
 				312429DC1EF7768F002B82A1 /* Resources */,
+				FAFC5CE1EB86D7A6AB271534 /* [CP] Embed Pods Frameworks */,
+				944BB196182CEEDA0BA99EA7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1150,7 +1180,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -1216,6 +1246,7 @@
 				312429EC1EF7768F002B82A1 /* Main.storyboard in Resources */,
 				E64C42F01FECF11700418319 /* apns-dev.pem in Resources */,
 				69821AE01FB3EFA30075B70A /* banner_02.jpeg in Resources */,
+				E61921D91FFE1B7000985EE7 /* icon.png in Resources */,
 				69821AE61FB3EFA30075B70A /* NB_remind_icon.png in Resources */,
 				69821B081FB42C1C0075B70A /* tabbar_background.jpeg in Resources */,
 				E64C42F31FECF11700418319 /* Jay_APNS.php in Resources */,
@@ -1240,6 +1271,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		78B8EDB3A25A9CE3C53E7407 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NBProject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+		};
+		944BB196182CEEDA0BA99EA7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NBProject/Pods-NBProject-resources.sh",
+				"${PODS_ROOT}/PGDatePicker/PGDatePicker/PGDatePicker.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NBProject/Pods-NBProject-resources.sh\"\n";
+		};
+		FAFC5CE1EB86D7A6AB271534 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NBProject/Pods-NBProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		312429DA1EF7768F002B82A1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1252,22 +1335,26 @@
 				31168BB11F5658F9007E2BF8 /* NBPreView.m in Sources */,
 				6971DB7A1FB18EB1006B5242 /* NBRefreshStateFooter.m in Sources */,
 				311BF9B81F4D88F700E0E5D5 /* BaseViewController.m in Sources */,
+				E683D8711FFF5FB200D23FDC /* UserEntity.m in Sources */,
 				6971DB571FB13E95006B5242 /* NBRefreshConst.m in Sources */,
 				E63395181FEB4D230075B8C0 /* AFSecurityPolicy.m in Sources */,
 				6971DB5A1FB13E95006B5242 /* UIScrollView+NBExtension.m in Sources */,
 				6971DB821FB1A711006B5242 /* NBImagePickerViewController.m in Sources */,
 				311BF9B91F4D88F700E0E5D5 /* BaseModel.m in Sources */,
 				E63395161FEB4D230075B8C0 /* AFURLRequestSerialization.m in Sources */,
+				E683D8781FFF82DF00D23FDC /* KeychainItemWrapper.m in Sources */,
 				31CB48371F4AE45D0046E4DB /* NBIPTool.m in Sources */,
 				31168BBE1F56654F007E2BF8 /* NBPImageView.m in Sources */,
 				31CB3CBB1F57F3BC002380F1 /* SheetModel.m in Sources */,
 				312429E61EF7768F002B82A1 /* AppDelegate.m in Sources */,
 				E659C2621FE9FAC800B327B4 /* NBAudio.m in Sources */,
+				E664D7062003576700611931 /* NBPlayCenter.m in Sources */,
 				31168BBB1F566507007E2BF8 /* BaseImgView.m in Sources */,
 				E633950F1FEB4D230075B8C0 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				6971DB591FB13E95006B5242 /* NBRefreshHeader.m in Sources */,
 				6948FE201FAAE99100EBC44D /* UIColor+NBCategory.m in Sources */,
 				311416AD1F4FBEEE00C6A13B /* NBNetWork.m in Sources */,
+				E683D8751FFF659400D23FDC /* NBStoreManager.m in Sources */,
 				31CB3CB81F57F39D002380F1 /* SheetTCell.m in Sources */,
 				31168BCA1F56C5E4007E2BF8 /* NSDictionary+NBSerializing.m in Sources */,
 				6971DB561FB13E95006B5242 /* NBRefreshComponent.m in Sources */,
@@ -1281,7 +1368,6 @@
 				3125C7841F46F1B900D89D37 /* UIImage+NBCategroy.m in Sources */,
 				3125C7791F46EB6000D89D37 /* NBUserDefaulUtil.m in Sources */,
 				6971DB6B1FB1434C006B5242 /* NSBundle+NBRefresh.m in Sources */,
-				311416D41F4FC69E00C6A13B /* ApiXml.mm in Sources */,
 				697F331C1FB2B28F005B368E /* NBRECManager.m in Sources */,
 				E63395171FEB4D230075B8C0 /* AFNetworkReachabilityManager.m in Sources */,
 				693A881C1FA84CCC00763555 /* NBRootViewController.m in Sources */,
@@ -1315,7 +1401,6 @@
 				31168BB41F565E93007E2BF8 /* ImageModel.m in Sources */,
 				69821B0D1FB459230075B70A /* NBViewControllerAnimation.m in Sources */,
 				31CB48341F4ADF190046E4DB /* NBTool.m in Sources */,
-				311416D61F4FC69E00C6A13B /* NBWeChatManager.m in Sources */,
 				311BF9BD1F4D897200E0E5D5 /* TestViewController.m in Sources */,
 				6971DB581FB13E95006B5242 /* NBRefreshFooter.m in Sources */,
 				E63395121FEB4D230075B8C0 /* AFImageDownloader.m in Sources */,
@@ -1494,18 +1579,15 @@
 		};
 		31242A0C1EF7768F002B82A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4CD030534102FCF7B3D4731 /* Pods-NBProject.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NBProject/NBProject.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = W2E229X4MZ;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NBProject/NBPrefix.pch";
 				INFOPLIST_FILE = NBProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/NBProject/Vendor/Other/WeCahtPay",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = JayZhangnbtool.NBProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1515,18 +1597,15 @@
 		};
 		31242A0D1EF7768F002B82A1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96B24EBDC4AF3D718F5236F6 /* Pods-NBProject.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NBProject/NBProject.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = W2E229X4MZ;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NBProject/NBPrefix.pch";
 				INFOPLIST_FILE = NBProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/NBProject/Vendor/Other/WeCahtPay",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = JayZhangnbtool.NBProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

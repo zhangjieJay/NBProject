@@ -10,6 +10,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import "NBRootViewController.h"
 #import "NBTabBarController.h"
+#import "NBPlayCenter.h"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -21,9 +22,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog_Method
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
     
     [NBSystemObserver defaultObserver].showNetInfo = NO;//关闭网络提示
     [self setupAPNS];
+    
     if (!_window) {
         _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     }
@@ -31,14 +35,12 @@
     self.window.rootViewController = tabvc;
     [self.window makeKeyAndVisible];
     
-    /*设置后台拉取数据的时间间隔*/
-    [application setMinimumBackgroundFetchInterval:5];
-    
     return YES;
 }
 #pragma mark ------------------------------- App即将变为后台程序,即不成为目前激活的程序
 - (void)applicationWillResignActive:(UIApplication *)application {
     NSLog_Method
+    
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     [NB_KEYWINDOW blurEffect];
@@ -49,6 +51,8 @@
     NSLog_Method
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    NBPlayCenter * center = [NBPlayCenter new];
+
     [NB_KEYWINDOW blurEffect];
 }
 
@@ -117,6 +121,8 @@
 #pragma mark ------------------------------- 收到远程通知推送(目前10.0测试此方法不调用)
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     /**iOS 7.0以后**/
+    
+    NSLog(@"获取到通知信息:%@",userInfo);
     completionHandler(UIBackgroundFetchResultNoData);
 }
 
@@ -175,7 +181,9 @@
 -(void)dealRomoteNotification:(NSDictionary *)info{
     NSLog(@"info:%@",info);
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-
-    
 }
+
+
+
+
 @end

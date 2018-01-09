@@ -116,7 +116,7 @@
 }
 
 
-+(NSString *)getPhoneType{
+-(NSString *)getPhoneType{
     struct utsname systemInfo;
     
     uname(&systemInfo);
@@ -148,7 +148,7 @@
 
 
 
-+(NSString *)getDeviceName{
+-(NSString *)getDeviceName{
     int mib[2];
     size_t len;
     char *machine;

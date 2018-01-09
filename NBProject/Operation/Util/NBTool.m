@@ -9,6 +9,8 @@
 #import "NBTool.h"
 
 #import <CommonCrypto/CommonDigest.h>/*MD5需要的头文件*/
+#import <UserNotifications/UserNotifications.h>
+
 
 @implementation NBTool
 
@@ -211,9 +213,30 @@
 }
 #pragma mark ------------------------------- 是否打开推送通知
 +(BOOL)isOpenNotification{
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    if ([[UIDevice currentDevice].systemVersion floatValue]>=8.0f) {
+    //#pragma clang diagnostic push
+    //#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    
+    //        if (iOS10_Later) {
+    //            __block BOOL isOpen = NO;
+    //           __block BOOL isIn = NO;
+    //            [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * settings) {
+    //                isIn = YES;
+    //                    if (settings.authorizationStatus == UNAuthorizationStatusAuthorized) {
+    //                        isOpen = YES;
+    //                    }else{
+    //                        isOpen = NO;
+    //                    }
+    //            }];
+    //            while (!isIn) {
+    //
+    //                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[[NSDate date] dateByAddingTimeInterval:0.5]];
+    //
+    //            }
+    //            return isOpen;
+    //
+    //        }else
+    
+    if (iOS8_Later) {
         UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
         if (UIUserNotificationTypeNone == setting.types) {
             return NO;
@@ -228,9 +251,10 @@
             return YES;
         }
     }
-#pragma clang diagnostic pop
+    //#pragma clang diagnostic pop
     
 }
+
 
 
 
@@ -530,7 +554,7 @@
 
 -(NSDate *)getFistDayINMonthframDate:(NSDate*)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-
+    
     // 指定日历单位，如日期和月份。(这里指定了年月日，还有其他字段添加单位.特别齐全 ：世纪，年月日时分秒等等等)
     NSCalendarUnit dayInfoUnits  = NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
     // NSDateComponents封装了日期的组件,年月日时分秒等(个人感觉像是平时用的model模型)
@@ -538,7 +562,7 @@
     // 指定1号
     components.day = 1;
     // 指定月份(我这里是获取当前月份的下1个月的1号的date对象,所以用的++，其上个月或者其他同理)
-//    components.month++；
+    //    components.month++；
     // 转成需要的date对象return
     NSDate * nextMonthDate =[calendar dateFromComponents:components];
     return nextMonthDate;
@@ -812,40 +836,43 @@
  */
 +(void)showMessage:(NSString *)message
 {
-    UIWindow * window = NB_KEYWINDOW;
-    UIView *showview =  [[UIView alloc]init];
-    showview.tag = NB_Tag_ShowView;
-    UIView * view = [window viewWithTag:NB_Tag_ShowView];
-    if (view) {//移除原有的view可能会多层,所以移除
-        [view removeFromSuperview];
-        view = nil;
-    }
-    showview.backgroundColor = [UIColor getColorNumber:35];
-    showview.alpha = 1.0f;
-    showview.tag = NB_Tag_ShowView;
-    [window addSubview:showview];
-    UILabel *label = [[UILabel alloc]init];
-    label.numberOfLines = 0;
-    CGSize LabelSize = [NBTool autoString:message font:[NBTool getFont:15.f] width:NB_SCREEN_WIDTH - NB_Gap_40 height:NB_SCREEN_HEIGHT];
     
-    
-    label.frame = CGRectMake(NB_Gap_10, NB_Gap_10, LabelSize.width, LabelSize.height);
-    label.text = message;
-    label.textColor = [UIColor getColorNumber:10];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.backgroundColor =[UIColor getColorNumber:-1];
-    label.font = [NBTool getFont:15.f];
-    [showview addSubview:label];
-    double time = 1.5 * (LabelSize.height/15.f);
-    showview.frame = CGRectMake((NB_SCREEN_WIDTH - LabelSize.width - NB_Gap_20)/2.f,NB_SCREEN_HEIGHT- (LabelSize.height + NB_Gap_20)-100.f , LabelSize.width + NB_Gap_20, LabelSize.height + NB_Gap_20);
-    [showview drawBezierCornerWithRatio:NB_Gap_03];
-    [UIView animateWithDuration:1.5f delay:time options:UIViewAnimationOptionCurveLinear animations:^{
-        showview.alpha = 0;
-    } completion:^(BOOL finished) {
-        if (showview) {
-            [showview removeFromSuperview];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIWindow * window = NB_KEYWINDOW;
+        UIView *showview =  [[UIView alloc]init];
+        showview.tag = NB_Tag_ShowView;
+        UIView * view = [window viewWithTag:NB_Tag_ShowView];
+        if (view) {//移除原有的view可能会多层,所以移除
+            [view removeFromSuperview];
+            view = nil;
         }
-    }];
+        showview.backgroundColor = [UIColor getColorNumber:35];
+        showview.alpha = 1.0f;
+        showview.tag = NB_Tag_ShowView;
+        [window addSubview:showview];
+        UILabel *label = [[UILabel alloc]init];
+        label.numberOfLines = 0;
+        CGSize LabelSize = [NBTool autoString:message font:[NBTool getFont:15.f] width:NB_SCREEN_WIDTH - NB_Gap_40 height:NB_SCREEN_HEIGHT];
+        
+        
+        label.frame = CGRectMake(NB_Gap_10, NB_Gap_10, LabelSize.width, LabelSize.height);
+        label.text = message;
+        label.textColor = [UIColor getColorNumber:10];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.backgroundColor =[UIColor getColorNumber:-1];
+        label.font = [NBTool getFont:15.f];
+        [showview addSubview:label];
+        double time = 1.5 * (LabelSize.height/15.f);
+        showview.frame = CGRectMake((NB_SCREEN_WIDTH - LabelSize.width - NB_Gap_20)/2.f,NB_SCREEN_HEIGHT- (LabelSize.height + NB_Gap_20)-100.f , LabelSize.width + NB_Gap_20, LabelSize.height + NB_Gap_20);
+        [showview drawBezierCornerWithRatio:NB_Gap_03];
+        [UIView animateWithDuration:1.5f delay:time options:UIViewAnimationOptionCurveLinear animations:^{
+            showview.alpha = 0;
+        } completion:^(BOOL finished) {
+            if (showview) {
+                [showview removeFromSuperview];
+            }
+        }];
+    });
     
 }
 
@@ -853,7 +880,7 @@
 +(void)exitAppAnimated:(BOOL)animated{
     if (animated) {
         [UIView beginAnimations:@"exitApplication" context:nil];
-        [UIView setAnimationDuration:0.75];
+        [UIView setAnimationDuration:0.25];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationTransition:UIViewAnimationTransitionNone forView:NB_KEYWINDOW cache:NO];
         [UIView setAnimationDidStopSelector:@selector(exitApp)];

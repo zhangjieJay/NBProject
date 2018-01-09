@@ -51,6 +51,14 @@ typedef  NS_ENUM(NSInteger,NBImageSourceType){
     NBImageSourceType_aaset //相册格式
 };
 
+typedef NS_ENUM(NSInteger, NBCornerPosition) {
+    NBCornerPosition_None,
+    NBCornerPosition_Top,
+    NBCornerPosition_Left,
+    NBCornerPosition_Bottom,
+    NBCornerPosition_Right,
+    NBCornerPosition_All
+};
 
 
 #ifndef Enums_h

@@ -27,7 +27,7 @@
 
 
 
-#define NB_KEYWINDOW [UIApplication sharedApplication].keyWindow
+#define NB_KEYWINDOW [UIApplication sharedApplication].windows.lastObject
 
 /*********** NSUserDefault ***********/
 #define NB_SET_USERDEFAULT(_key, _value)  [[NSUserDefaults standardUserDefaults] setValue:(_value) forKey:(_key)]
@@ -68,6 +68,7 @@
 
 #define NB_Error_00 @"网络连接不可用"
 
+#define NB_Code_File @"CodeFiles"
 
 
 /*********** MVC ***********/
@@ -78,21 +79,21 @@
 
 
 /*********** System Version ***********/
-#define iOS7_Earlier ([UIDevice currentDevice].systemVersion.floatValue < 7.0f)
-#define iOS7_Later ([UIDevice currentDevice].systemVersion.floatValue >= 7.0f)
+#define iOS7_Earlier ([UIDevice currentDevice].systemVersion.doubleValue < 7.0f)
+#define iOS7_Later ([UIDevice currentDevice].systemVersion.doubleValue >= 7.0f)
 
-#define iOS8_Earlier ([UIDevice currentDevice].systemVersion.floatValue < 8.0f)
-#define iOS8_Later ([UIDevice currentDevice].systemVersion.floatValue >= 8.0f)
+#define iOS8_Earlier ([UIDevice currentDevice].systemVersion.doubleValue < 8.0f)
+#define iOS8_Later ([UIDevice currentDevice].systemVersion.doubleValue >= 8.0f)
 
-#define iOS9_Earlier ([UIDevice currentDevice].systemVersion.floatValue < 9.0f)
-#define iOS9_Later ([UIDevice currentDevice].systemVersion.floatValue >= 9.0f)
+#define iOS9_Earlier ([UIDevice currentDevice].systemVersion.doubleValue < 9.0f)
+#define iOS9_Later ([UIDevice currentDevice].systemVersion.doubleValue >= 9.0f)
 
-#define iOS10_Earlier ([UIDevice currentDevice].systemVersion.floatValue < 10.f)
-#define iOS10_Later ([UIDevice currentDevice].systemVersion.floatValue >= 10.f)
+#define iOS10_Earlier ([UIDevice currentDevice].systemVersion.doubleValue < 10.f)
+#define iOS10_Later ([UIDevice currentDevice].systemVersion.doubleValue >= 10.f)
 
 
-#define iOS11_Earlier ([UIDevice currentDevice].systemVersion.floatValue < 11.f)
-#define iOS11_Later ([UIDevice currentDevice].systemVersion.floatValue >= 11.f)
+#define iOS11_Earlier ([UIDevice currentDevice].systemVersion.doubleValue < 11.f)
+#define iOS11_Later ([UIDevice currentDevice].systemVersion.doubleValue >= 11.f)
 
 
 /**

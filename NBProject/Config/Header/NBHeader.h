@@ -30,6 +30,8 @@
 #import "JSONKit.h"
 #import "Reachability.h"
 #import "AFNetworking.h"
+#import <Masonry.h>
+
 
 
 /*自定义封装*/
@@ -54,6 +56,7 @@
 #import "NBVolumeBar.h"//
 #import "NBSystemObserver.h"//系统观察类
 #import "NBRefresh.h"
+#import "NBStoreManager.h"
 
 
 

@@ -10,6 +10,16 @@
 
 @interface UIView (NBCategory)
 
+@property (nonatomic, assign) NBCornerPosition nb_cornerPosition;
+@property (nonatomic, assign) CGFloat nb_cornerRadius;
+
+- (void)nb_setCornerOnTopWithRadius:(CGFloat)radius;
+- (void)nb_setCornerOnLeftWithRadius:(CGFloat)radius;
+- (void)nb_setCornerOnBottomWithRadius:(CGFloat)radius;
+- (void)nb_setCornerOnRightWithRadius:(CGFloat)radius;
+- (void)nb_setAllCornerWithCornerRadius:(CGFloat)radius;
+- (void)nb_setNoneCorner;
+
 - (void)drawBezierCorner;//默认为10,倒全角
 
 /**倒角全部**/

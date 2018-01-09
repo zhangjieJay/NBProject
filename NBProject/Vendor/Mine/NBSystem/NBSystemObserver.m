@@ -50,12 +50,15 @@
     self = [super init];
     if (self) {
         self.hostReachability = [Reachability reachabilityWithHostName:@"www.apple.com"];
-        self.showNetInfo = YES;
-        self.isConnectted = YES;
+        self.showNetInfo = YES;//展示提示信息
+        self.isConnectted = YES;//默认为连接可用
         if ([self.hostReachability currentReachabilityStatus] == NotReachable) {
             self.isConnectted = NO;
         }
+        /*添加网络变化的观察者*/
+        [self addObservers];
         
+        /*开始观察网络变化*/
         [self.hostReachability startNotifier];
         [self addObservers];
 //        [self getSystemVolumSlider];

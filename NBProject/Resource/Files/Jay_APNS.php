@@ -7,7 +7,7 @@
      */
 
     //手机注册应用返回唯一的deviceToken
-    $deviceToken = '12dca1f5edea6809a6e15b903522c432b867289a00d0be8480920c177a20a964';//需要发送推送的设备ID
+    $deviceToken = '2f2daba09da0213b74385bbbbb9bad0605050f3801928eb7d24cb200123f3f70';//需要发送推送的设备ID
     //ck.pem通关密码 p12文件密码
     $pass = '8517690';//推送证书密码
     //消息内容

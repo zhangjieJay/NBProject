@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface BaseModel : NSObject<NSCopying>
+@interface BaseModel : NSObject<NSCopying,NSMutableCopying,NSCoding>
 
 
 @end
