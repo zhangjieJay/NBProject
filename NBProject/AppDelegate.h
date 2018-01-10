@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+/**********该内容属于test1**********/
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
