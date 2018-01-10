@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 /**********该内容属于test1**********/
+/**********该内容属于remote test1**********/
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
