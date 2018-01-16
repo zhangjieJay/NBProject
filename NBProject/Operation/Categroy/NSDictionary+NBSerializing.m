@@ -15,14 +15,14 @@
     
     NSString *keyValueFormat;
     NSMutableString *result = [NSMutableString new];
-    NSMutableArray *array = [NSMutableArray new];
+//    NSMutableArray *array = [NSMutableArray new];
     //实例化一个key枚举器用来存放dictionary的key
     NSEnumerator *keyEnum = [self keyEnumerator];
     id key;
     while (key = [keyEnum nextObject]) {
         keyValueFormat = [NSString stringWithFormat:@"%@=%@&", key, [self valueForKey:key]];
         [result appendString:keyValueFormat];
-        [array addObject:keyValueFormat];
+//        [array addObject:keyValueFormat];
     }
     return result;
 }

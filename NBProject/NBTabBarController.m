@@ -31,10 +31,10 @@
         if (!_customBar) {
             _customBar = [[NBCustomTabBar alloc]initWithFrame:CGRectZero];
             [self setValue:_customBar forKey:@"tabBar"];
-            NSArray * arCls = @[@"NBRootViewController",/*@"NBRECViewController",*/@"QRCodeViewController"];
-            NSArray * arTitles = @[@"首页",@"摄像视图",@"二维码扫描"];
-            NSArray * arImagesNormal = @[@"classify_1",@"cart_1",@"home_1"];
-            NSArray * arImagesSelected = @[@"classify_2",@"cart_2",@"home_2"];
+            NSArray * arCls = @[@"NBRootViewController",/*@"NBRECViewController",*/@"NBMeViewController"];
+            NSArray * arTitles = @[@"首页",@"我的",@"二维码扫描"];
+            NSArray * arImagesNormal = @[@"home_1",@"me_1",@"home_1"];
+            NSArray * arImagesSelected = @[@"home_2",@"me_2",@"home_2"];
             
             
             for (NSInteger i = 0; i<arCls.count; i++) {
@@ -46,6 +46,14 @@
                     navi.delegate =self;
                     [navi.tabBarItem setImage:[UIImage imageNamed:arImagesNormal[i]]];
                     [navi.tabBarItem setSelectedImage:[UIImage imageNamed:arImagesSelected[i]]];
+                    
+                    //未选中字体颜色
+                    //选中字体颜色
+                    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor],NSFontAttributeName:[NBTool getFont:10.f]} forState:UIControlStateNormal];
+                    
+                    //选中字体颜色
+                    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor],NSFontAttributeName:[NBTool getFont:10.f]} forState:UIControlStateSelected];
+                    
                     navi.tabBarItem.titlePositionAdjustment =UIOffsetMake(0, -3.5);
                     [self addChildViewController:navi];
                 }

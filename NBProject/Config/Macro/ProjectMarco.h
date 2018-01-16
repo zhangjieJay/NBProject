@@ -11,6 +11,10 @@
 #ifndef ProjectMarco_h
 #define ProjectMarco_h
 
+#define SHARE_APP_KEY @"23a28aadb3f58"
+#define SHARE_APP_SECRET @"fb767c64ce20c4aac1a56ba33ab1e968"
+
+
 #ifdef NB_Debug
 
 #define All_Constellation @"http://web.juhe.cn:8080/constellation/getAll"

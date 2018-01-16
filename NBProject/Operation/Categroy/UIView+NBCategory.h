@@ -13,34 +13,26 @@
 @property (nonatomic, assign) NBCornerPosition nb_cornerPosition;
 @property (nonatomic, assign) CGFloat nb_cornerRadius;
 
+@property(nonatomic,strong)UIColor * nb_borderColor;//倒角的颜色
+@property(nonatomic,assign)CGFloat nb_borderWidth;//倒角的宽度
+
+
+/**倒角上边全部**/
 - (void)nb_setCornerOnTopWithRadius:(CGFloat)radius;
+/**倒角左边全部**/
 - (void)nb_setCornerOnLeftWithRadius:(CGFloat)radius;
+/**倒角下边全部**/
 - (void)nb_setCornerOnBottomWithRadius:(CGFloat)radius;
+/**倒角右边全部**/
 - (void)nb_setCornerOnRightWithRadius:(CGFloat)radius;
-- (void)nb_setAllCornerWithCornerRadius:(CGFloat)radius;
-- (void)nb_setNoneCorner;
-
-- (void)drawBezierCorner;//默认为10,倒全角
-
 /**倒角全部**/
-- (void)drawBezierCornerWithRatio:(CGFloat)ratio;
-
-/**倒角上部**/
-- (void)drawBezierTopCornerWithRatio:(CGFloat)ratio;
-
-/**倒角左部**/
-- (void)drawBezierLeftCornerWithRatio:(CGFloat)ratio;
-
-/**倒角下部**/
-- (void)drawBezierBottomCornerWithRatio:(CGFloat)ratio;
-
-/**倒角右部**/
-- (void)drawBezierRightCornerWithRatio:(CGFloat)ratio;
-
+- (void)nb_setAllCornerWithCornerRadius:(CGFloat)radius;
+- (void)nb_setAllCornerRound;//倒角为圆形
+/**不设置角**/
+- (void)nb_setNoneCorner;
 
 
 - (void)drawgradientLayer;
-
 /*将view转化为图片*/
 -(UIImage *)shot;
 //添加高斯模糊

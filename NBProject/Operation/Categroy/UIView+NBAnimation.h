@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (NBAnimation)
+@interface UIView (NBAnimation)<CAAnimationDelegate>
 
 
 - (void)animateWithDuration:(NSTimeInterval)duration fromScale:(CGFloat)fScale toScale:(CGFloat)tScale;

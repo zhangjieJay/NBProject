@@ -10,4 +10,7 @@
 
 @interface BaseButton : UIButton
 
+@property(nonatomic,assign)NBButtonType nb_titleType;
+
+
 @end

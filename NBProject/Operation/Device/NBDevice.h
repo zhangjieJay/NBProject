@@ -13,6 +13,11 @@
 @property(nonatomic,assign)CGFloat statuBarHeight;//状态栏高度
 @property(nonatomic,assign)CGFloat navigationBarHeight;//导航栏高度
 @property(nonatomic,assign)CGFloat tabBarHeight;//状态栏高度
+@property(nonatomic,readonly)CGFloat w_scale;//相对于6屏幕宽度 小于1则 == 1
+@property(nonatomic,readonly)CGFloat h_scale;//宽度比6屏幕高度 小于1则 == 1
+
+/*目前配置针对iPhone6为基准1其他小屏幕不改变比例,大尺寸才改变比例*/
+@property(nonatomic,assign)BOOL autoScaled;//是否自适应屏幕宽高 默认为NO
 
 
 

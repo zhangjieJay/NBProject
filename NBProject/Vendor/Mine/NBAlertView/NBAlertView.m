@@ -7,7 +7,6 @@
 //
 
 #import "NBAlertView.h"
-#import "BaseButton.h"
 #import "BaseView.h"
 
 #define bTag 300
@@ -183,10 +182,10 @@
     
     for (NSInteger i = 0; i<nCount; i++) {
         
-        BaseButton * button  = [BaseButton buttonWithType:UIButtonTypeCustom];
+        UIButton * button  = [UIButton buttonWithType:UIButtonTypeCustom];
         button.tag =  bTag + i;
         button.frame = CGRectMake(gap + (gap + acWidth) * i, self.max_Y + cen_w * gap_scale, acWidth, height);
-        [button drawBezierCornerWithRatio:2.5f];
+        [button nb_setAllCornerWithCornerRadius:5];
         if (nCount == 1) {
             [button setBackgroundImage:[UIImage imageWithColor:[UIColor getColorNumber:100]] forState:UIControlStateNormal];
 
@@ -221,7 +220,7 @@
     }
     
     self.viewCenter.frame = CGRectMake((NB_SCREEN_WIDTH -cen_w)/2.f, (NB_SCREEN_HEIGHT - self.max_Y - cen_w * gap_scale)/2.f, cen_w, self.max_Y + cen_w * gap_scale);
-    [self.viewCenter drawBezierCornerWithRatio: NB_Gap_10];
+    [self.viewCenter nb_setAllCornerWithCornerRadius:NB_Gap_10];
     
     [NB_KEYWINDOW addSubview:self];
     [self.viewCenter animateWithDuration:0.25 fromScale:0.3 toScale:1];
@@ -230,7 +229,7 @@
 }
 
 
-- (void)buttonClicked:(BaseButton *)sender{
+- (void)buttonClicked:(UIButton *)sender{
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(alertView:clickAtIndex:)]) {
         [self.delegate alertView:self clickAtIndex:sender.tag - bTag];
@@ -248,20 +247,20 @@
 
 
 /*在不可操作区域的时候*/
--(void)buttonOtherClickedOut:(BaseButton *)sender{
+-(void)buttonOtherClickedOut:(UIButton *)sender{
     NSLog_Method;
     sender.alpha = 0.382;
     
 }
 
--(void)buttonOtherClickedIn:(BaseButton *)sender{
+-(void)buttonOtherClickedIn:(UIButton *)sender{
     NSLog_Method;
     sender.alpha = 1;
     
 }
 
 
--(void)buttonOtherClickedCancel:(BaseButton *)sender{
+-(void)buttonOtherClickedCancel:(UIButton *)sender{
     NSLog_Method;
     sender.alpha = 1;
 }

@@ -133,6 +133,11 @@ typedef enum {
 +(UIFont *)getFont:(CGFloat)font bold:(BOOL)bold;
 +(UIFont *)getFont:(CGFloat)size name:(NSString *)name;
 
+#pragma mark ------------------------------------ 创建label
++(UILabel *)createLableFont:(UIFont *)font textColor:(UIColor *)textColor;
++(UILabel *)createLableFont:(UIFont *)font textColor:(UIColor *)textColor textAlign:(NSTextAlignment)align cornerrRaito:(CGFloat)ratio;
++(UILabel *)createLable:(CGRect)frame font:(UIFont *)font textColor:(UIColor *)textColor textAlign:(NSTextAlignment)align cornerrRaito:(CGFloat)ratio;
+
 
 #pragma mark ------------------------------- 获取当前的最前端的window
 +(UIWindow *)getForfontWindow;

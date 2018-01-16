@@ -26,4 +26,5 @@
 - (UIImage *)blurryByVImageWithBlurLevel:(CGFloat)blur;
 - (UIImage *)blurryByCoreImageWithBlurLevel:(CGFloat)blur;
 - (UIImage *)thumbnailToSize:(CGSize)asize;
+- (UIImage *)fixOrientation;
 @end

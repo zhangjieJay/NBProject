@@ -42,7 +42,7 @@
 {
     self = [super init];
     if (self) {
-        
+        self.autoScaled = NO;
         self.isIphoneX = [UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] bounds].size) : NO;
         
         if (self.isIphoneX) {
@@ -55,6 +55,19 @@
         self.navigationBarHeight = self.statuBarHeight + 44.f;
     }
     return self;
+}
+
+-(void)setAutoScaled:(BOOL)autoScaled{
+    _autoScaled = autoScaled;
+    if (_autoScaled) {
+        CGFloat scale = [UIScreen mainScreen].bounds.size.width/375.f ;
+        _w_scale =  scale >=1? scale:1;//1pt 多少个像素点
+        scale = [UIScreen mainScreen].bounds.size.width/667.f;
+        _h_scale =  scale >=1? scale:1;//1pt 多少个像素点
+    }else{
+        _w_scale = 1;//1pt 多少个像素点
+        _h_scale = 1;//1pt 多少个像素点
+    }
 }
 
 -(NSString *)getName{

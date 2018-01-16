@@ -673,6 +673,23 @@
     return fontNormal;
 }
 
++(UILabel *)createLableFont:(UIFont *)font textColor:(UIColor *)textColor{
+    return [NBTool createLableFont:font textColor:textColor textAlign:NSTextAlignmentLeft cornerrRaito:0];
+}
++(UILabel *)createLableFont:(UIFont *)font textColor:(UIColor *)textColor textAlign:(NSTextAlignment)align cornerrRaito:(CGFloat)ratio{
+    return [NBTool createLable:CGRectZero font:font textColor:textColor textAlign:align cornerrRaito:ratio];
+}
++(UILabel *)createLable:(CGRect)frame font:(UIFont *)font textColor:(UIColor *)textColor textAlign:(NSTextAlignment)align cornerrRaito:(CGFloat)ratio{
+    UILabel * lable = [[UILabel alloc]initWithFrame:frame];
+    lable.font = font;
+    lable.textColor = textColor;
+    lable.textAlignment = align;
+    if (ratio>0) {
+        [lable nb_setAllCornerWithCornerRadius:ratio];
+    }
+    return lable;
+}
+
 /**
  *  获取最前端的KeyWindow 可能会有键盘所以的window
  */
@@ -864,7 +881,7 @@
         [showview addSubview:label];
         double time = 1.5 * (LabelSize.height/15.f);
         showview.frame = CGRectMake((NB_SCREEN_WIDTH - LabelSize.width - NB_Gap_20)/2.f,NB_SCREEN_HEIGHT- (LabelSize.height + NB_Gap_20)-100.f , LabelSize.width + NB_Gap_20, LabelSize.height + NB_Gap_20);
-        [showview drawBezierCornerWithRatio:NB_Gap_03];
+        [showview nb_setAllCornerWithCornerRadius:NB_Gap_03];
         [UIView animateWithDuration:1.5f delay:time options:UIViewAnimationOptionCurveLinear animations:^{
             showview.alpha = 0;
         } completion:^(BOOL finished) {

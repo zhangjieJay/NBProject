@@ -64,11 +64,11 @@ typedef NS_ENUM(NSInteger){
 }
 
 - (void)animateWithDuration:(NSTimeInterval)duration fromPositionY:(CGFloat)fpy toPositionY:(CGFloat)tpy{
-    
     CABasicAnimation * baseAnimation = [CABasicAnimation animationWithKeyPath:@"position.y"];
     baseAnimation.fromValue = [NSNumber numberWithFloat:fpy];
     baseAnimation.toValue = [NSNumber numberWithFloat:tpy];
     baseAnimation.duration = duration;
+    baseAnimation.delegate = self.superview;
     [self.layer addAnimation:baseAnimation forKey:@"positionYAnimation"];
     
     
@@ -173,6 +173,27 @@ typedef NS_ENUM(NSInteger){
 
 }
 
+
+#pragma mark ------------------------------------ 暂停动画
+-(void)pauseLayer:(CALayer*)layer
+{
+    CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    layer.speed=0.0; // 让CALayer的时间停止走动
+    layer.timeOffset=pausedTime; // 让CALayer的时间停留在pausedTime这个时刻
+}
+#pragma mark ------------------------------------ 恢复动画
+-(void)resumeLayer:(CALayer*)layer
+{
+    CFTimeInterval pausedTime =layer.timeOffset;
+    layer.speed=1.0; // 让CALayer的时间继续行走
+    layer.timeOffset=0.0; // 取消上次记录的停留时刻
+    layer.beginTime=0.0; // 取消上次设置的时间
+    
+    //计算暂停的时间(这里用CACurrentMediaTime()-pausedTime也是一样的)
+    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+    //设置相对于父坐标系的开始时间(往后退timeSincePause)
+    layer.beginTime = timeSincePause;
+}
 
 
 

@@ -27,10 +27,18 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
++(void)initialize{
+    [super initialize];
+    NSLog_Method;
+    [NBSystemObserver defaultObserver];
+}
 
 +(instancetype)defaultObserver{
     
     static NBSystemObserver * observer = nil;
+    if (observer) {//初始化一次后,则直接返回
+        return observer;
+    }
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         if (observer == nil) {

@@ -17,11 +17,34 @@
     // Drawing code
 }
 */
-
--(void)layoutSubviews{
-
-    [super layoutSubviews];
++(void)load{
+    
 }
++(instancetype)allocWithZone:(struct _NSZone *)zone{
+    return [super allocWithZone:zone];
+}
+
+#pragma mark ------------------------------------ imageView frame
+-(CGRect)imageRectForContentRect:(CGRect)contentRect{
+    
+    CGRect rect = contentRect;
+    CGFloat ratio = 0.6;
+    rect.size.width = contentRect.size.width * ratio;
+    rect.size.height = rect.size.width;
+    rect.origin.x = (1-ratio)/2.f * contentRect.size.width;
+    return rect;
+    
+}
+-(CGRect)titleRectForContentRect:(CGRect)contentRect{
+    CGRect rect = contentRect;
+    CGFloat ratio = 0.4;
+    rect.size.width = contentRect.size.width;
+    rect.size.height = contentRect.size.height * ratio;
+    rect.origin.y = (1-ratio) * contentRect.size.height;
+    return rect;
+}
+
+
 
 
 

@@ -18,6 +18,8 @@
 #define BIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 #define NB_TABBAR_HEIGHT         (BIsiPhoneX ? 83.f : 49.f)
 #define NB_NAVI_HEIGHT           (BIsiPhoneX ? 88.f : 64.f)
+#define NB_SAFE_SPACE            (BIsiPhoneX ? 24.f : 0.f)
+
 
 #define NB_BOMMAX_HEIGHT  (NB_SCREEN_HEIGHT - NB_NAVI_HEIGHT)
 #define NB_MIDMAX_HEIGHT  (NB_SCREEN_HEIGHT - NB_NAVI_HEIGHT - NB_TABBAR_HEIGHT)
@@ -33,6 +35,9 @@
 #define NB_SET_USERDEFAULT(_key, _value)  [[NSUserDefaults standardUserDefaults] setValue:(_value) forKey:(_key)]
 #define NB_GET_USERDEFAULT(_key) [[NSUserDefaults standardUserDefaults] objectForKey:(_key)]
 #define NB_SYNCHRONIZE [[NSUserDefaults standardUserDefaults] synchronize]
+
+#define sWidth(width) ([NBDevice defaultDevice].h_scale * width) /*等比例缩放因子*/
+#define sHeight(height) ([NBDevice defaultDevice].w_scale * height)
 
 
 /*********** UILayout ***********/
@@ -65,10 +70,14 @@
 #define NB_Error_Disconnect @"网络连接不可用"
 #define NB_Error_Request @"请求出错"
 #define NB_Error_Data @"数据格式出错"
-
 #define NB_Error_00 @"网络连接不可用"
-
 #define NB_Code_File @"CodeFiles"
+
+#define NBTEXTWCOLOR [UIColor getColorNumber:0]
+#define NBTEXTBCOLOR [UIColor getColorNumber:1]
+#define NBBACKCOLOR  [UIColor getColorNumber:10]
+#define NBSEPCOLOR   [UIColor getColorNumber:35]
+
 
 
 /*********** MVC ***********/

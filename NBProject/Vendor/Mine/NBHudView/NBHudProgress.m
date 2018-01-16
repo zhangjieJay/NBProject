@@ -223,7 +223,7 @@ typedef NS_ENUM(NSInteger){
         CGFloat lineWidth = MAX(statusWidth, statusHeight);
         self.statusView.frame = CGRectMake(0, 0, lineWidth, lineWidth);
         self.statusView.center = self.backView.center;
-        [self.statusView drawBezierCornerWithRatio:5.f];
+        [self.statusView nb_setAllCornerWithCornerRadius:5.f];
         [self.statusView animateWithDuration:0.25 fromScale:0.1 toScale:1.2];
    
         /***根据各种烈性****/

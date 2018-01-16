@@ -228,7 +228,8 @@ static NSString *notice1 = @"建议与镜头保持100CM距离，尽量避免逆�
 
 
 - (void)drawLayer {
-    
+    UIGraphicsBeginImageContext(self.view.bounds.size);
+
     //中间透明矩形作用区域
     CGRect actualRect = CGRectMake((NB_SCREEN_WIDTH - length) / 2.0, (NB_SCREEN_HEIGHT - length) / 2.0, length, length);
     UIBezierPath *path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, NB_SCREEN_WIDTH, NB_SCREEN_HEIGHT)];
@@ -264,6 +265,8 @@ static NSString *notice1 = @"建议与镜头保持100CM距离，尽量避免逆�
     lineAnimation.fillMode = kCAFillModeForwards;
     lineAnimation.autoreverses = YES;
     [self.lineImageView.layer addAnimation:lineAnimation forKey:nil];
+    UIGraphicsEndImageContext();
+
 }
 
 

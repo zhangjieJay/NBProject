@@ -11,6 +11,9 @@
 
 static NSString * const NBCornerPositionKey = @"NBCornerPositionKey";
 static NSString * const NBCornerRadiusKey = @"NBCornerRadiusKey";
+static NSString * const NBBorderColorKey = @"NBCornerBorderColorKey";
+static NSString * const NBBorderWidthKey = @"NBCornerBorderWidthKey";
+
 
 @implementation UIView (NBCategory)
 
@@ -24,17 +27,26 @@ static NSString * const NBCornerRadiusKey = @"NBCornerRadiusKey";
 -(void)setNb_cornerPosition:(NBCornerPosition)nb_cornerPosition{
     objc_setAssociatedObject(self, &NBCornerPositionKey, @(nb_cornerPosition), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-
-
-- (CGFloat)nb_cornerRadius
-{
+- (CGFloat)nb_cornerRadius{
     return [objc_getAssociatedObject(self, &NBCornerRadiusKey) floatValue];
 }
-
-- (void)setNb_cornerRadius:(CGFloat)nb_cornerRadius
-{
+- (void)setNb_cornerRadius:(CGFloat)nb_cornerRadius{
     objc_setAssociatedObject(self, &NBCornerRadiusKey, @(nb_cornerRadius), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
+-(UIColor *)nb_borderColor{
+    return objc_getAssociatedObject(self, &NBBorderColorKey);
+}
+-(void)setNb_borderColor:(UIColor *)nb_borderColor{
+    objc_setAssociatedObject(self, &NBBorderColorKey, nb_borderColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (CGFloat)nb_borderWidth{
+    return [objc_getAssociatedObject(self, &NBBorderWidthKey) floatValue];
+}
+- (void)setNb_borderWidth:(CGFloat)nb_borderWidth{
+    objc_setAssociatedObject(self, &NBBorderWidthKey, @(nb_borderWidth), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 
 +(void)load{
     SEL originalSel = @selector(layoutSublayersOfLayer:);
@@ -53,7 +65,8 @@ void nb_swizzle(Class class,SEL ori,SEL swi){
     [self nb_layoutSublayersOfLayer:layer];
     
     if (self.nb_cornerRadius > 0 && self.nb_cornerPosition != NBCornerPosition_None) {
-        
+        UIGraphicsBeginImageContext(self.bounds.size);
+
         UIBezierPath *maskPath;
         switch (self.nb_cornerPosition) {
             case NBCornerPosition_Top:
@@ -81,13 +94,37 @@ void nb_swizzle(Class class,SEL ori,SEL swi){
                                                  byRoundingCorners:UIRectCornerAllCorners
                                                        cornerRadii:CGSizeMake(self.nb_cornerRadius, self.nb_cornerRadius)];
                 break;
+            case NBCornerPosition_AllRound:{
+                CGFloat ratio = MIN(self.bounds.size.width,self.bounds.size.height);
+                
+                
+                maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                                 byRoundingCorners:UIRectCornerAllCorners
+                                                       cornerRadii:CGSizeMake(ratio/2.f, ratio/2.f)];
+                break;
+            }
             default:
                 break;
         }
-        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-        maskLayer.frame = self.bounds;
-        maskLayer.path = maskPath.CGPath;
-        self.layer.mask = maskLayer;
+        if (maskPath) {
+            CAShapeLayer *maskLayer = [CAShapeLayer layer];
+            maskLayer.frame = self.bounds;
+            maskLayer.path = maskPath.CGPath;
+            self.layer.mask = maskLayer;
+            if (self.nb_borderWidth >0) {
+                CAShapeLayer *borderLayer = [CAShapeLayer layer];
+                borderLayer.path    =   maskPath.CGPath;
+                borderLayer.fillColor  = [UIColor clearColor].CGColor;
+                borderLayer.strokeColor    = self.nb_borderColor.CGColor;
+                borderLayer.lineWidth      = self.nb_borderWidth;
+                borderLayer.frame = self.bounds;
+                [self.layer addSublayer:borderLayer];
+            }
+        }
+        
+        
+        UIGraphicsEndImageContext();
+
     }
 }
 
@@ -120,6 +157,11 @@ void nb_swizzle(Class class,SEL ori,SEL swi){
     self.nb_cornerPosition = NBCornerPosition_All;
     self.nb_cornerRadius = radius;
 }
+- (void)nb_setAllCornerRound{
+    self.nb_cornerPosition = NBCornerPosition_AllRound;
+    self.nb_cornerRadius = 1;
+
+}
 
 - (void)nb_setNoneCorner
 {
@@ -127,24 +169,8 @@ void nb_swizzle(Class class,SEL ori,SEL swi){
 }
 
 
-- (void)drawBezierCorner{
-    
-    [self drawBezierCornerWithRatio:self.bounds.size.height/2.f];
-    
-}
 
-- (void)drawBezierCornerWithRatio:(CGFloat)ratio{
-    
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(ratio, ratio)];
-    
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
-    //设置大小
-    maskLayer.frame = self.bounds;
-    //设置图形样子
-    maskLayer.path = maskPath.CGPath;
-    maskLayer.masksToBounds = YES;
-    self.layer.mask = maskLayer;
-}
+
 
 
 
@@ -163,54 +189,7 @@ void nb_swizzle(Class class,SEL ori,SEL swi){
 }
 
 
-#pragma mark ------------------------------ 倒上面角
-- (void)drawBezierTopCornerWithRatio:(CGFloat)ratio{
-    
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(ratio, ratio)];
-    
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
-    //设置大小
-    maskLayer.frame = self.bounds;
-    //设置图形样子
-    maskLayer.path = maskPath.CGPath;
-    self.layer.mask = maskLayer;
-}
-#pragma mark ------------------------------ 倒左边角
-- (void)drawBezierLeftCornerWithRatio:(CGFloat)ratio{
-    
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomLeft cornerRadii:CGSizeMake(ratio, ratio)];
-    
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
-    //设置大小
-    maskLayer.frame = self.bounds;
-    //设置图形样子
-    maskLayer.path = maskPath.CGPath;
-    self.layer.mask = maskLayer;
-}
-#pragma mark ------------------------------ 倒下面角
-- (void)drawBezierBottomCornerWithRatio:(CGFloat)ratio{
-    
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerBottomRight | UIRectCornerBottomLeft cornerRadii:CGSizeMake(ratio, ratio)];
-    
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
-    //设置大小
-    maskLayer.frame = self.bounds;
-    //设置图形样子
-    maskLayer.path = maskPath.CGPath;
-    self.layer.mask = maskLayer;
-}
-#pragma mark ------------------------------ 倒右边角
-- (void)drawBezierRightCornerWithRatio:(CGFloat)ratio{
-    
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerTopRight | UIRectCornerBottomRight cornerRadii:CGSizeMake(ratio, ratio)];
-    
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
-    //设置大小
-    maskLayer.frame = self.bounds;
-    //设置图形样子
-    maskLayer.path = maskPath.CGPath;
-    self.layer.mask = maskLayer;
-}
+
 
 /*UIView截取图片*/
 -(UIImage *)shot{
