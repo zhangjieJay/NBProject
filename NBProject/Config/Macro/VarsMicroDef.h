@@ -41,17 +41,17 @@
 
 
 /*********** UILayout ***********/
-#define NB_Gap_03 3.0f
-#define NB_Gap_05 5.0f
-#define NB_Gap_10 10.f
-#define NB_Gap_15 15.f
-#define NB_Gap_20 20.f
-#define NB_Gap_25 25.f
-#define NB_Gap_30 30.f
-#define NB_Gap_35 35.f
-#define NB_Gap_40 40.f
-#define NB_Gap_50 50.f
-#define NB_Gap_60 60.f
+#define NB_Gap_03 sWidth(3.0f)
+#define NB_Gap_05 sWidth(5.0f)
+#define NB_Gap_10 sWidth(10.f)
+#define NB_Gap_15 sWidth(15.f)
+#define NB_Gap_20 sWidth(20.f)
+#define NB_Gap_25 sWidth(25.f)
+#define NB_Gap_30 sWidth(30.f)
+#define NB_Gap_35 sWidth(35.f)
+#define NB_Gap_40 sWidth(40.f)
+#define NB_Gap_50 sWidth(50.f)
+#define NB_Gap_60 sWidth(60.f)
 
 /*********** Tag ***********/
 #define NB_Tag_100 100
@@ -73,10 +73,14 @@
 #define NB_Error_00 @"网络连接不可用"
 #define NB_Code_File @"CodeFiles"
 
-#define NBTEXTWCOLOR [UIColor getColorNumber:0]
-#define NBTEXTBCOLOR [UIColor getColorNumber:1]
-#define NBBACKCOLOR  [UIColor getColorNumber:10]
-#define NBSEPCOLOR   [UIColor getColorNumber:35]
+#define NBTEXTWCOLOR            [UIColor getColorNumber:0]
+#define NBTEXTBCOLOR            [UIColor getColorNumber:1]
+#define NBTGRAYCOLOR               [UIColor getColorNumber:30]
+#define NBBACKCOLOR             [UIColor getColorNumber:10]
+#define NBSEPCOLOR              [UIColor getColorNumber:35]
+
+#define NBAPPCOLOR              [UIColor getColorNumber:720]
+#define NBMINORCOLOR            [UIColor getColorNumber:710]
 
 
 

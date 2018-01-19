@@ -10,5 +10,4 @@
 
 @interface NBViewControllerAnimation : NSObject<UIViewControllerAnimatedTransitioning>
 
-
 @end

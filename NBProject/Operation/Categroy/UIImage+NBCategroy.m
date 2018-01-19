@@ -260,8 +260,7 @@
 }
 
 #pragma mark ------------------------------- 暂时未检验(压缩图片到制定尺寸)
-- (UIImage *)thumbnailToSize:(CGSize)asize
-{
+- (UIImage *)thumbnailToSize:(CGSize)asize rect:(BOOL)isRect{
     
     UIImage * newImage = [self copy];
     
@@ -270,21 +269,26 @@
     CGRect rect;
     
     //判断是否变形 进行处理 裁剪宽或者高吧
-    
-    if (asize.width/asize.height > oldsize.width/oldsize.height) {
-        rect.size.width = asize.height*oldsize.width/oldsize.height;
-        rect.size.height = asize.height;
-        rect.origin.x = (asize.width - rect.size.width)/2;
-        rect.origin.y = 0;
-        
-    }
-    else{
+    if (isRect) {
+        if (asize.width/asize.height > oldsize.width/oldsize.height) {//原图宽度偏小
+            rect.size.width = asize.height*oldsize.width/oldsize.height;
+            rect.size.height = asize.height;
+            rect.origin.x = (asize.width - rect.size.width)/2;
+            rect.origin.y = 0;
+            
+        }
+        else{
+            rect.size.width = asize.width;
+            rect.size.height = asize.width*oldsize.height/oldsize.width;
+            rect.origin.x = 0;
+            rect.origin.y = (asize.height - rect.size.height)/2;
+        }
+    }else{//裁剪后不一定为矩形 根据asize而定
         rect.size.width = asize.width;
-        rect.size.height = asize.width*oldsize.height/oldsize.width;
+        rect.size.height = asize.height;
         rect.origin.x = 0;
-        rect.origin.y = (asize.height - rect.size.height)/2;
+        rect.origin.y = 0;
     }
-    
     UIGraphicsBeginImageContext(asize);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, [[UIColor clearColor] CGColor]);
@@ -293,6 +297,12 @@
     newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+    
+}
+- (UIImage *)thumbnailToSize:(CGSize)asize
+{
+    
+    return [self thumbnailToSize:asize rect:YES];
     
 }
 

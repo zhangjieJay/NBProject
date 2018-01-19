@@ -20,7 +20,7 @@
 //Reachability fully support IPv6.  For full details, see ReadMe.md.
 
 
-NSString *kReachabilityChangedNotification = @"kNetworkReachabilityChangedNotification";
+NSString *kReachabilityChangedNotification = @"NB_kNetworkReachabilityChangedNotification";
 
 
 #pragma mark - Supporting functions

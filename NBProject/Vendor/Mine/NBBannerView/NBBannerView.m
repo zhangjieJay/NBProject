@@ -10,11 +10,10 @@
 #define ImageTag 20000
 @interface NBBannerView ()<UIScrollViewDelegate>
 @property(nonatomic,strong)NSMutableArray * arShow;
-@property(nonatomic,assign)BOOL canAutoScroll;//能否自动滑动
-@property(nonatomic,assign)BOOL canTunrPage;//是否能够翻页
+
 @property(nonatomic,strong)UIScrollView * baseScrollView;//底部滚动视图
 
-
+@property(nonatomic,strong)UIPageControl * pageControl;//
 
 @end
 
@@ -77,11 +76,20 @@
         _baseScrollView.showsHorizontalScrollIndicator = NO;
         _baseScrollView.showsVerticalScrollIndicator = NO;//不显竖向滚动条
         [self addSubview:_baseScrollView];
+        [self addSubview:self.pageControl];
     }
     return _baseScrollView;
 }
 
-
+-(UIPageControl *)pageControl{
+    if (!_pageControl) {
+        _pageControl = [[UIPageControl alloc]init];
+        _pageControl.hidesForSinglePage = YES;
+        _pageControl.pageIndicatorTintColor = NBAPPCOLOR;
+        _pageControl.currentPageIndicatorTintColor =[UIColor getColorNumber:500];
+    }
+    return _pageControl;
+}
 -(void)initDefultParams{
     
     _stopInterval = 2.f;
@@ -130,7 +138,7 @@
         return;
     }
     self.arShow = [NSMutableArray arrayWithArray:self.arImages];
-    
+
     if (nCount>1) {
         [self.arShow insertObject:self.arImages.lastObject atIndex:0];//将最后一张图增加到第一张的位置
         [self.arShow addObject:self.arImages.firstObject];//将第一张图加到最后
@@ -144,7 +152,7 @@
 }
 
 -(void)createImageViews{
-    
+    CGFloat pageWidth = sWidth(10.f);
     if (nCount>1) {
         for (NSInteger i = 0;i<totalCount;i++) {
             UIImageView * imgView = [self.baseScrollView viewWithTag:ImageTag + i];
@@ -167,10 +175,17 @@
         imgView.image = [UIImage imageNamed:self.arShow.firstObject];//
         [self.baseScrollView addSubview:imgView];
     }
-    
+    if (!self.hidePageControl) {
+        self.pageControl.frame = CGRectMake((width - (pageWidth * nCount))/2.f, height - sHeight(20) - sHeight(10), pageWidth * nCount, sHeight(20));
+        self.pageControl.numberOfPages = nCount;
+    }
 }
 
+-(void)setHidePageControl:(BOOL)hidePageControl{
+    
+    _hidePageControl = hidePageControl;
 
+}
 
 -(void)createTimer{
     
@@ -217,7 +232,9 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     currentPage = (scrollView.contentOffset.x + width/2.f)/width;
-    
+    if (!self.hidePageControl) {
+        self.pageControl.currentPage = currentPage -1;
+    }
 }
 
 #pragma mark ------------------------------------ 停止减速时判断是否是第一个或者是最后一个,处理循环问题
@@ -229,8 +246,10 @@
         }else if(currentPage == self.arShow.count -1){
             [self.baseScrollView scrollRectToVisible:CGRectMake(width, 0, width,height) animated:NO];
         }
+        if (!self.hidePageControl) {
+            self.pageControl.currentPage = currentPage -1;
+        }
         if (self.delegate &&[self.delegate respondsToSelector:@selector(bannerView:didScrollToIndex:)]) {
-            
             [self.delegate bannerView:scrollView didScrollToIndex:currentPage -1];//由于实际比数据源的数据多序号上多1个,所以减去一个
         }
     }

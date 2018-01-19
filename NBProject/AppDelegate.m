@@ -39,14 +39,15 @@
     NSLog_Method
     // Override point for customization after application launch.
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    [NBSystemObserver defaultObserver].showNetInfo = YES;//关闭网络提示
+    [NBDevice defaultDevice].autoScaled = NO;            //自动适配屏幕尺寸比例关闭
     
-    
-    [NBSystemObserver defaultObserver].showNetInfo = NO;//关闭网络提示
-    [self setupAPNS];
-    [self setupShareSDK];
+    [self setupAPNS];                                     //配置是否能够接收通知
+    [self setupShareSDK];                                 //配置分享
+    [self setupThemeColor];                               //设置主题颜色
+
     if (!_window) {
         _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        _window.backgroundColor = [UIColor getColorNumber:0];
     }
     NBTabBarController * tabvc =[NBTabBarController new];
     self.window.rootViewController = tabvc;
@@ -60,7 +61,6 @@
     
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    [NB_KEYWINDOW blurEffect];
 }
 
 #pragma mark -------------------------------App已经变为后台程序
@@ -69,14 +69,12 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 
-    [NB_KEYWINDOW blurEffect];
 }
 
 #pragma mark ------------------------------- App从后台运行变为目前激活的程序
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     NSLog_Method
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    [NB_KEYWINDOW removeBlurEffect];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
 }
@@ -85,7 +83,6 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     NSLog_Method
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [NB_KEYWINDOW removeBlurEffect];
 }
 
 #pragma mark ------------------------------- APP将要被划掉(关闭)
@@ -297,6 +294,50 @@
     
     
 }
+-(void)setupThemeColor{
+    
+    //导航栏背景色
+    [[UINavigationBar appearance] setBarTintColor:NBAPPCOLOR];
+    //导航条上UIBarButtonItem颜色
+    [[UINavigationBar appearance] setTintColor:[UIColor getColorNumber:515]];
+    //导航条上标题的颜色
+    NSDictionary *navbarTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor getColorNumber:515]};
+    [[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
+    //导航条分割线颜色
+//    [[UINavigationBar appearance]setShadowImage:[UIImage imageWithColor:NBSEPCOLOR]];
+    
+    //导航栏背景图片
+//    [[UINavigationBar appearance]setBackgroundImage:[UIImage imageNamed:@"tabbar_background.jpeg"] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    
+    
+    
+    
+    
+    //TabBar的背景颜色
+    [[UITabBar appearance] setBarTintColor:NBAPPCOLOR];
+    //TabBarItem选中图标的颜色,默认是蓝色
+    [[UITabBar appearance] setTintColor:NBMINORCOLOR];
+    //TabBarItem设置文字偏移量
+    [UITabBarItem appearance].titlePositionAdjustment = UIOffsetMake(0, -3.5);
+    
+//    /*选中的tabbaritem背景图片*/
+//    [[UITabBar appearance]setSelectionIndicatorImage:[UIImage imageNamed:@"rec_pause"]];
 
+//    [[UITabBar appearance]setBackgroundImage:[[UIImage imageNamed:@"tabbar_background.jpeg"] thumbnailToSize:CGSizeMake(NB_SCREEN_WIDTH, 49) rect:NO]];
+    
+    //TabBarItem文字的颜色
+    NSDictionary * tabbarNormalTextAttributes = @{NSForegroundColorAttributeName:NBTGRAYCOLOR};
+    NSDictionary * tabbarSelectedTextAttributes = @{NSForegroundColorAttributeName:[UIColor getColorNumber:100]};
+    [[UITabBarItem appearance] setTitleTextAttributes:tabbarNormalTextAttributes forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:tabbarSelectedTextAttributes forState:UIControlStateSelected];
+    
+    //当某个class被包含在另外一个class内时，才修改外观。
+//
+//    UIPageControl *pageControl = [UIPageControl appearance];
+//    pageControl.pageIndicatorTintColor = NBAPPCOLOR;
+//    pageControl.currentPageIndicatorTintColor = [UIColor grayColor];
+
+    
+}
 
 @end

@@ -13,5 +13,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UIControl (NBClicked)
-@property(nonatomic,assign)NSTimeInterval nb_clickedInterval;// 可以用这个给重复点击加间隔
+@property(nonatomic,assign)NSTimeInterval nb_clickedInterval;// 可以用这个给重复点击加间隔
 @end

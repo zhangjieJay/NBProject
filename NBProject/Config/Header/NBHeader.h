@@ -34,7 +34,7 @@
 #import "Reachability.h"            //网络连接监控类
 #import "AFNetworking.h"            //AF
 #import <Masonry.h>                 //自动布局的第三方库
-
+#import <IQKeyboardManager.h>       //键盘类
 
 
 /*自定义封装*/
@@ -65,7 +65,9 @@
 #import "NBRefresh.h"
 #import "NBStoreManager.h"
 #import "NBCodeButton.h"
+#import "NBBadgeButton.h"
 #import "NBCountingLabel.h"
+#import "NBTextView.h"
 
 
 

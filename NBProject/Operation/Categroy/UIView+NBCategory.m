@@ -64,7 +64,7 @@ void nb_swizzle(Class class,SEL ori,SEL swi){
     
     [self nb_layoutSublayersOfLayer:layer];
     
-    if (self.nb_cornerRadius > 0 && self.nb_cornerPosition != NBCornerPosition_None) {
+    if (self.nb_cornerRadius > 0) {
         UIGraphicsBeginImageContext(self.bounds.size);
 
         UIBezierPath *maskPath;

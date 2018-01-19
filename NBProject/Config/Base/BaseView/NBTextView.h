@@ -23,8 +23,8 @@
 
 @interface NBTextView : UITextView
 
-@property(nonatomic,copy) NSString *myPlaceholder;  //文字
-@property(nonatomic,strong) UIColor *myPlaceholderColor; //文字颜色
+@property(nonatomic,copy)NSString *myPlaceholder;  //文字
+@property(nonatomic,strong)UIColor * myPlaceholderColor; //文字颜色
 @property(nonatomic,assign)NSInteger maxCharacters;//最大输入数目,默认200
 
 @property(nonatomic,weak)id<NBTextViewDelegate>NBTextViewDelegate;

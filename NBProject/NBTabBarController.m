@@ -29,8 +29,9 @@
 -(NBCustomTabBar *)customBar{
     @try {
         if (!_customBar) {
-            _customBar = [[NBCustomTabBar alloc]initWithFrame:CGRectZero];
-            [self setValue:_customBar forKey:@"tabBar"];
+//            _customBar = [[NBCustomTabBar alloc]initWithFrame:CGRectZero];
+//
+//            [self setValue:_customBar forKey:@"tabBar"];
             NSArray * arCls = @[@"NBRootViewController",/*@"NBRECViewController",*/@"NBMeViewController"];
             NSArray * arTitles = @[@"首页",@"我的",@"二维码扫描"];
             NSArray * arImagesNormal = @[@"home_1",@"me_1",@"home_1"];
@@ -46,15 +47,6 @@
                     navi.delegate =self;
                     [navi.tabBarItem setImage:[UIImage imageNamed:arImagesNormal[i]]];
                     [navi.tabBarItem setSelectedImage:[UIImage imageNamed:arImagesSelected[i]]];
-                    
-                    //未选中字体颜色
-                    //选中字体颜色
-                    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor],NSFontAttributeName:[NBTool getFont:10.f]} forState:UIControlStateNormal];
-                    
-                    //选中字体颜色
-                    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor],NSFontAttributeName:[NBTool getFont:10.f]} forState:UIControlStateSelected];
-                    
-                    navi.tabBarItem.titlePositionAdjustment =UIOffsetMake(0, -3.5);
                     [self addChildViewController:navi];
                 }
             }
@@ -125,8 +117,10 @@
     //push的时候用我们自己定义的customPush
     if (operation == UINavigationControllerOperationPush) {
         
-        return [NBViewControllerAnimation new];
+//        return [NBViewControllerAnimation new];
         
+        return nil;
+
     }else{
         
         return nil;

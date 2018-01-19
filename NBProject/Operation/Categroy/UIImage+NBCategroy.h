@@ -25,6 +25,9 @@
 #pragma mark ----------------------采用CoreImage 高斯模糊图片
 - (UIImage *)blurryByVImageWithBlurLevel:(CGFloat)blur;
 - (UIImage *)blurryByCoreImageWithBlurLevel:(CGFloat)blur;
+//裁剪图片到指定尺寸,但会裁剪成正方形
 - (UIImage *)thumbnailToSize:(CGSize)asize;
+- (UIImage *)thumbnailToSize:(CGSize)asize rect:(BOOL)isRect;
+
 - (UIImage *)fixOrientation;
 @end

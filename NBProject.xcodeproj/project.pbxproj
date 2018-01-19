@@ -125,7 +125,6 @@
 		E64C42F31FECF11700418319 /* Jay_APNS.php in Resources */ = {isa = PBXBuildFile; fileRef = E64C42EF1FECF11700418319 /* Jay_APNS.php */; };
 		E64C48C9200731EB00EF6F12 /* UIControl+NBClicked.m in Sources */ = {isa = PBXBuildFile; fileRef = E64C48C8200731EB00EF6F12 /* UIControl+NBClicked.m */; };
 		E64C48CC20074AE200EF6F12 /* NBMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64C48CB20074AE200EF6F12 /* NBMeViewController.m */; };
-		E6564D832005EDA30090EB36 /* NBShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6564D822005EDA30090EB36 /* NBShareView.m */; };
 		E6564DD12005F44F0090EB36 /* RennSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E6564D8B2005F44F0090EB36 /* RennSDK.bundle */; };
 		E6564DD22005F44F0090EB36 /* RennSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6564D8C2005F44F0090EB36 /* RennSDK.framework */; };
 		E6564DD32005F44F0090EB36 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E6564D8E2005F44F0090EB36 /* WeiboSDK.bundle */; };
@@ -184,10 +183,12 @@
 		E6564E14200607120090EB36 /* QQ.png in Resources */ = {isa = PBXBuildFile; fileRef = E6564E0E200607120090EB36 /* QQ.png */; };
 		E6564E15200607120090EB36 /* QZone.png in Resources */ = {isa = PBXBuildFile; fileRef = E6564E0F200607120090EB36 /* QZone.png */; };
 		E6564E16200607120090EB36 /* Wechat.png in Resources */ = {isa = PBXBuildFile; fileRef = E6564E10200607120090EB36 /* Wechat.png */; };
-		E6564E1920060EFD0090EB36 /* NBSV.m in Sources */ = {isa = PBXBuildFile; fileRef = E6564E1820060EFD0090EB36 /* NBSV.m */; };
+		E6564E1920060EFD0090EB36 /* NBShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6564E1820060EFD0090EB36 /* NBShareView.m */; };
 		E658A1E1200C59E4000A5B13 /* NBCodeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E658A1E0200C59E4000A5B13 /* NBCodeButton.m */; };
 		E659C2621FE9FAC800B327B4 /* NBAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = E659C2611FE9FAC800B327B4 /* NBAudio.m */; };
 		E6773ECC1FFB868E008729B8 /* NBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6773ECA1FFB868E008729B8 /* NBWebViewController.m */; };
+		E678621120102E9E00F14334 /* NBTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E678621020102E9E00F14334 /* NBTableHeader.m */; };
+		E67862142010938700F14334 /* NBSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67862132010938700F14334 /* NBSearchViewController.m */; };
 		E683D8711FFF5FB200D23FDC /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E683D8701FFF5FB200D23FDC /* UserEntity.m */; };
 		E683D8751FFF659400D23FDC /* NBStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E683D8741FFF659400D23FDC /* NBStoreManager.m */; };
 		E6881374200DAEB9000C0895 /* NBCountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6881373200DAEB9000C0895 /* NBCountingLabel.m */; };
@@ -198,6 +199,7 @@
 		E69ACF742008573300D176F8 /* icon_QQ_head.png in Resources */ = {isa = PBXBuildFile; fileRef = E69ACF732008573300D176F8 /* icon_QQ_head.png */; };
 		E69ACF7620085A9B00D176F8 /* icon_WeiXin.png in Resources */ = {isa = PBXBuildFile; fileRef = E69ACF7520085A9A00D176F8 /* icon_WeiXin.png */; };
 		E69ACF79200897C300D176F8 /* NBTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E69ACF78200897C300D176F8 /* NBTextFieldCell.m */; };
+		E6C96A912011C263007475E3 /* NBBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C96A902011C263007475E3 /* NBBadgeButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -414,8 +416,6 @@
 		E64C48C8200731EB00EF6F12 /* UIControl+NBClicked.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+NBClicked.m"; sourceTree = "<group>"; };
 		E64C48CA20074AE200EF6F12 /* NBMeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBMeViewController.h; sourceTree = "<group>"; };
 		E64C48CB20074AE200EF6F12 /* NBMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBMeViewController.m; sourceTree = "<group>"; };
-		E6564D812005EDA30090EB36 /* NBShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBShareView.h; sourceTree = "<group>"; };
-		E6564D822005EDA30090EB36 /* NBShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBShareView.m; sourceTree = "<group>"; };
 		E6564D8B2005F44F0090EB36 /* RennSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RennSDK.bundle; sourceTree = "<group>"; };
 		E6564D8C2005F44F0090EB36 /* RennSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RennSDK.framework; sourceTree = "<group>"; };
 		E6564D8E2005F44F0090EB36 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
@@ -483,14 +483,18 @@
 		E6564E0E200607120090EB36 /* QQ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QQ.png; sourceTree = "<group>"; };
 		E6564E0F200607120090EB36 /* QZone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QZone.png; sourceTree = "<group>"; };
 		E6564E10200607120090EB36 /* Wechat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wechat.png; sourceTree = "<group>"; };
-		E6564E1720060EFD0090EB36 /* NBSV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBSV.h; sourceTree = "<group>"; };
-		E6564E1820060EFD0090EB36 /* NBSV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBSV.m; sourceTree = "<group>"; };
+		E6564E1720060EFD0090EB36 /* NBShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBShareView.h; sourceTree = "<group>"; };
+		E6564E1820060EFD0090EB36 /* NBShareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBShareView.m; sourceTree = "<group>"; };
 		E658A1DF200C59E4000A5B13 /* NBCodeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBCodeButton.h; sourceTree = "<group>"; };
 		E658A1E0200C59E4000A5B13 /* NBCodeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBCodeButton.m; sourceTree = "<group>"; };
 		E659C2601FE9FAC800B327B4 /* NBAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBAudio.h; sourceTree = "<group>"; };
 		E659C2611FE9FAC800B327B4 /* NBAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBAudio.m; sourceTree = "<group>"; };
 		E6773ECA1FFB868E008729B8 /* NBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBWebViewController.m; sourceTree = "<group>"; };
 		E6773ECB1FFB868E008729B8 /* NBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBWebViewController.h; sourceTree = "<group>"; };
+		E678620F20102E9E00F14334 /* NBTableHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBTableHeader.h; sourceTree = "<group>"; };
+		E678621020102E9E00F14334 /* NBTableHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBTableHeader.m; sourceTree = "<group>"; };
+		E67862122010938700F14334 /* NBSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBSearchViewController.h; sourceTree = "<group>"; };
+		E67862132010938700F14334 /* NBSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBSearchViewController.m; sourceTree = "<group>"; };
 		E683D86F1FFF5FB200D23FDC /* UserEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserEntity.h; sourceTree = "<group>"; };
 		E683D8701FFF5FB200D23FDC /* UserEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserEntity.m; sourceTree = "<group>"; };
 		E683D8731FFF659400D23FDC /* NBStoreManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBStoreManager.h; sourceTree = "<group>"; };
@@ -509,6 +513,8 @@
 		E69ACF7520085A9A00D176F8 /* icon_WeiXin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_WeiXin.png; sourceTree = "<group>"; };
 		E69ACF77200897C300D176F8 /* NBTextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBTextFieldCell.h; sourceTree = "<group>"; };
 		E69ACF78200897C300D176F8 /* NBTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBTextFieldCell.m; sourceTree = "<group>"; };
+		E6C96A8F2011C263007475E3 /* NBBadgeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBBadgeButton.h; sourceTree = "<group>"; };
+		E6C96A902011C263007475E3 /* NBBadgeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBBadgeButton.m; sourceTree = "<group>"; };
 		F4EB74A299A564C56485F034 /* libPods-NBProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NBProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -778,6 +784,8 @@
 				311BF9AD1F4D88F700E0E5D5 /* BaseButton.m */,
 				E658A1DF200C59E4000A5B13 /* NBCodeButton.h */,
 				E658A1E0200C59E4000A5B13 /* NBCodeButton.m */,
+				E6C96A8F2011C263007475E3 /* NBBadgeButton.h */,
+				E6C96A902011C263007475E3 /* NBBadgeButton.m */,
 			);
 			path = BaseButton;
 			sourceTree = "<group>";
@@ -791,6 +799,8 @@
 				311BF9B01F4D88F700E0E5D5 /* BaseViewController.m */,
 				E64C48CA20074AE200EF6F12 /* NBMeViewController.h */,
 				E64C48CB20074AE200EF6F12 /* NBMeViewController.m */,
+				E67862122010938700F14334 /* NBSearchViewController.h */,
+				E67862132010938700F14334 /* NBSearchViewController.m */,
 			);
 			path = BaseController;
 			sourceTree = "<group>";
@@ -815,6 +825,8 @@
 				311BF9B61F4D88F700E0E5D5 /* BaseView.m */,
 				E6881375200DFCC8000C0895 /* NBTextView.h */,
 				E6881376200DFCC8000C0895 /* NBTextView.m */,
+				E678620F20102E9E00F14334 /* NBTableHeader.h */,
+				E678621020102E9E00F14334 /* NBTableHeader.m */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -1302,10 +1314,8 @@
 		E6564D802005EDA30090EB36 /* NBShareView */ = {
 			isa = PBXGroup;
 			children = (
-				E6564D812005EDA30090EB36 /* NBShareView.h */,
-				E6564D822005EDA30090EB36 /* NBShareView.m */,
-				E6564E1720060EFD0090EB36 /* NBSV.h */,
-				E6564E1820060EFD0090EB36 /* NBSV.m */,
+				E6564E1720060EFD0090EB36 /* NBShareView.h */,
+				E6564E1820060EFD0090EB36 /* NBShareView.m */,
 			);
 			path = NBShareView;
 			sourceTree = "<group>";
@@ -1775,6 +1785,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NBProject/Pods-NBProject-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/PGDatePicker/PGDatePicker/PGDatePicker.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1850,6 +1861,7 @@
 				3125C7841F46F1B900D89D37 /* UIImage+NBCategroy.m in Sources */,
 				3125C7791F46EB6000D89D37 /* NBUserDefaulUtil.m in Sources */,
 				6971DB6B1FB1434C006B5242 /* NSBundle+NBRefresh.m in Sources */,
+				E678621120102E9E00F14334 /* NBTableHeader.m in Sources */,
 				697F331C1FB2B28F005B368E /* NBRECManager.m in Sources */,
 				E63395171FEB4D230075B8C0 /* AFNetworkReachabilityManager.m in Sources */,
 				693A881C1FA84CCC00763555 /* NBRootViewController.m in Sources */,
@@ -1857,15 +1869,16 @@
 				3125C7861F46F1B900D89D37 /* UIView+NBCategory.m in Sources */,
 				E63395141FEB4D230075B8C0 /* AFHTTPSessionManager.m in Sources */,
 				E63395131FEB4D230075B8C0 /* AFURLResponseSerialization.m in Sources */,
+				E67862142010938700F14334 /* NBSearchViewController.m in Sources */,
 				311BF9B71F4D88F700E0E5D5 /* BaseButton.m in Sources */,
+				E6C96A912011C263007475E3 /* NBBadgeButton.m in Sources */,
 				E633950E1FEB4D230075B8C0 /* UIButton+AFNetworking.m in Sources */,
 				E63395151FEB4D230075B8C0 /* AFURLSessionManager.m in Sources */,
 				6948FE281FAAF1CB00EBC44D /* NBHudProgress.m in Sources */,
 				311416D21F4FC69E00C6A13B /* Reachability.m in Sources */,
 				311416CF1F4FC69E00C6A13B /* NBSQLManager.m in Sources */,
 				6971DB761FB18C0A006B5242 /* NBRefreshAutoFooter.m in Sources */,
-				E6564D832005EDA30090EB36 /* NBShareView.m in Sources */,
-				E6564E1920060EFD0090EB36 /* NBSV.m in Sources */,
+				E6564E1920060EFD0090EB36 /* NBShareView.m in Sources */,
 				E63395101FEB4D230075B8C0 /* UIWebView+AFNetworking.m in Sources */,
 				69821ACC1FB3EB3C0075B70A /* NBBannerView.m in Sources */,
 				E633950A1FEB4D230075B8C0 /* UIProgressView+AFNetworking.m in Sources */,

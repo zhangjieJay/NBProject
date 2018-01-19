@@ -301,6 +301,11 @@
             blu = 214.f;
             break;
             
+        case 720://淡蓝-#ADD8E6
+            red = 173.f;
+            gre = 216.f;
+            blu = 230.f;
+            break;
         default:
             red = 0.f;
             gre = 0.f;

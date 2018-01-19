@@ -13,7 +13,7 @@
 #import "NBBannerView.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "UserEntity.h"
-#import "NBSV.h"
+#import "NBShareView.h"
 
 @interface NBRootViewController ()<NBSliderViewDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
@@ -27,45 +27,19 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
-    
-    
-    self.navigationItem.title =@"嘿嘿";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"点击" style:UIBarButtonItemStylePlain target:self action:@selector(dosomething:)];
-    
-    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"点击" forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor getColorNumber:500] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(dosomething:) forControlEvents:UIControlEventTouchUpInside];
-    btn.nb_clickedInterval =1.f;
-    
-    self.navigationItem.leftBarButtonItem.customView = btn;
-    
-    self.view.backgroundColor = [UIColor getColorNumber:0];
-//    self.navigationController.navigationBar.translucent = NO;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[UIColor getColorNumber:0] colorWithAlphaComponent:1]] forBarMetrics:UIBarMetricsDefault];
-    
-    [self.view addSubview:self.mainTableView];
     // Do any additional setup after loading the view.
+
+    self.navigationItem.title =@"嘿嘿";
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"点击" style:UIBarButtonItemStylePlain target:self action:@selector(dosomething:)];
+
     NBBannerView * banner = [[NBBannerView alloc]init];
     banner.stopInterval = 3.f;
-    banner.frame = CGRectMake(0, 0, NB_SCREEN_WIDTH, 200);
+    banner.frame = CGRectMake(0, 0, NB_SCREEN_WIDTH, sHeight(200));
     NSArray * arImages = @[@"banner_01.jpeg",@"banner_02.jpeg",@"banner_03.jpeg",@"banner_04.jpeg"];
     banner.arImages = arImages;
-    [self.view addSubview:banner];
     
-    
-    NBCodeButton * button = [[NBCodeButton alloc] initToGetCustomButton];
-    [button startWithInterral:10];
-    [self.view addSubview:button];
-    
-    
-
-    
-    
+    self.mainTableView.tableHeaderView = banner;
     
 }
 -(NSArray *)arMusics{
@@ -74,21 +48,22 @@
     }
     return _arMusics;
 }
--(void)nullllllllll{
-    
-}
+
 -(void)dosomething:(UIBarButtonItem *)sender{
     //这里是关键，点击按钮后先取消之前的操作，再进行需要进行的操作
+    
+    NBShareView * sv = [[NBShareView alloc]initWithTitle:@"分享" content:@"分享内容" image:@"https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=467987889,420985202&fm=173&s=719E789550D9B7C650BC9D030300C071&w=635&h=403&img.JPEG" webUrl:@"www.baidu.com"];
+    [sv show];
+    
+    NBBadgeButton * button = [[NBBadgeButton alloc] initWithFrame:CGRectMake(100, 100, 60, 30)];
+    [button setTitle:@"测试" forState:UIControlStateNormal];
+    [button updateBadge:@"5"];
+    [self.view addSubview:button];
 
-    [NBDevice defaultDevice];
     
-    
-    
-//    NBSV * sv = [[NBSV alloc]initWithTitle:@"分享" content:@"分享内容" image:@"https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=467987889,420985202&fm=173&s=719E789550D9B7C650BC9D030300C071&w=635&h=403&img.JPEG" webUrl:@"www.baidu.com"];
-//    [sv show];
-    
-    
-    
+//    NBCodeButton * button = [[NBCodeButton alloc] initToGetCustomButton];
+//    [button startWithInterral:10];
+//    [self.view addSubview:button];
     
     
 //    [NBTool openSetting];
@@ -141,7 +116,7 @@
     if (!_mainTableView) {
         WEAKSELF
         CGRect rect = self.view.bounds;
-        rect.size.height = NB_SCREEN_HEIGHT- 64-200;
+        rect.size.height = NB_SCREEN_HEIGHT- NB_NAVI_HEIGHT - NB_TABBAR_HEIGHT-200;
         rect.origin.y = 200;
         _mainTableView =[[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
         
@@ -157,11 +132,15 @@
             [weakSelf textHudView];
             
         }];
+        
         [footer setTitle:@"~~~~~~~~~~我是有底线的~~~~~~~~~~" forState:NBRefreshStateNoMoreData];
         [footer setTitle:@"拼命加载中..." forState:NBRefreshStateRefreshing];
         
         _mainTableView.nb_footer = footer;
-
+        [self.view addSubview:_mainTableView];
+        [_mainTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view);
+        }];
         
         _mainTableView.delegate = self;
         _mainTableView.dataSource = self;
@@ -231,40 +210,6 @@
     
 }
 
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGFloat alphHeight = 200;
-    CGFloat offy = scrollView.contentOffset.y;
-    if (offy <= 0) {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor getColorNumber:0]] forBarMetrics:UIBarMetricsDefault];
-    }else{
-        CGFloat alpoffset = fabs(scrollView.contentOffset.y);
-        CGFloat alp = alpoffset/alphHeight;
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[UIColor getColorNumber:0] colorWithAlphaComponent:alp]] forBarMetrics:UIBarMetricsDefault];
-    }
-}
-
-#pragma mark ------------------------------------ 暂停动画
--(void)pauseLayer:(CALayer*)layer
-{
-    CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
-    layer.speed=0.0; // 让CALayer的时间停止走动
-    layer.timeOffset=pausedTime; // 让CALayer的时间停留在pausedTime这个时刻
-}
-#pragma mark ------------------------------------ 恢复动画
--(void)resumeLayer:(CALayer*)layer
-{
-    CFTimeInterval pausedTime =layer.timeOffset;
-    layer.speed=1.0; // 让CALayer的时间继续行走
-    layer.timeOffset=0.0; // 取消上次记录的停留时刻
-    layer.beginTime=0.0; // 取消上次设置的时间
-    
-    //计算暂停的时间(这里用CACurrentMediaTime()-pausedTime也是一样的)
-    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
-    //设置相对于父坐标系的开始时间(往后退timeSincePause)
-    layer.beginTime = timeSincePause;
-}
 
 
 

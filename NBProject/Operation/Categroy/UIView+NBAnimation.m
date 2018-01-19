@@ -6,7 +6,36 @@
 //  Copyright © 2017年 JayZhang. All rights reserved.
 //
 
+/*
+ ========fillMode======== 配合removedOnCompletion属性使用
+ *
+ kCAFillModeForwards                    当动画结束后,layer会一直保持着动画最后的状态
+ kCAFillModeBackwards                   这个和kCAFillModeForwards是相对的,就是在动画开始前,你只要将动画加入了一个layer,layer便立即进入动画的初                                         始状态并等待动画开始.你可以这样设定测试代码,将一个动画加入一个layer的时候延迟5秒执行.然后就会发现在动画没有开始的时候,只要动画被加入了layer,layer便处于动画初始状态
+ kCAFillModeBoth                        理解了上面两个,这个就很好理解了,这个其实就是上面两个的合成.动画加入后开始之前,layer便处于动画初始状态,动画结束后layer保持动画最后的状态.
+ kCAFillModeRemoved                     这个是默认值,也就是说当动画开始前和动画结束后,动画对layer都没有影响,动画结束后,layer会恢复到之前的状态
+ */
+
+
+/*
+ ========timingFunction========
+ *
+ kCAMediaTimingFunctionLinear           动画一直匀速
+ kCAMediaTimingFunctionEaseIn           淡入,缓慢加速进入，然后匀速
+ kCAMediaTimingFunctionEaseOut          淡出,匀速，然后缓慢减速移除
+ kCAMediaTimingFunctionEaseInEaseOut    淡入淡出，结合以上两者
+ kCAMediaTimingFunctionDefault          默认效果
+ */
+
+//CFTimeInterval time = [layer convertTime:CACurrentMediaTime() fromLayer:nil];获取绝对时间
+
+//speed 动画速度  动画时长 = drution / speed;
+//timeOffset 动画开始时间点  如drution = 3s,  timeOffset = 2,则播放动画开始为第2-3s,然后跑剩余的 2秒从初始动画开始即动画时间节点 2-3(0)-1-2 总共还是跑了3s
+
+
 #import "UIView+NBAnimation.h"
+
+
+
 
 
 typedef NS_ENUM(NSInteger){
@@ -172,6 +201,58 @@ typedef NS_ENUM(NSInteger){
     [self.layer addSublayer:ovalShapeLayer];
 
 }
+
+-(void)throwToView:(UIView *)target{
+    
+    CGPoint point_origin = [self.superview convertPoint:self.center toView:NB_KEYWINDOW];
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    
+    [path moveToPoint:point_origin];
+    //确定抛物线的最高点位置  controlPoint
+    CGPoint point_max = CGPointMake(point_origin.x+50,point_origin.y-50);
+    CGPoint point_finish = [target.superview convertPoint:target.center toView:NB_KEYWINDOW];
+    [path addQuadCurveToPoint:point_max controlPoint:point_finish];
+    [path addLineToPoint:point_max];
+    
+    //关键帧动画
+
+    
+    CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    pathAnimation.path = path.CGPath;
+    pathAnimation.duration = 1.2;
+
+    
+    //往下抛时旋转小动画
+    CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    rotateAnimation.fromValue = [NSNumber numberWithFloat:0];
+    rotateAnimation.toValue = [NSNumber numberWithFloat:2* M_PI];
+    rotateAnimation.duration = 0.75;
+    rotateAnimation.removedOnCompletion = NO;
+    rotateAnimation.fillMode = kCAFillModeBackwards;
+    rotateAnimation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+
+    
+    
+
+    
+    CAAnimationGroup *groups = [CAAnimationGroup animation];
+    groups.animations = @[pathAnimation,rotateAnimation];
+    groups.duration = 1.2f;
+    
+    //设置之后做动画的layer不会回到一开始的位置
+    groups.removedOnCompletion = YES;
+
+    groups.fillMode=kCAFillModeRemoved;
+//    CALayer * layer = [CALayer layer];
+//    layer.contents = [self shot];
+//    [layer addAnimation:rotateAnimation forKey:@"group"];
+//    [self.layer addSublayer:layer];
+    [self.layer addAnimation:pathAnimation forKey:@"group"];
+
+
+}
+
 
 
 #pragma mark ------------------------------------ 暂停动画

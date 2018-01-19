@@ -10,10 +10,7 @@
 
 @protocol NBSwitchDelegate <NSObject>
 @optional
-
--(void)canClickSwitch:(UISwitch *)sender isOn:(BOOL)isOn;
-
-
+-(void)clickSwitch:(UISwitch *)sender isOn:(BOOL)isOn;
 @end
 
 @interface NBSwitchCell : UITableViewCell

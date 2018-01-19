@@ -19,4 +19,7 @@
 - (void)animateCircleRotation;
 /**加载的动画2**/
 - (void)animateDashCircleRotation;
+
+/*抛物线动画,如加入购物车*/
+-(void)throwToView:(UIView *)target;
 @end

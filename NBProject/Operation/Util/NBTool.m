@@ -666,9 +666,9 @@
     
     UIFont * fontNormal;
     if (bold) {
-        fontNormal = [UIFont boldSystemFontOfSize:font];
+        fontNormal = [UIFont boldSystemFontOfSize:sHeight(font)];
     }else{
-        fontNormal = [UIFont systemFontOfSize:font];
+        fontNormal = [UIFont systemFontOfSize:sHeight(font)];
     }
     return fontNormal;
 }

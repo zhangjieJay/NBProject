@@ -68,6 +68,7 @@ typedef NS_ENUM(NSInteger, NBCornerPosition) {
  *  UIButton 标题和图片的枚举值
  */
 typedef NS_ENUM(NSInteger, NBButtonType) {
+    NBButtonTypeDefault,                /*标题和图片*/
     NBButtonTypeTitle_Only,             /*只有标题,无图片*/
     NBButtonTypeTitle_Up,               /*标题在上部,图片在下部*/
     NBButtonTypeTitle_Left,             /*标题在左部,图片在右部*/

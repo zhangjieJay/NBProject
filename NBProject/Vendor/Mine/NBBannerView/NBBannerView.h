@@ -28,9 +28,14 @@
 
 @property(nonatomic,assign)CGFloat stopInterval;
 
+
 - (instancetype)initWithFrame:(CGRect)frame ImageUrl:(NSArray <NSString *>*)arUrls;
 
 @property(nonatomic,weak)id<NBBannerViewDelegate>delegate;
 
 @property(nonatomic,assign)NSArray * arImages;//图片数组
+
+@property(nonatomic,assign)BOOL hidePageControl;//是否隐藏 默认NO
+@property(nonatomic,assign)BOOL canAutoScroll;//能否自动滑动
+@property(nonatomic,assign)BOOL canTunrPage;//是否能够翻页
 @end

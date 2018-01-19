@@ -29,26 +29,26 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
     
 }
-
+- (instancetype)init
+{
+    return [self initWithFrame:CGRectZero];
+}
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.delegate =self;
         self.backgroundColor= [UIColor clearColor];
+        self.myPlaceholder = @"请输入文字";
         UILabel *placeholderLabel = [[UILabel alloc]init];//添加一个占位label
         _maxCharacters = 200;
         placeholderLabel.backgroundColor= [UIColor clearColor];
         placeholderLabel.font = [NBTool getFont:15.f];
-        
-        placeholderLabel.numberOfLines=0; //设置可以输入多行文字时可以自动换行
-        
+        placeholderLabel.numberOfLines = 0; //设置可以输入多行文字时可以自动换行
         [self addSubview:placeholderLabel];
         
         self.placeholderLabel= placeholderLabel; //赋值保存
-        
         self.myPlaceholderColor= [UIColor lightGrayColor]; //设置占位文字默认颜色
-        
         self.font= [NBTool getFont:15.f]; //设置默认的字体
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:nil]; //通知:监听文字的改变
@@ -83,13 +83,9 @@
     
     if (self.hasText) {
         self.placeholderLabel.hidden = YES;
-
     }else{
-    
         self.placeholderLabel.hidden = NO;
-
     }
-    
     
     if (self.NBTextViewDelegate && [self.NBTextViewDelegate respondsToSelector:@selector(NBTextView:textValueChange:)]) {
         [self.NBTextViewDelegate NBTextView:self textValueChange:self.text];
@@ -102,6 +98,7 @@
     [super layoutSubviews];
     
     self.placeholderLabel.textColor = self.myPlaceholderColor;
+    
     if (self.hasText) {
         self.placeholderLabel.hidden = YES;
         self.placeholderLabel.text = self.myPlaceholder;
@@ -109,18 +106,19 @@
     }else{
         self.placeholderLabel.hidden = NO;
         self.placeholderLabel.text = self.myPlaceholder;
+        CGRect frame = CGRectZero;
+        frame.origin.y= sHeight(6); //设置UILabel 的 y值
+        frame.origin.x= sWidth(10);//设置 UILabel 的 x 值
+        frame.size.width= self.frame.size.width-frame.origin.x*2.0; //设置 UILabel 的 x
+        
+        //根据文字计算高度
+        
+        CGSize maxSize =CGSizeMake(frame.size.width,self.frame.size.height -frame.origin.y * 2.0);
+        frame.size.height= [self.myPlaceholder boundingRectWithSize:maxSize options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.placeholderLabel.font} context:nil].size.height;
+        self.placeholderLabel.frame = frame;
     }
     
-    CGRect frame = CGRectZero;
-    frame.origin.y= 6.5; //设置UILabel 的 y值
-    frame.origin.x= 10.f;//设置 UILabel 的 x 值
-    frame.size.width= self.frame.size.width-frame.origin.x*2.0; //设置 UILabel 的 x
-    
-    //根据文字计算高度
-    
-    CGSize maxSize =CGSizeMake(frame.size.width,self.frame.size.height -frame.origin.y * 2.0);
-    frame.size.height= [self.myPlaceholder boundingRectWithSize:maxSize options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.placeholderLabel.font} context:nil].size.height;
-    self.placeholderLabel.frame = frame;
+
 }
 
 

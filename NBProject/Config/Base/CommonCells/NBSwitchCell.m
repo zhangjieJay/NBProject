@@ -59,8 +59,8 @@
 
 -(void)valuechanged:(UISwitch *)sender{
     
-    if (self.nbsw_delegate && [self.nbsw_delegate respondsToSelector:@selector(canClickSwitch:isOn:)]) {
-            [self.nbsw_delegate canClickSwitch:sender isOn:sender.isOn];
+    if (self.nbsw_delegate && [self.nbsw_delegate respondsToSelector:@selector(clickSwitch:isOn:)]) {
+            [self.nbsw_delegate clickSwitch:sender isOn:sender.isOn];
     }
 
 }

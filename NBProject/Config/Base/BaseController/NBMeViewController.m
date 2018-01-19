@@ -10,10 +10,15 @@
 #import "NBHeaderCell.h"
 #import "NBSwitchCell.h"
 #import "NBTextFieldCell.h"
+#import "NBTableHeader.h"
+
+#import "NBSearchViewController.h"
 
 @interface NBMeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView * mainTableView;//主视图的tableview
 @property(nonatomic,strong)NSMutableArray * dataArray;//数据源
+@property(nonatomic,strong)NBTableHeader * header;//tableHeader
+
 
 @end
 
@@ -22,10 +27,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [self.mainTableView reloadData];
+    self.sticked = YES;
+    self.scrollNavigationlEffectEnabled = YES;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backBarButtonClicked)];
+    
 }
-
 
 -(UITableView *)mainTableView{
     
@@ -35,14 +42,22 @@
         _mainTableView.dataSource = self;
         _mainTableView.rowHeight = UITableViewAutomaticDimension;
         _mainTableView.estimatedRowHeight = 44;
-
+        _mainTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        _mainTableView.tableHeaderView = self.header;
         [self.view addSubview:_mainTableView];
         [_mainTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.view);
+//            make.edges.equalTo(self.view);
+            make.left.right.top.mas_equalTo(0);
+            make.bottom.mas_equalTo(self.view.mas_bottom).offset(-NB_TABBAR_HEIGHT);
         }];
-        _mainTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     }
     return _mainTableView;
+}
+-(NBTableHeader *)header{
+    if (!_header) {
+        _header = [[NBTableHeader alloc]initWithFrame:CGRectMake(0, 0, NB_SCREEN_WIDTH, sHeight(200))];
+    }
+    return _header;
 }
 
 -(NSMutableArray *)dataArray{
@@ -55,7 +70,36 @@
         ParamModel * model1 = [ParamModel new];
         model1.title = @"消息通知";
         [_dataArray addObject:model1];
-
+        ParamModel * model1_0 = [ParamModel new];
+        model1_0.title = @"消息通知";
+        [_dataArray addObject:model1_0];
+        ParamModel * model1_1 = [ParamModel new];
+        model1_1.title = @"消息通知";
+        [_dataArray addObject:model1_1];
+        ParamModel * model1_2 = [ParamModel new];
+        model1_2.title = @"消息通知";
+        [_dataArray addObject:model1_2];
+        ParamModel * model1_3 = [ParamModel new];
+        model1_3.title = @"消息通知3";
+        [_dataArray addObject:model1_3];
+        ParamModel * model1_4 = [ParamModel new];
+        model1_4.title = @"消息通知4";
+        [_dataArray addObject:model1_4];
+        ParamModel * model1_5 = [ParamModel new];
+        model1_5.title = @"消息通知5";
+        [_dataArray addObject:model1_5];
+        ParamModel * model1_6 = [ParamModel new];
+        model1_6.title = @"消息通知6";
+        [_dataArray addObject:model1_6];
+        ParamModel * model1_7 = [ParamModel new];
+        model1_7.title = @"消息通知7";
+        [_dataArray addObject:model1_7];
+        ParamModel * model1_8 = [ParamModel new];
+        model1_8.title = @"消息通知8";
+        [_dataArray addObject:model1_8];
+        ParamModel * model1_9 = [ParamModel new];
+        model1_9.title = @"消息通知9";
+        [_dataArray addObject:model1_9];
         ParamModel * model2 = [ParamModel new];
         model2.title = @"说点什么";
         model2.sub_title = @"说点什么";
@@ -125,13 +169,19 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NBAlertView * alert = [NBAlertView new];
-    [alert show:@"你即将开始旅行?" title:@"完了" options:@[@"取消",@"知道了"]];
-    
-    
+    NBSearchViewController * searchVC = [NBSearchViewController new];
+    searchVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [super scrollViewDidScroll:scrollView];
+    
+    CGFloat offset = scrollView.contentOffset.y;
+    self.currentOffset = offset;
+    [self.header updateWithOffset:offset];
 
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
