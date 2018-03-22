@@ -45,7 +45,8 @@
     [self setupAPNS];                                     //配置是否能够接收通知
     [self setupShareSDK];                                 //配置分享
     [self setupThemeColor];                               //设置主题颜色
-
+    
+    
     if (!_window) {
         _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     }

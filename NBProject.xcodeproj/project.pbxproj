@@ -51,27 +51,6 @@
 		6948FE201FAAE99100EBC44D /* UIColor+NBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6948FE1F1FAAE99100EBC44D /* UIColor+NBCategory.m */; };
 		6948FE281FAAF1CB00EBC44D /* NBHudProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 6948FE231FAAF1CB00EBC44D /* NBHudProgress.m */; };
 		6948FE291FAAF1CB00EBC44D /* NBLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6948FE251FAAF1CB00EBC44D /* NBLoadingView.m */; };
-		6971DB561FB13E95006B5242 /* NBRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB491FB13E95006B5242 /* NBRefreshComponent.m */; };
-		6971DB571FB13E95006B5242 /* NBRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB4B1FB13E95006B5242 /* NBRefreshConst.m */; };
-		6971DB581FB13E95006B5242 /* NBRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB4D1FB13E95006B5242 /* NBRefreshFooter.m */; };
-		6971DB591FB13E95006B5242 /* NBRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB4F1FB13E95006B5242 /* NBRefreshHeader.m */; };
-		6971DB5A1FB13E95006B5242 /* UIScrollView+NBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB511FB13E95006B5242 /* UIScrollView+NBExtension.m */; };
-		6971DB5B1FB13E95006B5242 /* UIScrollView+NBRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB531FB13E95006B5242 /* UIScrollView+NBRefresh.m */; };
-		6971DB5C1FB13E95006B5242 /* UIView+NBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB551FB13E95006B5242 /* UIView+NBExtension.m */; };
-		6971DB5F1FB13EC1006B5242 /* NBRefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB5E1FB13EC1006B5242 /* NBRefreshNormalHeader.m */; };
-		6971DB601FB13EC1006B5242 /* NBRefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB5E1FB13EC1006B5242 /* NBRefreshNormalHeader.m */; };
-		6971DB671FB14189006B5242 /* NBRefreshStateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB661FB14189006B5242 /* NBRefreshStateHeader.m */; };
-		6971DB681FB14189006B5242 /* NBRefreshStateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB661FB14189006B5242 /* NBRefreshStateHeader.m */; };
-		6971DB6B1FB1434C006B5242 /* NSBundle+NBRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB6A1FB1434C006B5242 /* NSBundle+NBRefresh.m */; };
-		6971DB6C1FB1434C006B5242 /* NSBundle+NBRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB6A1FB1434C006B5242 /* NSBundle+NBRefresh.m */; };
-		6971DB6E1FB14493006B5242 /* NBRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6971DB6D1FB14493006B5242 /* NBRefresh.bundle */; };
-		6971DB6F1FB14493006B5242 /* NBRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6971DB6D1FB14493006B5242 /* NBRefresh.bundle */; };
-		6971DB761FB18C0A006B5242 /* NBRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB751FB18C0A006B5242 /* NBRefreshAutoFooter.m */; };
-		6971DB771FB18C0A006B5242 /* NBRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB751FB18C0A006B5242 /* NBRefreshAutoFooter.m */; };
-		6971DB7A1FB18EB1006B5242 /* NBRefreshStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB791FB18EB1006B5242 /* NBRefreshStateFooter.m */; };
-		6971DB7B1FB18EB1006B5242 /* NBRefreshStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB791FB18EB1006B5242 /* NBRefreshStateFooter.m */; };
-		6971DB7E1FB18F7B006B5242 /* NBRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB7D1FB18F7B006B5242 /* NBRefreshAutoNormalFooter.m */; };
-		6971DB7F1FB18F7B006B5242 /* NBRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB7D1FB18F7B006B5242 /* NBRefreshAutoNormalFooter.m */; };
 		6971DB821FB1A711006B5242 /* NBImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB811FB1A711006B5242 /* NBImagePickerViewController.m */; };
 		6971DB831FB1A711006B5242 /* NBImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB811FB1A711006B5242 /* NBImagePickerViewController.m */; };
 		6971DB861FB1ABD9006B5242 /* NBRECViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971DB851FB1ABD9006B5242 /* NBRECViewController.m */; };
@@ -125,6 +104,9 @@
 		E64C42F31FECF11700418319 /* Jay_APNS.php in Resources */ = {isa = PBXBuildFile; fileRef = E64C42EF1FECF11700418319 /* Jay_APNS.php */; };
 		E64C48C9200731EB00EF6F12 /* UIControl+NBClicked.m in Sources */ = {isa = PBXBuildFile; fileRef = E64C48C8200731EB00EF6F12 /* UIControl+NBClicked.m */; };
 		E64C48CC20074AE200EF6F12 /* NBMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64C48CB20074AE200EF6F12 /* NBMeViewController.m */; };
+		E655AB6F20196CA800B0AB66 /* NBNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E655AB6E20196CA800B0AB66 /* NBNormalHeader.m */; };
+		E655AB7220197D4100B0AB66 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = E655AB7020197D4100B0AB66 /* DrawView.m */; };
+		E655AB762019C9FC00B0AB66 /* NBCircleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E655AB752019C9FC00B0AB66 /* NBCircleHeader.m */; };
 		E6564DD12005F44F0090EB36 /* RennSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E6564D8B2005F44F0090EB36 /* RennSDK.bundle */; };
 		E6564DD22005F44F0090EB36 /* RennSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6564D8C2005F44F0090EB36 /* RennSDK.framework */; };
 		E6564DD32005F44F0090EB36 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E6564D8E2005F44F0090EB36 /* WeiboSDK.bundle */; };
@@ -186,9 +168,16 @@
 		E6564E1920060EFD0090EB36 /* NBShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6564E1820060EFD0090EB36 /* NBShareView.m */; };
 		E658A1E1200C59E4000A5B13 /* NBCodeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E658A1E0200C59E4000A5B13 /* NBCodeButton.m */; };
 		E659C2621FE9FAC800B327B4 /* NBAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = E659C2611FE9FAC800B327B4 /* NBAudio.m */; };
+		E663A1D820172C89002FB6E2 /* NBRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = E663A1D720172C89002FB6E2 /* NBRefreshComponent.m */; };
+		E663A1DB20172D5C002FB6E2 /* NBRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E663A1DA20172D5C002FB6E2 /* NBRefreshHeader.m */; };
+		E663A1DE20173324002FB6E2 /* NBRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = E663A1DD20173324002FB6E2 /* NBRefreshConst.m */; };
+		E663A1E1201737B2002FB6E2 /* UIView+NBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E663A1E0201737B2002FB6E2 /* UIView+NBExtension.m */; };
+		E663A1E420173C91002FB6E2 /* UIScrollView+NBRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = E663A1E320173C91002FB6E2 /* UIScrollView+NBRefresh.m */; };
+		E663A1E720173F5D002FB6E2 /* UIScrollView+NBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E663A1E520173F5D002FB6E2 /* UIScrollView+NBExtension.m */; };
+		E66FD48D2020489900203003 /* NBHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = E66FD48C2020489900203003 /* NBHudView.m */; };
+		E670A61E201573E100F32F61 /* NBTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E670A61D201573E100F32F61 /* NBTestViewController.m */; };
 		E6773ECC1FFB868E008729B8 /* NBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6773ECA1FFB868E008729B8 /* NBWebViewController.m */; };
 		E678621120102E9E00F14334 /* NBTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E678621020102E9E00F14334 /* NBTableHeader.m */; };
-		E67862142010938700F14334 /* NBSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67862132010938700F14334 /* NBSearchViewController.m */; };
 		E683D8711FFF5FB200D23FDC /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E683D8701FFF5FB200D23FDC /* UserEntity.m */; };
 		E683D8751FFF659400D23FDC /* NBStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E683D8741FFF659400D23FDC /* NBStoreManager.m */; };
 		E6881374200DAEB9000C0895 /* NBCountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6881373200DAEB9000C0895 /* NBCountingLabel.m */; };
@@ -199,6 +188,7 @@
 		E69ACF742008573300D176F8 /* icon_QQ_head.png in Resources */ = {isa = PBXBuildFile; fileRef = E69ACF732008573300D176F8 /* icon_QQ_head.png */; };
 		E69ACF7620085A9B00D176F8 /* icon_WeiXin.png in Resources */ = {isa = PBXBuildFile; fileRef = E69ACF7520085A9A00D176F8 /* icon_WeiXin.png */; };
 		E69ACF79200897C300D176F8 /* NBTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E69ACF78200897C300D176F8 /* NBTextFieldCell.m */; };
+		E6AA6F952018814F00BA503B /* NBGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AA6F942018814F00BA503B /* NBGifHeader.m */; };
 		E6C96A912011C263007475E3 /* NBBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C96A902011C263007475E3 /* NBBadgeButton.m */; };
 /* End PBXBuildFile section */
 
@@ -313,34 +303,6 @@
 		6948FE231FAAF1CB00EBC44D /* NBHudProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBHudProgress.m; sourceTree = "<group>"; };
 		6948FE241FAAF1CB00EBC44D /* NBLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBLoadingView.h; sourceTree = "<group>"; };
 		6948FE251FAAF1CB00EBC44D /* NBLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBLoadingView.m; sourceTree = "<group>"; };
-		6971DB481FB13E95006B5242 /* NBRefreshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRefreshComponent.h; sourceTree = "<group>"; };
-		6971DB491FB13E95006B5242 /* NBRefreshComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRefreshComponent.m; sourceTree = "<group>"; };
-		6971DB4A1FB13E95006B5242 /* NBRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRefreshConst.h; sourceTree = "<group>"; };
-		6971DB4B1FB13E95006B5242 /* NBRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRefreshConst.m; sourceTree = "<group>"; };
-		6971DB4C1FB13E95006B5242 /* NBRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRefreshFooter.h; sourceTree = "<group>"; };
-		6971DB4D1FB13E95006B5242 /* NBRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRefreshFooter.m; sourceTree = "<group>"; };
-		6971DB4E1FB13E95006B5242 /* NBRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRefreshHeader.h; sourceTree = "<group>"; };
-		6971DB4F1FB13E95006B5242 /* NBRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRefreshHeader.m; sourceTree = "<group>"; };
-		6971DB501FB13E95006B5242 /* UIScrollView+NBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+NBExtension.h"; sourceTree = "<group>"; };
-		6971DB511FB13E95006B5242 /* UIScrollView+NBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+NBExtension.m"; sourceTree = "<group>"; };
-		6971DB521FB13E95006B5242 /* UIScrollView+NBRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+NBRefresh.h"; sourceTree = "<group>"; };
-		6971DB531FB13E95006B5242 /* UIScrollView+NBRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+NBRefresh.m"; sourceTree = "<group>"; };
-		6971DB541FB13E95006B5242 /* UIView+NBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NBExtension.h"; sourceTree = "<group>"; };
-		6971DB551FB13E95006B5242 /* UIView+NBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NBExtension.m"; sourceTree = "<group>"; };
-		6971DB5D1FB13EC1006B5242 /* NBRefreshNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRefreshNormalHeader.h; sourceTree = "<group>"; };
-		6971DB5E1FB13EC1006B5242 /* NBRefreshNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRefreshNormalHeader.m; sourceTree = "<group>"; };
-		6971DB651FB14189006B5242 /* NBRefreshStateHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRefreshStateHeader.h; sourceTree = "<group>"; };
-		6971DB661FB14189006B5242 /* NBRefreshStateHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRefreshStateHeader.m; sourceTree = "<group>"; };
-		6971DB691FB1434C006B5242 /* NSBundle+NBRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+NBRefresh.h"; sourceTree = "<group>"; };
-		6971DB6A1FB1434C006B5242 /* NSBundle+NBRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+NBRefresh.m"; sourceTree = "<group>"; };
-		6971DB6D1FB14493006B5242 /* NBRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NBRefresh.bundle; sourceTree = "<group>"; };
-		6971DB701FB151FD006B5242 /* NBRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRefresh.h; sourceTree = "<group>"; };
-		6971DB741FB18C0A006B5242 /* NBRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRefreshAutoFooter.h; sourceTree = "<group>"; };
-		6971DB751FB18C0A006B5242 /* NBRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRefreshAutoFooter.m; sourceTree = "<group>"; };
-		6971DB781FB18EB1006B5242 /* NBRefreshStateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRefreshStateFooter.h; sourceTree = "<group>"; };
-		6971DB791FB18EB1006B5242 /* NBRefreshStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRefreshStateFooter.m; sourceTree = "<group>"; };
-		6971DB7C1FB18F7B006B5242 /* NBRefreshAutoNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRefreshAutoNormalFooter.h; sourceTree = "<group>"; };
-		6971DB7D1FB18F7B006B5242 /* NBRefreshAutoNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRefreshAutoNormalFooter.m; sourceTree = "<group>"; };
 		6971DB801FB1A711006B5242 /* NBImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBImagePickerViewController.h; sourceTree = "<group>"; };
 		6971DB811FB1A711006B5242 /* NBImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBImagePickerViewController.m; sourceTree = "<group>"; };
 		6971DB841FB1ABD9006B5242 /* NBRECViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRECViewController.h; sourceTree = "<group>"; };
@@ -416,6 +378,13 @@
 		E64C48C8200731EB00EF6F12 /* UIControl+NBClicked.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+NBClicked.m"; sourceTree = "<group>"; };
 		E64C48CA20074AE200EF6F12 /* NBMeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBMeViewController.h; sourceTree = "<group>"; };
 		E64C48CB20074AE200EF6F12 /* NBMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBMeViewController.m; sourceTree = "<group>"; };
+		E655AB6D20196CA800B0AB66 /* NBNormalHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBNormalHeader.h; sourceTree = "<group>"; };
+		E655AB6E20196CA800B0AB66 /* NBNormalHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBNormalHeader.m; sourceTree = "<group>"; };
+		E655AB7020197D4100B0AB66 /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
+		E655AB7120197D4100B0AB66 /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
+		E655AB732019C8B500B0AB66 /* NBRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBRefresh.h; sourceTree = "<group>"; };
+		E655AB742019C9FC00B0AB66 /* NBCircleHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBCircleHeader.h; sourceTree = "<group>"; };
+		E655AB752019C9FC00B0AB66 /* NBCircleHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBCircleHeader.m; sourceTree = "<group>"; };
 		E6564D8B2005F44F0090EB36 /* RennSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RennSDK.bundle; sourceTree = "<group>"; };
 		E6564D8C2005F44F0090EB36 /* RennSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RennSDK.framework; sourceTree = "<group>"; };
 		E6564D8E2005F44F0090EB36 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
@@ -489,12 +458,26 @@
 		E658A1E0200C59E4000A5B13 /* NBCodeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBCodeButton.m; sourceTree = "<group>"; };
 		E659C2601FE9FAC800B327B4 /* NBAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBAudio.h; sourceTree = "<group>"; };
 		E659C2611FE9FAC800B327B4 /* NBAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBAudio.m; sourceTree = "<group>"; };
+		E663A1D620172C89002FB6E2 /* NBRefreshComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBRefreshComponent.h; sourceTree = "<group>"; };
+		E663A1D720172C89002FB6E2 /* NBRefreshComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBRefreshComponent.m; sourceTree = "<group>"; };
+		E663A1D920172D5C002FB6E2 /* NBRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBRefreshHeader.h; sourceTree = "<group>"; };
+		E663A1DA20172D5C002FB6E2 /* NBRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBRefreshHeader.m; sourceTree = "<group>"; };
+		E663A1DC20173324002FB6E2 /* NBRefreshConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBRefreshConst.h; sourceTree = "<group>"; };
+		E663A1DD20173324002FB6E2 /* NBRefreshConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBRefreshConst.m; sourceTree = "<group>"; };
+		E663A1DF201737B2002FB6E2 /* UIView+NBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NBExtension.h"; sourceTree = "<group>"; };
+		E663A1E0201737B2002FB6E2 /* UIView+NBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NBExtension.m"; sourceTree = "<group>"; };
+		E663A1E220173C91002FB6E2 /* UIScrollView+NBRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+NBRefresh.h"; sourceTree = "<group>"; };
+		E663A1E320173C91002FB6E2 /* UIScrollView+NBRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+NBRefresh.m"; sourceTree = "<group>"; };
+		E663A1E520173F5D002FB6E2 /* UIScrollView+NBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+NBExtension.m"; sourceTree = "<group>"; };
+		E663A1E620173F5D002FB6E2 /* UIScrollView+NBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+NBExtension.h"; sourceTree = "<group>"; };
+		E66FD48B2020489900203003 /* NBHudView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBHudView.h; sourceTree = "<group>"; };
+		E66FD48C2020489900203003 /* NBHudView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBHudView.m; sourceTree = "<group>"; };
+		E670A61C201573E100F32F61 /* NBTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBTestViewController.h; sourceTree = "<group>"; };
+		E670A61D201573E100F32F61 /* NBTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBTestViewController.m; sourceTree = "<group>"; };
 		E6773ECA1FFB868E008729B8 /* NBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBWebViewController.m; sourceTree = "<group>"; };
 		E6773ECB1FFB868E008729B8 /* NBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBWebViewController.h; sourceTree = "<group>"; };
 		E678620F20102E9E00F14334 /* NBTableHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBTableHeader.h; sourceTree = "<group>"; };
 		E678621020102E9E00F14334 /* NBTableHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBTableHeader.m; sourceTree = "<group>"; };
-		E67862122010938700F14334 /* NBSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBSearchViewController.h; sourceTree = "<group>"; };
-		E67862132010938700F14334 /* NBSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBSearchViewController.m; sourceTree = "<group>"; };
 		E683D86F1FFF5FB200D23FDC /* UserEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserEntity.h; sourceTree = "<group>"; };
 		E683D8701FFF5FB200D23FDC /* UserEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserEntity.m; sourceTree = "<group>"; };
 		E683D8731FFF659400D23FDC /* NBStoreManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBStoreManager.h; sourceTree = "<group>"; };
@@ -513,6 +496,8 @@
 		E69ACF7520085A9A00D176F8 /* icon_WeiXin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_WeiXin.png; sourceTree = "<group>"; };
 		E69ACF77200897C300D176F8 /* NBTextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBTextFieldCell.h; sourceTree = "<group>"; };
 		E69ACF78200897C300D176F8 /* NBTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBTextFieldCell.m; sourceTree = "<group>"; };
+		E6AA6F932018814F00BA503B /* NBGifHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBGifHeader.h; sourceTree = "<group>"; };
+		E6AA6F942018814F00BA503B /* NBGifHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBGifHeader.m; sourceTree = "<group>"; };
 		E6C96A8F2011C263007475E3 /* NBBadgeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBBadgeButton.h; sourceTree = "<group>"; };
 		E6C96A902011C263007475E3 /* NBBadgeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBBadgeButton.m; sourceTree = "<group>"; };
 		F4EB74A299A564C56485F034 /* libPods-NBProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NBProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -603,12 +588,13 @@
 		311416AF1F4FC69E00C6A13B /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				E66FD48A2020450F00203003 /* NBHud */,
+				E663A1D520172C3B002FB6E2 /* NB_Refresh */,
 				E6881371200DAEA4000C0895 /* NBCountLable */,
 				E6564D802005EDA30090EB36 /* NBShareView */,
 				E683D8721FFF654E00D23FDC /* NBCodeFileManager */,
 				69821B021FB4248B0075B70A /* NBTabBar */,
 				69821AC91FB3EB230075B70A /* NBBannerView */,
-				692CEAF11FB050D900785ACA /* NBRefresh */,
 				6948FE211FAAF1CB00EBC44D /* NBHudView */,
 				693A88131FA81CC800763555 /* NBSliderView */,
 				311EE55B1F594D1B00DC582B /* NBQRCode */,
@@ -799,8 +785,6 @@
 				311BF9B01F4D88F700E0E5D5 /* BaseViewController.m */,
 				E64C48CA20074AE200EF6F12 /* NBMeViewController.h */,
 				E64C48CB20074AE200EF6F12 /* NBMeViewController.m */,
-				E67862122010938700F14334 /* NBSearchViewController.h */,
-				E67862132010938700F14334 /* NBSearchViewController.m */,
 			);
 			path = BaseController;
 			sourceTree = "<group>";
@@ -885,6 +869,10 @@
 				6971DB811FB1A711006B5242 /* NBImagePickerViewController.m */,
 				6971DB841FB1ABD9006B5242 /* NBRECViewController.h */,
 				6971DB851FB1ABD9006B5242 /* NBRECViewController.m */,
+				E670A61C201573E100F32F61 /* NBTestViewController.h */,
+				E670A61D201573E100F32F61 /* NBTestViewController.m */,
+				E655AB7120197D4100B0AB66 /* DrawView.h */,
+				E655AB7020197D4100B0AB66 /* DrawView.m */,
 				697F331A1FB2B28F005B368E /* NBRECManager.h */,
 				697F331B1FB2B28F005B368E /* NBRECManager.m */,
 				3125C77A1F46EE7700D89D37 /* NBPrefix.pch */,
@@ -1110,25 +1098,6 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		692CEAF11FB050D900785ACA /* NBRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				6971DB471FB13E95006B5242 /* NBRefreshBase */,
-				6971DB651FB14189006B5242 /* NBRefreshStateHeader.h */,
-				6971DB661FB14189006B5242 /* NBRefreshStateHeader.m */,
-				6971DB5D1FB13EC1006B5242 /* NBRefreshNormalHeader.h */,
-				6971DB5E1FB13EC1006B5242 /* NBRefreshNormalHeader.m */,
-				6971DB741FB18C0A006B5242 /* NBRefreshAutoFooter.h */,
-				6971DB751FB18C0A006B5242 /* NBRefreshAutoFooter.m */,
-				6971DB781FB18EB1006B5242 /* NBRefreshStateFooter.h */,
-				6971DB791FB18EB1006B5242 /* NBRefreshStateFooter.m */,
-				6971DB7C1FB18F7B006B5242 /* NBRefreshAutoNormalFooter.h */,
-				6971DB7D1FB18F7B006B5242 /* NBRefreshAutoNormalFooter.m */,
-				6971DB701FB151FD006B5242 /* NBRefresh.h */,
-			);
-			path = NBRefresh;
-			sourceTree = "<group>";
-		};
 		693A88131FA81CC800763555 /* NBSliderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1147,30 +1116,6 @@
 				6948FE251FAAF1CB00EBC44D /* NBLoadingView.m */,
 			);
 			path = NBHudView;
-			sourceTree = "<group>";
-		};
-		6971DB471FB13E95006B5242 /* NBRefreshBase */ = {
-			isa = PBXGroup;
-			children = (
-				6971DB481FB13E95006B5242 /* NBRefreshComponent.h */,
-				6971DB491FB13E95006B5242 /* NBRefreshComponent.m */,
-				6971DB4A1FB13E95006B5242 /* NBRefreshConst.h */,
-				6971DB4B1FB13E95006B5242 /* NBRefreshConst.m */,
-				6971DB4C1FB13E95006B5242 /* NBRefreshFooter.h */,
-				6971DB4D1FB13E95006B5242 /* NBRefreshFooter.m */,
-				6971DB4E1FB13E95006B5242 /* NBRefreshHeader.h */,
-				6971DB4F1FB13E95006B5242 /* NBRefreshHeader.m */,
-				6971DB501FB13E95006B5242 /* UIScrollView+NBExtension.h */,
-				6971DB511FB13E95006B5242 /* UIScrollView+NBExtension.m */,
-				6971DB521FB13E95006B5242 /* UIScrollView+NBRefresh.h */,
-				6971DB531FB13E95006B5242 /* UIScrollView+NBRefresh.m */,
-				6971DB541FB13E95006B5242 /* UIView+NBExtension.h */,
-				6971DB551FB13E95006B5242 /* UIView+NBExtension.m */,
-				6971DB691FB1434C006B5242 /* NSBundle+NBRefresh.h */,
-				6971DB6A1FB1434C006B5242 /* NSBundle+NBRefresh.m */,
-				6971DB6D1FB14493006B5242 /* NBRefresh.bundle */,
-			);
-			path = NBRefreshBase;
 			sourceTree = "<group>";
 		};
 		69821AC91FB3EB230075B70A /* NBBannerView */ = {
@@ -1549,6 +1494,41 @@
 			path = NBAudio;
 			sourceTree = "<group>";
 		};
+		E663A1D520172C3B002FB6E2 /* NB_Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				E663A1DF201737B2002FB6E2 /* UIView+NBExtension.h */,
+				E663A1E0201737B2002FB6E2 /* UIView+NBExtension.m */,
+				E663A1E620173F5D002FB6E2 /* UIScrollView+NBExtension.h */,
+				E663A1E520173F5D002FB6E2 /* UIScrollView+NBExtension.m */,
+				E663A1E220173C91002FB6E2 /* UIScrollView+NBRefresh.h */,
+				E663A1E320173C91002FB6E2 /* UIScrollView+NBRefresh.m */,
+				E663A1D620172C89002FB6E2 /* NBRefreshComponent.h */,
+				E663A1D720172C89002FB6E2 /* NBRefreshComponent.m */,
+				E663A1D920172D5C002FB6E2 /* NBRefreshHeader.h */,
+				E663A1DA20172D5C002FB6E2 /* NBRefreshHeader.m */,
+				E6AA6F932018814F00BA503B /* NBGifHeader.h */,
+				E6AA6F942018814F00BA503B /* NBGifHeader.m */,
+				E655AB6D20196CA800B0AB66 /* NBNormalHeader.h */,
+				E655AB6E20196CA800B0AB66 /* NBNormalHeader.m */,
+				E655AB742019C9FC00B0AB66 /* NBCircleHeader.h */,
+				E655AB752019C9FC00B0AB66 /* NBCircleHeader.m */,
+				E663A1DC20173324002FB6E2 /* NBRefreshConst.h */,
+				E663A1DD20173324002FB6E2 /* NBRefreshConst.m */,
+				E655AB732019C8B500B0AB66 /* NBRefresh.h */,
+			);
+			path = NB_Refresh;
+			sourceTree = "<group>";
+		};
+		E66FD48A2020450F00203003 /* NBHud */ = {
+			isa = PBXGroup;
+			children = (
+				E66FD48B2020489900203003 /* NBHudView.h */,
+				E66FD48C2020489900203003 /* NBHudView.m */,
+			);
+			path = NBHud;
+			sourceTree = "<group>";
+		};
 		E683D8721FFF654E00D23FDC /* NBCodeFileManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1700,7 +1680,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				69821AEB1FB3EFA30075B70A /* rabbit.jpeg in Resources */,
-				6971DB6E1FB14493006B5242 /* NBRefresh.bundle in Resources */,
 				E64C42E61FECAD7600418319 /* noticeMusic.wav in Resources */,
 				69821AE31FB3EFA30075B70A /* NB_completed_icon.png in Resources */,
 				69821AE71FB3EFA30075B70A /* NB_skull_icon.png in Resources */,
@@ -1746,7 +1725,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6971DB6F1FB14493006B5242 /* NBRefresh.bundle in Resources */,
 				69821B091FB42C1C0075B70A /* tabbar_background.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1818,18 +1796,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6971DB5C1FB13E95006B5242 /* UIView+NBExtension.m in Sources */,
 				E633950D1FEB4D230075B8C0 /* UIImageView+AFNetworking.m in Sources */,
 				315517E51F4BDD6C00184791 /* NBDevice.m in Sources */,
 				6948FE291FAAF1CB00EBC44D /* NBLoadingView.m in Sources */,
 				31168BB11F5658F9007E2BF8 /* NBPreView.m in Sources */,
-				6971DB7A1FB18EB1006B5242 /* NBRefreshStateFooter.m in Sources */,
 				E6881374200DAEB9000C0895 /* NBCountingLabel.m in Sources */,
 				311BF9B81F4D88F700E0E5D5 /* BaseViewController.m in Sources */,
+				E655AB762019C9FC00B0AB66 /* NBCircleHeader.m in Sources */,
 				E683D8711FFF5FB200D23FDC /* UserEntity.m in Sources */,
-				6971DB571FB13E95006B5242 /* NBRefreshConst.m in Sources */,
 				E63395181FEB4D230075B8C0 /* AFSecurityPolicy.m in Sources */,
-				6971DB5A1FB13E95006B5242 /* UIScrollView+NBExtension.m in Sources */,
 				6971DB821FB1A711006B5242 /* NBImagePickerViewController.m in Sources */,
 				E69ACF692008465000D176F8 /* NBHeaderCell.m in Sources */,
 				311BF9B91F4D88F700E0E5D5 /* BaseModel.m in Sources */,
@@ -1841,17 +1816,16 @@
 				312429E61EF7768F002B82A1 /* AppDelegate.m in Sources */,
 				E659C2621FE9FAC800B327B4 /* NBAudio.m in Sources */,
 				31168BBB1F566507007E2BF8 /* BaseImgView.m in Sources */,
+				E6AA6F952018814F00BA503B /* NBGifHeader.m in Sources */,
 				E633950F1FEB4D230075B8C0 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				6971DB591FB13E95006B5242 /* NBRefreshHeader.m in Sources */,
+				E670A61E201573E100F32F61 /* NBTestViewController.m in Sources */,
 				6948FE201FAAE99100EBC44D /* UIColor+NBCategory.m in Sources */,
 				311416AD1F4FBEEE00C6A13B /* NBNetWork.m in Sources */,
 				E683D8751FFF659400D23FDC /* NBStoreManager.m in Sources */,
 				31CB3CB81F57F39D002380F1 /* SheetTCell.m in Sources */,
 				31168BCA1F56C5E4007E2BF8 /* NSDictionary+NBSerializing.m in Sources */,
-				6971DB561FB13E95006B5242 /* NBRefreshComponent.m in Sources */,
 				E6881377200DFCC8000C0895 /* NBTextView.m in Sources */,
 				3125C7851F46F1B900D89D37 /* UIView+NBAnimation.m in Sources */,
-				6971DB5B1FB13E95006B5242 /* UIScrollView+NBRefresh.m in Sources */,
 				E658A1E1200C59E4000A5B13 /* NBCodeButton.m in Sources */,
 				311EE5611F594D1B00DC582B /* QRCodeViewController.m in Sources */,
 				311BF9BA1F4D88F700E0E5D5 /* BaseView.m in Sources */,
@@ -1860,53 +1834,55 @@
 				E63395111FEB4D230075B8C0 /* AFAutoPurgingImageCache.m in Sources */,
 				3125C7841F46F1B900D89D37 /* UIImage+NBCategroy.m in Sources */,
 				3125C7791F46EB6000D89D37 /* NBUserDefaulUtil.m in Sources */,
-				6971DB6B1FB1434C006B5242 /* NSBundle+NBRefresh.m in Sources */,
 				E678621120102E9E00F14334 /* NBTableHeader.m in Sources */,
 				697F331C1FB2B28F005B368E /* NBRECManager.m in Sources */,
 				E63395171FEB4D230075B8C0 /* AFNetworkReachabilityManager.m in Sources */,
 				693A881C1FA84CCC00763555 /* NBRootViewController.m in Sources */,
+				E66FD48D2020489900203003 /* NBHudView.m in Sources */,
 				69821B051FB4248B0075B70A /* NBCustomTabBar.m in Sources */,
 				3125C7861F46F1B900D89D37 /* UIView+NBCategory.m in Sources */,
 				E63395141FEB4D230075B8C0 /* AFHTTPSessionManager.m in Sources */,
 				E63395131FEB4D230075B8C0 /* AFURLResponseSerialization.m in Sources */,
-				E67862142010938700F14334 /* NBSearchViewController.m in Sources */,
 				311BF9B71F4D88F700E0E5D5 /* BaseButton.m in Sources */,
+				E663A1E720173F5D002FB6E2 /* UIScrollView+NBExtension.m in Sources */,
 				E6C96A912011C263007475E3 /* NBBadgeButton.m in Sources */,
+				E655AB7220197D4100B0AB66 /* DrawView.m in Sources */,
 				E633950E1FEB4D230075B8C0 /* UIButton+AFNetworking.m in Sources */,
 				E63395151FEB4D230075B8C0 /* AFURLSessionManager.m in Sources */,
 				6948FE281FAAF1CB00EBC44D /* NBHudProgress.m in Sources */,
 				311416D21F4FC69E00C6A13B /* Reachability.m in Sources */,
 				311416CF1F4FC69E00C6A13B /* NBSQLManager.m in Sources */,
-				6971DB761FB18C0A006B5242 /* NBRefreshAutoFooter.m in Sources */,
+				E655AB6F20196CA800B0AB66 /* NBNormalHeader.m in Sources */,
 				E6564E1920060EFD0090EB36 /* NBShareView.m in Sources */,
+				E663A1DB20172D5C002FB6E2 /* NBRefreshHeader.m in Sources */,
 				E63395101FEB4D230075B8C0 /* UIWebView+AFNetworking.m in Sources */,
 				69821ACC1FB3EB3C0075B70A /* NBBannerView.m in Sources */,
 				E633950A1FEB4D230075B8C0 /* UIProgressView+AFNetworking.m in Sources */,
 				E69ACF79200897C300D176F8 /* NBTextFieldCell.m in Sources */,
-				6971DB671FB14189006B5242 /* NBRefreshStateHeader.m in Sources */,
 				311416D01F4FC69E00C6A13B /* NBSystemObserver.m in Sources */,
 				311416CE1F4FC69E00C6A13B /* NBAlertView.m in Sources */,
 				693A88161FA81CE500763555 /* NBSliderView.m in Sources */,
 				311EE5601F594D1B00DC582B /* NBQRCodeTool.m in Sources */,
 				31168BB71F565EB3007E2BF8 /* PreCCell.m in Sources */,
+				E663A1E420173C91002FB6E2 /* UIScrollView+NBRefresh.m in Sources */,
 				3125C7781F46EB6000D89D37 /* NBNotification.m in Sources */,
 				E633950B1FEB4D230075B8C0 /* UIRefreshControl+AFNetworking.m in Sources */,
 				31CB3CB41F57F009002380F1 /* NBSheetView.m in Sources */,
 				E633950C1FEB4D230075B8C0 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				312429E31EF7768F002B82A1 /* main.m in Sources */,
-				6971DB7E1FB18F7B006B5242 /* NBRefreshAutoNormalFooter.m in Sources */,
-				6971DB5F1FB13EC1006B5242 /* NBRefreshNormalHeader.m in Sources */,
 				31168BB41F565E93007E2BF8 /* ImageModel.m in Sources */,
 				69821B0D1FB459230075B70A /* NBViewControllerAnimation.m in Sources */,
 				E64C48CC20074AE200EF6F12 /* NBMeViewController.m in Sources */,
 				E69ACF6C200846FB00D176F8 /* NBSwitchCell.m in Sources */,
+				E663A1E1201737B2002FB6E2 /* UIView+NBExtension.m in Sources */,
 				31CB48341F4ADF190046E4DB /* NBTool.m in Sources */,
 				E64C48C9200731EB00EF6F12 /* UIControl+NBClicked.m in Sources */,
+				E663A1D820172C89002FB6E2 /* NBRefreshComponent.m in Sources */,
 				311BF9BD1F4D897200E0E5D5 /* TestViewController.m in Sources */,
-				6971DB581FB13E95006B5242 /* NBRefreshFooter.m in Sources */,
 				E63395121FEB4D230075B8C0 /* AFImageDownloader.m in Sources */,
 				311416D31F4FC69E00C6A13B /* JSONKit.m in Sources */,
 				E6773ECC1FFB868E008729B8 /* NBWebViewController.m in Sources */,
+				E663A1DE20173324002FB6E2 /* NBRefreshConst.m in Sources */,
 				6971DB861FB1ABD9006B5242 /* NBRECViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1916,18 +1892,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6971DB831FB1A711006B5242 /* NBImagePickerViewController.m in Sources */,
-				6971DB7B1FB18EB1006B5242 /* NBRefreshStateFooter.m in Sources */,
 				69821B061FB4248B0075B70A /* NBCustomTabBar.m in Sources */,
 				697F331D1FB2B28F005B368E /* NBRECManager.m in Sources */,
 				69821B011FB4072A0075B70A /* NBTabBarController.m in Sources */,
 				69821B0E1FB459230075B70A /* NBViewControllerAnimation.m in Sources */,
-				6971DB6C1FB1434C006B5242 /* NSBundle+NBRefresh.m in Sources */,
 				312429FC1EF7768F002B82A1 /* NBProjectTests.m in Sources */,
-				6971DB601FB13EC1006B5242 /* NBRefreshNormalHeader.m in Sources */,
-				6971DB771FB18C0A006B5242 /* NBRefreshAutoFooter.m in Sources */,
-				6971DB681FB14189006B5242 /* NBRefreshStateHeader.m in Sources */,
 				6971DB871FB1ABD9006B5242 /* NBRECViewController.m in Sources */,
-				6971DB7F1FB18F7B006B5242 /* NBRefreshAutoNormalFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

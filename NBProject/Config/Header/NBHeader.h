@@ -62,14 +62,14 @@
 #import "NBNetWork.h"//网络请求类
 #import "NBVolumeBar.h"//
 #import "NBSystemObserver.h"//系统观察类(基于Reachability.h的小封装)
-#import "NBRefresh.h"
+//#import "NBRefresh.h"
 #import "NBStoreManager.h"
 #import "NBCodeButton.h"
 #import "NBBadgeButton.h"
 #import "NBCountingLabel.h"
 #import "NBTextView.h"
-
-
+#import "NBRefresh.h"
+#import "NBQRCodeTool.h"
 
 
 #endif /* NBHeader_h */

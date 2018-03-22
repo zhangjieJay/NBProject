@@ -63,14 +63,19 @@
     [self setNeedsDisplay];
 }
 -(void)endLoading{
-
     for (CALayer * layer in self.layer.sublayers) {
         [layer removeAllAnimations];
         [layer removeFromSuperlayer];
     }
     [self.layer removeAllAnimations];
     [self setNeedsDisplay];
+}
 
+-(void)didMoveToWindow{
+
+    if (self.window) {
+        [self startLoading];
+    }
 }
 
 

@@ -11,8 +11,7 @@
 #import "NBSwitchCell.h"
 #import "NBTextFieldCell.h"
 #import "NBTableHeader.h"
-
-#import "NBSearchViewController.h"
+#import "NBTestViewController.h"
 
 @interface NBMeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView * mainTableView;//主视图的tableview
@@ -169,9 +168,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NBSearchViewController * searchVC = [NBSearchViewController new];
-    searchVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:searchVC animated:YES];
+    
+    NBTestViewController * testVC = [NBTestViewController new];
+    testVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:testVC animated:YES];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{

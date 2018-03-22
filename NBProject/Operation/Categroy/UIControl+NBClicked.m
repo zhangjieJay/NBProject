@@ -7,6 +7,7 @@
 //
 
 #import "UIControl+NBClicked.h"
+#import <objc/runtime.h>
 
 /**本类UISwitch慎用**/
 /**本类UISwitch慎用**/

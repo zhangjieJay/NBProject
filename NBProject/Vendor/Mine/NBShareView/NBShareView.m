@@ -23,8 +23,6 @@ typedef int32_t NBInteger;
     NBInteger count;
     NBInteger countPerLine;
     
-    BaseButton * btnTest;
-
 }
 @property(nonatomic,strong)NSMutableArray * arrBtns;//
 
@@ -114,9 +112,6 @@ typedef int32_t NBInteger;
         [self.arrBtns addObject:button];
         [viewContent addSubview:button];
         maxHeight = CGRectGetMaxY(button.frame);
-        if (i == count -1) {
-            btnTest = button;
-        }
     }
     viewContent.frame = CGRectMake(0, NB_SCREEN_HEIGHT - NB_SAFE_SPACE- maxHeight, NB_SCREEN_WIDTH, maxHeight);
     
@@ -140,8 +135,8 @@ typedef int32_t NBInteger;
 }
 
 - (void)share:(UIButton *)sender{
-    [sender throwToView:btnTest];
-    return;
+
+    
     [self disMiss];
 
     NSInteger index = [self.arrBtns indexOfObject:sender];

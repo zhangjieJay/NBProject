@@ -205,54 +205,59 @@ typedef NS_ENUM(NSInteger){
 -(void)throwToView:(UIView *)target{
     
     CGPoint point_origin = [self.superview convertPoint:self.center toView:NB_KEYWINDOW];
+    CGPoint point_finish = [target.superview convertPoint:target.center toView:NB_KEYWINDOW];
+
+    /*获取controlpoint位置参见博客http://blog.csdn.net/u014286994/article/details/51316941*/
+    
+    CGFloat min_y = MIN(point_origin.y, point_finish.y);
+    CGFloat mid_x = (point_origin.x+point_finish.x)/2.f;
+    CGPoint point_control = CGPointMake(mid_x, min_y-100);
     
     UIBezierPath *path = [UIBezierPath bezierPath];
-    
     [path moveToPoint:point_origin];
     //确定抛物线的最高点位置  controlPoint
-    CGPoint point_max = CGPointMake(point_origin.x+50,point_origin.y-50);
-    CGPoint point_finish = [target.superview convertPoint:target.center toView:NB_KEYWINDOW];
-    [path addQuadCurveToPoint:point_max controlPoint:point_finish];
-    [path addLineToPoint:point_max];
+    [path addQuadCurveToPoint:point_finish controlPoint:point_control];
+
     
     //关键帧动画
-
-    
     CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     pathAnimation.path = path.CGPath;
-    pathAnimation.duration = 1.2;
 
-    
+
     //往下抛时旋转小动画
     CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
     rotateAnimation.fromValue = [NSNumber numberWithFloat:0];
-    rotateAnimation.toValue = [NSNumber numberWithFloat:2* M_PI];
-    rotateAnimation.duration = 0.75;
+    rotateAnimation.toValue = [NSNumber numberWithFloat:6* M_PI];
     rotateAnimation.removedOnCompletion = NO;
     rotateAnimation.fillMode = kCAFillModeBackwards;
     rotateAnimation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
-    
-    
-
-    
+    //动画组
     CAAnimationGroup *groups = [CAAnimationGroup animation];
     groups.animations = @[pathAnimation,rotateAnimation];
-    groups.duration = 1.2f;
+    groups.duration = .75f;
     
     //设置之后做动画的layer不会回到一开始的位置
     groups.removedOnCompletion = YES;
-
     groups.fillMode=kCAFillModeRemoved;
-//    CALayer * layer = [CALayer layer];
-//    layer.contents = [self shot];
-//    [layer addAnimation:rotateAnimation forKey:@"group"];
-//    [self.layer addSublayer:layer];
-    [self.layer addAnimation:pathAnimation forKey:@"group"];
+    [self.layer addAnimation:groups forKey:@"group"];
 
-
+    [self performSelector:@selector(playRotation:) withObject:target afterDelay:groups.duration];
+    
+    
 }
 
+/*购物车摇晃动画*/
+-(void)playRotation:(UIView *)view{
+    CABasicAnimation * roto = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    roto.fromValue = [NSNumber numberWithFloat:0];
+    roto.toValue = [NSNumber numberWithFloat:M_PI * 0.1];
+    roto.duration = 0.1;
+    roto.autoreverses = YES;
+    roto.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    roto.repeatCount = 3;
+    [view.layer addAnimation:roto forKey:@"rotation_sss"];
+}
 
 
 #pragma mark ------------------------------------ 暂停动画

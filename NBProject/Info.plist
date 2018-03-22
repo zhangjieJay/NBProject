@@ -67,6 +67,7 @@
 		<string>wechat</string>
 		<string>weixin</string>
 		<string>mqq</string>
+		<string>switchtoapp</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

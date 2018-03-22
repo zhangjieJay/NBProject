@@ -15,6 +15,7 @@
 #import "UserEntity.h"
 #import "NBShareView.h"
 
+
 @interface NBRootViewController ()<NBSliderViewDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
 @property(nonatomic,strong)UITableView * mainTableView;
@@ -51,14 +52,32 @@
 
 -(void)dosomething:(UIBarButtonItem *)sender{
     //这里是关键，点击按钮后先取消之前的操作，再进行需要进行的操作
+    NSString * sUrl = [NSString stringWithFormat:@"https://itunes.apple.com/us/app/%%E5%%BE%%AE%%E5%%AE%%9D%%E6%%8E%%8C%%E6%%9F%%9C/id1318610467?mt=8&uo=4"];
     
-    NBShareView * sv = [[NBShareView alloc]initWithTitle:@"分享" content:@"分享内容" image:@"https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=467987889,420985202&fm=173&s=719E789550D9B7C650BC9D030300C071&w=635&h=403&img.JPEG" webUrl:@"www.baidu.com"];
-    [sv show];
+
+    UIImage * image = [NBQRCodeTool generateWithLogoQRCodeData:sUrl imageWidth:500 logoImageName:@"VBlogo.png"];
     
-    NBBadgeButton * button = [[NBBadgeButton alloc] initWithFrame:CGRectMake(100, 100, 60, 30)];
-    [button setTitle:@"测试" forState:UIControlStateNormal];
-    [button updateBadge:@"5"];
-    [self.view addSubview:button];
+    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);//把图片保存在本地
+
+//    NSURL * url = [NSURL URLWithString:sUrl];
+//    if ([[UIApplication sharedApplication]canOpenURL:url]) {
+//
+//        [[UIApplication sharedApplication]openURL:url];
+//    }
+    
+//
+//    [self.mainTableView.nb_header endRefreshing];
+//
+//    [NBHudProgress showInView:self.view];
+    
+    
+//    NBShareView * sv = [[NBShareView alloc]initWithTitle:@"分享" content:@"分享内容" image:@"https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=467987889,420985202&fm=173&s=719E789550D9B7C650BC9D030300C071&w=635&h=403&img.JPEG" webUrl:@"www.baidu.com"];
+//    [sv show];
+    
+//    NBBadgeButton * button = [[NBBadgeButton alloc] initWithFrame:CGRectMake(100, 100, 60, 30)];
+//    [button setTitle:@"测试" forState:UIControlStateNormal];
+//    [button updateBadge:@"5"];
+//    [self.view addSubview:button];
 
     
 //    NBCodeButton * button = [[NBCodeButton alloc] initToGetCustomButton];
@@ -70,16 +89,26 @@
 //    [[NBAudio shareInstance] playVoice];
 //    [self.navigationController showViewController:[NBRECViewController new] sender:nil];
 }
-
+//图片保存至相册的结果回调
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *) error contextInfo: (void *) contextInfo{
+    
+    if (error) {
+        [NBTool showMessage:@"保存相册失败"];
+        
+    }else{
+        [NBTool showMessage:@"保存相册成功"];
+    }
+}
+        
 -(void)textHudView{
     
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         sleep(2);
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.mainTableView.nb_header endRefreshing];
-            [self.mainTableView.nb_footer endRefreshingWithNoMoreData];
-            
+//            [self.mainTableView.nb_header endRefreshing];
+//            [self.mainTableView.nb_footer endRefreshingWithNoMoreData];
+//
         });
         
     });
@@ -119,24 +148,29 @@
         rect.size.height = NB_SCREEN_HEIGHT- NB_NAVI_HEIGHT - NB_TABBAR_HEIGHT-200;
         rect.origin.y = 200;
         _mainTableView =[[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
-        
-        NBRefreshNormalHeader * header = [NBRefreshNormalHeader headerWithRefreshingBlock:^{
-            [weakSelf textHudView];
-        }];
-        _mainTableView.nb_header = header;
-        header.lastUpdatedTimeLabel.hidden = YES;
-        
-        
-        
-        NBRefreshAutoNormalFooter * footer = [NBRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            [weakSelf textHudView];
+        _mainTableView.nb_header = [NBNormalHeader headerWithRefreshingBlock:^{
+            
+            NSLog(@"header block start");
             
         }];
         
-        [footer setTitle:@"~~~~~~~~~~我是有底线的~~~~~~~~~~" forState:NBRefreshStateNoMoreData];
-        [footer setTitle:@"拼命加载中..." forState:NBRefreshStateRefreshing];
-        
-        _mainTableView.nb_footer = footer;
+//        NBRefreshNormalHeader * header = [NBRefreshNormalHeader headerWithRefreshingBlock:^{
+//            [weakSelf textHudView];
+//        }];
+//        _mainTableView.nb_header = header;
+//        header.lastUpdatedTimeLabel.hidden = YES;
+//
+//
+//        
+//        NBRefreshAutoNormalFooter * footer = [NBRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//            [weakSelf textHudView];
+//
+//        }];
+//
+//        [footer setTitle:@"~~~~~~~~~~我是有底线的~~~~~~~~~~" forState:NBRefreshStateNoMoreData];
+//        [footer setTitle:@"拼命加载中..." forState:NBRefreshStateRefreshing];
+//
+//        _mainTableView.nb_footer = footer;
         [self.view addSubview:_mainTableView];
         [_mainTableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view);
