@@ -153,4 +153,5 @@ typedef enum {
 +(void)openSetting;
 +(void)showMessage:(NSString *)message;
 +(void)exitAppAnimated:(BOOL)animated;
++(UIImage *)shotScreen;
 @end

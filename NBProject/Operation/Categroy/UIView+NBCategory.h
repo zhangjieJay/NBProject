@@ -39,5 +39,7 @@
 -(void)blurEffect;
 //移除高斯模糊
 -(void)removeBlurEffect;
-
+-(CGRect)convertToWindow;
+//当前视图所在控制器
+- (UIViewController *)responseController;
 @end

@@ -26,7 +26,7 @@
 //人人SDK头文件
 #import <RennSDK/RennSDK.h>
 
-
+#import "NBSearchViewController.h"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -42,16 +42,19 @@
     [NBSystemObserver defaultObserver].showNetInfo = YES;//关闭网络提示
     [NBDevice defaultDevice].autoScaled = NO;            //自动适配屏幕尺寸比例关闭
     
-    [self setupAPNS];                                     //配置是否能够接收通知
-    [self setupShareSDK];                                 //配置分享
+//    [self setupAPNS];                                     //配置是否能够接收通知
+//    [self setupShareSDK];                                 //配置分享
     [self setupThemeColor];                               //设置主题颜色
     
     
     if (!_window) {
         _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     }
-    NBTabBarController * tabvc =[NBTabBarController new];
-    self.window.rootViewController = tabvc;
+    
+//    UITabBarController * tabvc = [UITabBarController new];
+//    [tabvc addChildViewController:[[UINavigationController alloc]initWithRootViewController:[NBSearchViewController new]]];
+////    NBTabBarController * tabvc =[NBTabBarController new];
+//    self.window.rootViewController = tabvc;
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -124,6 +127,8 @@
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings{
     
 }
+
+
 #pragma mark ------------------------------- 收到远程(本地)通知
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     /**iOS 3.0 - 10.0*/

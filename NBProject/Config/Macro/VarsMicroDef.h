@@ -12,7 +12,7 @@
 #define NB_Debug
 
 #define Param(id) id?id:@""
-#define  WEAKSELF __weak typeof(self)weakSelf = self;
+#define  WEAKSELF          __weak typeof(self)weakSelf = self;
 #define NB_SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
 #define NB_SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
 #define BIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
@@ -118,7 +118,7 @@
 # define NSLog(...) {}
 #endif
 
-#define NSLog_Method NSLog(@"%s",__func__);
+#define NSLog_Method NSLog(@"%s %zd",__func__,__LINE__);
 
 
 

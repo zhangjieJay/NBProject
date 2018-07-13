@@ -177,18 +177,6 @@ void nb_swizzle(Class class,SEL ori,SEL swi){
 
 
 #pragma mark -------------------------------------------------------- 绘制渐变色
-- (void)drawgradientLayer{
-    
-    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = self.bounds;
-    [gradientLayer setStartPoint:CGPointMake(0.0, 0.0)];
-    [gradientLayer setEndPoint:CGPointMake(1, 0)];
-    gradientLayer.colors = @[(id)[UIColor redColor].CGColor, (id)[UIColor yellowColor].CGColor,(id)[UIColor greenColor].CGColor];
-    gradientLayer.mask = self.layer;
-    
-}
-
-
 
 
 /*UIView截取图片*/
@@ -245,8 +233,21 @@ void nb_swizzle(Class class,SEL ori,SEL swi){
         view = nil;
     }
 }
+-(CGRect)convertToWindow{
+    CGRect  rect = [self.superview convertRect:self.frame toView:[UIApplication sharedApplication].windows.lastObject];
+    return rect;
+}
 
-
-
+- (UIViewController *)responseController{
+    
+    UIResponder * responder = [self nextResponder];
+    while (responder) {
+        if ([responder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)responder;
+        }
+        responder = [responder nextResponder];
+    }
+    return  nil;
+}
 
 @end

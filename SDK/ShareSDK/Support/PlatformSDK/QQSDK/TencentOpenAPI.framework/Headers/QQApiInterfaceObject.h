@@ -227,7 +227,7 @@ __attribute__((visibility("default"))) @interface QQApiURLObject : QQApiObject
 /** @brief 视频对象
  用于分享视频到空间，走写说说路径<code>QQApiObject</code>
  assetURL可传ALAsset的ALAssetPropertyAssetURL，或者PHAsset的localIdentifier
-  @brief extMap 扩展字段
+  @**brief extMap 扩展字段
  */
 @interface QQApiVideoForQZoneObject : QQApiObject
 

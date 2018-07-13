@@ -35,6 +35,10 @@
 #import "AFNetworking.h"            //AF
 #import <Masonry.h>                 //自动布局的第三方库
 #import <IQKeyboardManager.h>       //键盘类
+#import <UIImageView+WebCache.h>
+
+//#import <TZImagePickerController.h>
+
 
 
 /*自定义封装*/
@@ -50,11 +54,13 @@
 #import "UIColor+NBCategory.h"
 #import "NSDictionary+NBSerializing.h"
 #import "UIControl+NBClicked.h"
+#import "NBUserDefaulUtil.h"
 
 #import "NBHudProgress.h"
 #import "NBAlertView.h"
 #import "NBSheetView.h"
 #import "NBShareView.h"
+
 
 
 #import "NBIPTool.h"//获取IP地址的类

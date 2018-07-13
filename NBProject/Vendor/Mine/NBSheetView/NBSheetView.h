@@ -7,6 +7,7 @@
 //
 
 #import "BaseView.h"
+#import "SheetTCell.h"
 
 @protocol NBSheetViewDelegate <NSObject>
 
@@ -18,6 +19,7 @@
 
 @interface NBSheetView : BaseView
 @property(nonatomic,weak)id<NBSheetViewDelegate>sDelegate;
+
 -(void)showWithArray:(NSArray *)arData;//mark 数组中存放的是SheetModel对象
 
 

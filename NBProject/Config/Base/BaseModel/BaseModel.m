@@ -41,6 +41,10 @@
 
 - (id)copyWithZone:(NSZone *)zone {
     BaseModel * model = [[BaseModel alloc] init];
+    NSArray * arKeys = [self perperiesWithClass:[self class]];
+    for (NSInteger i = 0; i<arKeys.count; i++) {
+        [model setValue:[self valueForKey:arKeys[i]] forKey:arKeys[i]];
+    }
     return model;
 }
 -(id)mutableCopyWithZone:(NSZone *)zone{

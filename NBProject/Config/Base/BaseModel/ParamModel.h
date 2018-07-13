@@ -17,4 +17,6 @@ PROPERTY_NSSTRING(sub_title);
 PROPERTY_NSSTRING(value);
 /*参数值对应的键值*/
 PROPERTY_NSSTRING(key);
+PROPERTY_NSNUMBER(type);
+
 @end

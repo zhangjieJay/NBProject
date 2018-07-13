@@ -38,4 +38,6 @@
 +(void)updateVersionViewInfoValue:(NSString *)value key:(NSString *)key;
 +(void)updateLocalIgnoreVersion:(NSString *)ignoreVersion;
 
++(id)valueForkeyInChain;
+
 @end

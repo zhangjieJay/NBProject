@@ -14,13 +14,22 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "UserEntity.h"
 #import "NBShareView.h"
+#import <AdSupport/AdSupport.h>
+#import "NBLocation.h"
+#import "NBContactsViewController.h"
 
+#import "NBPhotoView.h"
+#import "NBMenu.h"
+#import <PGDatePicker.h>
+#import "NBCusTextField.h"
 
-@interface NBRootViewController ()<NBSliderViewDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+@interface NBRootViewController ()<NBSliderViewDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,PGDatePickerDelegate>
 
 @property(nonatomic,strong)UITableView * mainTableView;
 @property(nonatomic,weak)UILabel * fffff;
 @property(nonatomic,strong)NSArray * arMusics;
+//@property(nonatomic,strong)UIWindow * wind;
+
 @end
 
 @implementation NBRootViewController
@@ -32,15 +41,64 @@
 
     self.navigationItem.title =@"嘿嘿";
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"点击" style:UIBarButtonItemStylePlain target:self action:@selector(dosomething:)];
+//    NBSheetView * sheetView = [NBSheetView new];
+//    SheetModel * model0 = [SheetModel new];
+//    model0.displayValue = @"龙门阵";
+//    SheetModel * model1 = [SheetModel new];
+//    model1.displayValue = @"鱼摆摆";
+//    [sheetView showWithArray:@[model0,model1]];
 
-    NBBannerView * banner = [[NBBannerView alloc]init];
-    banner.stopInterval = 3.f;
-    banner.frame = CGRectMake(0, 0, NB_SCREEN_WIDTH, sHeight(200));
-    NSArray * arImages = @[@"banner_01.jpeg",@"banner_02.jpeg",@"banner_03.jpeg",@"banner_04.jpeg"];
-    banner.arImages = arImages;
+    NBCusTextField * tf = [[NBCusTextField alloc]initWithFrame:CGRectMake(40, 200, 150, 40)];
+    tf.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:tf];
     
-    self.mainTableView.tableHeaderView = banner;
+    
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"点击" style:UIBarButtonItemStylePlain target:self action:@selector(dosomething:)];
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(100, 100, 100, 100);
+    btn.backgroundColor = [UIColor redColor];
+    [btn addTarget: self action:@selector(showMenu:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    return;
+
+//
+//    NBBannerView * banner = [[NBBannerView alloc]init];
+//    banner.stopInterval = 3.f;
+//    banner.frame = CGRectMake(0, 0, NB_SCREEN_WIDTH, sHeight(200));
+//    NSArray * arImages = @[@"banner_01.jpeg",@"banner_02.jpeg",@"banner_03.jpeg",@"banner_04.jpeg"];
+//    banner.arImages = arImages;
+//
+//    self.mainTableView.tableHeaderView = banner;
+    
+//    NBPhotoView * pView = [[NBPhotoView alloc]initWithFrame:CGRectMake(0, 100, 250, 50)];
+//    pView.target = self;
+//    [self.view addSubview:pView];
+
+    
+
+    
+    NSString *uuid = [[NSUUID UUID] UUIDString];
+    
+//    _wind = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+//    _wind.windowLevel = UIWindowLevelStatusBar;
+//    _wind.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+//    _wind.userInteractionEnabled = NO;
+//    _wind.hidden = NO;
+//    [[UIApplication sharedApplication].keyWindow addSubview:_wind];
+    
+    NSString * UID = [NBUserDefaulUtil valueForkeyInChain];
+    
+    
+    [[NBLocation sharedManager] startToLoaction];
+
+    
+    
+    
+    
+}
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents{
+    
+    
     
 }
 -(NSArray *)arMusics{
@@ -51,12 +109,38 @@
 }
 
 -(void)dosomething:(UIBarButtonItem *)sender{
+    NBSheetView * sheetView = [NBSheetView new];
+    SheetModel * model0 = [SheetModel new];
+    model0.displayValue = @"龙门阵";
+    SheetModel * model1 = [SheetModel new];
+    model1.displayValue = @"鱼摆摆";
+
+    [sheetView showWithArray:@[model0,model1]];
+//    [self showMenu:sender];
+    return;
+    
+//    NBContactsViewController * conVC = [NBContactsViewController new];
+//    conVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:conVC animated:YES];
+//
+//    return;
+//
+//    [NBNetWork postToUrl:@"http://47.104.174.237:10086/api/app/home" param:nil success:^(id obj) {
+//
+//    } failure:^(NSString *error) {
+//
+//    }];
+//
+    
     //这里是关键，点击按钮后先取消之前的操作，再进行需要进行的操作
-    NSString * sUrl = [NSString stringWithFormat:@"https://itunes.apple.com/us/app/%%E5%%BE%%AE%%E5%%AE%%9D%%E6%%8E%%8C%%E6%%9F%%9C/id1318610467?mt=8&uo=4"];
+//    NSString * sUrl = [NSString stringWithFormat:@"https://itunes.apple.com/us/app/%%E5%%BE%%AE%%E5%%AE%%9D%%E6%%8E%%8C%%E6%%9F%%9C/id1318610467?mt=8&uo=4"];//B
+    
+    NSString * sUrl = [NSString stringWithFormat:@"https://itunes.apple.com/us/app/%%E5%%BE%%AE%%E5%%AE%%9D%%E7%%A4%%BE%%E5%%8C%%BA/id1258417014?mt=8&uo=4"];//C
     
 
-    UIImage * image = [NBQRCodeTool generateWithLogoQRCodeData:sUrl imageWidth:500 logoImageName:@"VBlogo.png"];
-    
+
+    UIImage * image = [NBQRCodeTool generateWithLogoQRCodeData:sUrl imageWidth:500 logoImageName:@"VCLogo.png"];
+
     UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);//把图片保存在本地
 
 //    NSURL * url = [NSURL URLWithString:sUrl];
@@ -126,9 +210,6 @@
     sliderView.isAverage = YES;
     sliderView.showLine = YES;
     sliderView.showBar= YES;
-
-    
-    
     [self.view addSubview:sliderView];
 }
 
@@ -143,7 +224,7 @@
 -(UITableView *)mainTableView{
     
     if (!_mainTableView) {
-        WEAKSELF
+        
         CGRect rect = self.view.bounds;
         rect.size.height = NB_SCREEN_HEIGHT- NB_NAVI_HEIGHT - NB_TABBAR_HEIGHT-200;
         rect.origin.y = 200;
@@ -243,8 +324,71 @@
     
     
 }
+-(void)youarapig{
+    
+    NSLog(@"u r a pig");
+}
 
 
+- (void)showMenu:(UIButton *)sender
+{
 
+    UIMenuController * m = [UIMenuController sharedMenuController];
+    UIMenuItem * item = [[UIMenuItem alloc]initWithTitle:@"粘贴" action:@selector(youarapig)];
+    UIMenuItem * item1 = [[UIMenuItem alloc]initWithTitle:@"复制" action:@selector(youarapig)];
+    m.menuItems = @[item,item1];
+
+    [m setTargetRect:sender.frame inView:self.view];
+    
+    [m setMenuVisible:YES animated:YES];
+    
+    //    [sender setImage:[NBTool shotScreen] forState:UIControlStateNormal];
+//
+//    NSArray *menuItems =@[
+//
+//      [NBMenuItem menuItem:@"Menu Title"
+//                     image:nil
+//                    target:nil
+//                    action:NULL],
+//
+//      [NBMenuItem menuItem:@"分享"
+//                     image:[UIImage imageNamed:@"rec_pause"]
+//                    target:self
+//                    action:@selector(pushMenuItem:)],
+//
+//      [NBMenuItem menuItem:@"扫一扫"
+//                     image:nil
+//                    target:self
+//                    action:@selector(pushMenuItem:)],
+//
+//      [NBMenuItem menuItem:@"面对面收钱"
+//                     image:[UIImage imageNamed:@"rec_start"]
+//                    target:self
+//                    action:@selector(pushMenuItem:)],
+//
+//      [NBMenuItem menuItem:@"付款码"
+//                     image:[UIImage imageNamed:@"rec_stop"]
+//                    target:self
+//                    action:@selector(pushMenuItem:)],
+//
+//      [NBMenuItem menuItem:@"回到首页"
+//                     image:[UIImage imageNamed:@"home_icon"]
+//                    target:self
+//                    action:@selector(pushMenuItem:)],
+//      ];
+//
+//    NBMenuItem *first = menuItems[0];
+//    first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
+//    first.alignment = NSTextAlignmentCenter;
+//
+//    [NBMenu showMenuInView:self.view
+//                  fromRect:sender.frame
+//                 menuItems:menuItems];
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+
+}
 
 @end

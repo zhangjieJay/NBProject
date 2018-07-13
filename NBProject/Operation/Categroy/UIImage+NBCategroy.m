@@ -41,8 +41,42 @@
     
     return resultingImage;
 }
-
-
+#pragma mark ------------------------------------ 获得灰度图
++ (UIImage*)covertToGrayImageFromImage:(UIImage*)sourceImage{
+    int width = sourceImage.size.width;
+    int height = sourceImage.size.height;
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
+    CGContextRef context = CGBitmapContextCreate (nil,width,height,8,0,colorSpace,kCGImageAlphaNone);
+    CGColorSpaceRelease(colorSpace);
+    
+    if (context == NULL) {
+        return nil;
+    }
+    
+    CGContextDrawImage(context,CGRectMake(0, 0, width, height), sourceImage.CGImage);
+    CGImageRef contextRef = CGBitmapContextCreateImage(context);
+    UIImage *grayImage = [UIImage imageWithCGImage:contextRef];
+    CGContextRelease(context);
+    CGImageRelease(contextRef);
+    
+    return grayImage;
+}
++ (UIImage*)mergeImage:(UIImage*)firstImage withImage:(UIImage*)secondImage{
+    CGImageRef firstImageRef = firstImage.CGImage;
+    CGFloat firstWidth = CGImageGetWidth(firstImageRef);
+    CGFloat firstHeight = CGImageGetHeight(firstImageRef);
+    CGImageRef secondImageRef = secondImage.CGImage;
+    CGFloat secondWidth = CGImageGetWidth(secondImageRef);
+    CGFloat secondHeight = CGImageGetHeight(secondImageRef);
+    CGSize mergedSize = CGSizeMake(MAX(firstWidth, secondWidth), MAX(firstHeight, secondHeight));
+    UIGraphicsBeginImageContext(mergedSize);
+    [firstImage drawInRect:CGRectMake(0, 0, firstWidth, firstHeight)];
+    [secondImage drawInRect:CGRectMake(0, 0, secondWidth, secondHeight)];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 
 
 
@@ -384,6 +418,94 @@
     CGContextRelease(ctx);
     CGImageRelease(cgimg);
     return img;
+}
+-(NSData *)compressDataMaxKB:(NSInteger)kbValue{
+    
+    float minCompressRatio = 0.1;
+    float compressRatio = 1.0;
+    NSInteger bytes = kbValue * 1024;
+    NSData *imageData;
+    if (UIImagePNGRepresentation(self)) {
+        imageData = UIImagePNGRepresentation(self);
+    }else{
+        imageData= UIImageJPEGRepresentation(self, compressRatio);
+        
+    }
+    if (imageData.length <= bytes) {//如果原图就比较小
+        return imageData;
+    }
+    
+    while ((compressRatio > minCompressRatio) && (imageData.length > bytes)) {
+        compressRatio -= 0.1;
+        imageData = UIImageJPEGRepresentation(self, compressRatio);
+    }
+    
+    return imageData;
+    
+}
+- (NSString *)contentTypeForImageData:(NSData *)data{
+    uint8_t c;
+    [data getBytes:&c length:1];
+    switch (c) {
+        case 0xFF:
+            return @"jpeg";
+        case 0x89:
+            return @"png";
+        case 0x47:
+            return @"gif";
+        case 0x49:
+        case 0x4D:
+            return @"tiff";
+        case 0x52:
+            if ([data length] < 12) {
+                return nil;
+            }
+            NSString *testString = [[NSString alloc] initWithData:[data subdataWithRange:NSMakeRange(0, 12)] encoding:NSASCIIStringEncoding];
+            if ([testString hasPrefix:@"RIFF"] && [testString hasSuffix:@"WEBP"]){
+                return @"webp";
+            }
+            return nil;
+    }
+    
+    return nil;
+}
+- (UIImage *)clipToCircleImage{
+    // NO代表透明
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, 1);
+    // 获得上下文
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    // 添加一个圆
+    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+    // 方形变圆形
+    CGContextAddEllipseInRect(ctx, rect);
+    // 裁剪
+    CGContextClip(ctx);
+    // 将图片画上去
+    [self drawInRect:rect];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+- (BOOL)hasAlphaChannel{
+    CGImageAlphaInfo alpha = CGImageGetAlphaInfo(self.CGImage);
+    return (alpha == kCGImageAlphaFirst || alpha == kCGImageAlphaLast || alpha == kCGImageAlphaPremultipliedFirst || alpha == kCGImageAlphaPremultipliedLast);
+}
+
++(void)saveToPhotosAlbum:(UIImage *)image{
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+
+//    或者
+//    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+//        PHAssetChangeRequest *changeRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+//        changeRequest.creationDate          = [NSDate date];
+//    } completionHandler:^(BOOL success, NSError *error) {
+//        if (success) {
+//            NSLog(@"successfully saved");
+//        }
+//        else {
+//            NSLog(@"error saving to photos: %@", error);
+//        }
+//    }];
 }
 
 

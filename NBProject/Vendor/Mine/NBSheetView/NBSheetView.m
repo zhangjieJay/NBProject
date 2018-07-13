@@ -7,7 +7,6 @@
 //
 
 #import "NBSheetView.h"
-#import "SheetTCell.h"
 
 
 @interface NBSheetView()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
@@ -74,10 +73,11 @@
 -(void)showWithArray:(NSArray *)arData{
     
     if (arData.count >= 1) {
-
         CGFloat height = 40.f * arData.count;
         tableFrame = CGRectMake(0, NB_SCREEN_HEIGHT - height, NB_SCREEN_WIDTH, height);
-        [NB_KEYWINDOW addSubview:self];
+//        [NB_KEYWINDOW addSubview:self];
+        [[[[UIApplication sharedApplication] delegate] window ]addSubview:self];
+
         self.dataArray = [NSMutableArray arrayWithArray:arData];
         [self.sheetTable reloadData];
         [self show];
@@ -137,7 +137,6 @@
 
 
 -(void)show{
-
     [UIView animateWithDuration:0.25f animations:^{//改变
         
         self.sheetTable.frame = tableFrame;

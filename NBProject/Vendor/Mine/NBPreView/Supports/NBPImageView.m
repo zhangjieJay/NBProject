@@ -53,7 +53,6 @@
 }
 
 -(void)setImage:(UIImage *)image{
-    
     [super setImage:image];
     [self resetImageViewFrame:self];
 }

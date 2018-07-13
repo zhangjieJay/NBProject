@@ -3,8 +3,6 @@
 
 > 由于使用UIPickerView的话，列表会有个弧度，所以这里用了[PGPickerView](https://github.com/xiaozhuxiong121/PGPickerView)  
 
-![](F734F5F9-FB12-4BA7-B43E-B39D0FF1DA3B.png)  
-
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/PGDatePicker.svg)](https://cocoapods.org/pods/PGDatePicker)
 ![](https://img.shields.io/badge/platform-iOS-red.svg) ![](https://img.shields.io/badge/language-Objective--C-orange.svg)
 ![](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg) 
@@ -17,7 +15,7 @@
 # 样式3
 ![year](Images/样式3.png)
 
-> 只显示中间的文字，设置```middleText```为```true```即可，默认是```false```
+> 只显示中间的文字，设置```isHiddenMiddleText```为```false```即可，默认是```true```
 
 # 年份
 ![year](Images/年.jpg)
@@ -49,8 +47,10 @@
 # CocoaPods安装
 
 ```
-pod 'PGDatePicker', '>= 1.4.4'
+pod 'PGDatePicker', '>= 1.5.9'
 ```
+
+> **在`1.5.1`版本中对iPhone X进行了适配** 
 
 # 使用
 ```
@@ -86,9 +86,9 @@ datePicker.datePickerMode = PGDatePickerModeYear;
 //设置线条的颜色
 datePicker.lineBackgroundColor = [UIColor redColor];
 //设置选中行的字体颜色
-datePicker.titleColorForSelectedRow = [UIColor redColor];
+datePicker.textColorOfSelectedRow = [UIColor redColor];
 //设置未选中行的字体颜色
-datePicker.titleColorForOtherRow = [UIColor blackColor];
+datePicker.textColorOfOtherRow = [UIColor blackColor];
 
 //设置取消按钮的字体颜色
 datePicker.cancelButtonTextColor = [UIColor blackColor];
@@ -106,11 +106,14 @@ datePicker.confirmButtonFont = [UIFont boldSystemFontOfSize:17];
 
 ```
 
+# 最新版本
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/PGDatePicker.svg)]()
+
 # 许可证
 
 PGDatePicker 使用 MIT 许可证，详情见 [LICENSE](LICENSE) 文件。
 
 # 想说的话
-喜欢的话扔一个免费的star给我，这足以激励我更好的完善
+喜欢的话扔一个免费的[star](https://github.com/xiaozhuxiong121/PGDatePicker)给我，这足以激励我更好的完善
 
 

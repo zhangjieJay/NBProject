@@ -78,8 +78,6 @@ typedef NS_ENUM(NSInteger, NBButtonType) {
 };
 
 
-
-
 #ifndef Enums_h
 #define Enums_h
 

@@ -21,4 +21,5 @@
 
 + (UIColor *)getColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alp;
 
+- (BOOL)isTheSameColor:(UIColor *)otherColor;
 @end

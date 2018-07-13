@@ -213,46 +213,24 @@
 }
 #pragma mark ------------------------------- 是否打开推送通知
 +(BOOL)isOpenNotification{
-    //#pragma clang diagnostic push
-    //#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     
-    //        if (iOS10_Later) {
-    //            __block BOOL isOpen = NO;
-    //           __block BOOL isIn = NO;
-    //            [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * settings) {
-    //                isIn = YES;
-    //                    if (settings.authorizationStatus == UNAuthorizationStatusAuthorized) {
-    //                        isOpen = YES;
-    //                    }else{
-    //                        isOpen = NO;
-    //                    }
-    //            }];
-    //            while (!isIn) {
-    //
-    //                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[[NSDate date] dateByAddingTimeInterval:0.5]];
-    //
-    //            }
-    //            return isOpen;
-    //
-    //        }else
-    
-    if (iOS8_Later) {
-        UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
-        if (UIUserNotificationTypeNone == setting.types) {
-            return NO;
+        if (@available(iOS 8.0, *)) {
+            UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
+            if (UIUserNotificationTypeNone == setting.types) {
+                return NO;
+            }else{
+                return YES;
+            }
         }else{
-            return YES;
+            UIRemoteNotificationType type = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+            if(UIRemoteNotificationTypeNone == type){
+                return NO;
+            }else{
+                return YES;
+            }
+            
         }
-    }else{
-        UIRemoteNotificationType type = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
-        if(UIRemoteNotificationTypeNone == type){
-            return NO;
-        }else{
-            return YES;
-        }
-    }
-    //#pragma clang diagnostic pop
-    
+
 }
 
 
@@ -717,30 +695,42 @@
  */
 +(UIViewController *)getCurrentViewController{
     
-    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    // modal展现方式的底层视图不同
-    // 取到第一层时，取到的是UITransitionView，通过这个view拿不到控制器
-    UIView *firstView = [keyWindow.subviews firstObject];
-    UIView *secondView = [firstView.subviews firstObject];
+//    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+//    // modal展现方式的底层视图不同
+//    // 取到第一层时，取到的是UITransitionView，通过这个view拿不到控制器
+//    UIView *firstView = [keyWindow.subviews firstObject];
+//    UIView *secondView = [firstView.subviews firstObject];
+//
+//    UIViewController *vc = [NBTool getViewControllerWithView:secondView];
+//
+//    if ([vc isKindOfClass:[UITabBarController class]]) {
+//        UITabBarController *tab = (UITabBarController *)vc;
+//        if ([tab.selectedViewController isKindOfClass:[UINavigationController class]]) {
+//            UINavigationController *nav = (UINavigationController *)tab.selectedViewController;
+//            return [nav.viewControllers lastObject];
+//        } else {
+//            return tab.selectedViewController;
+//        }
+//    } else if ([vc isKindOfClass:[UINavigationController class]]) {
+//        UINavigationController *nav = (UINavigationController *)vc;
+//        return [nav.viewControllers lastObject];
+//    } else {
+//        return vc;
+//    }
+//    return nil;
     
-    UIViewController *vc = [NBTool getViewControllerWithView:secondView];
+    id rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
     
-    if ([vc isKindOfClass:[UITabBarController class]]) {
-        UITabBarController *tab = (UITabBarController *)vc;
-        if ([tab.selectedViewController isKindOfClass:[UINavigationController class]]) {
-            UINavigationController *nav = (UINavigationController *)tab.selectedViewController;
-            return [nav.viewControllers lastObject];
-        } else {
-            return tab.selectedViewController;
-        }
-    } else if ([vc isKindOfClass:[UINavigationController class]]) {
-        UINavigationController *nav = (UINavigationController *)vc;
-        return [nav.viewControllers lastObject];
-    } else {
-        return vc;
+    if([rootViewController isKindOfClass:[UINavigationController class]]){
+        rootViewController = ((UINavigationController *)rootViewController).viewControllers.firstObject;
     }
-    return nil;
-    
+    else if([rootViewController isKindOfClass:[UITabBarController class]]){
+        rootViewController = ((UITabBarController *)rootViewController).selectedViewController;
+        if([rootViewController isKindOfClass:[UINavigationController class]]){
+            rootViewController = ((UINavigationController *)rootViewController).viewControllers.firstObject;
+        }
+    }
+    return rootViewController;
 }
 
 
@@ -911,6 +901,32 @@
     exit(EXIT_SUCCESS);
 }
 
++(UIImage *)shotScreen{
+    
+    CGSize imageSize = [[UIScreen mainScreen] bounds].size;
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    for (UIWindow * window in [[UIApplication sharedApplication] windows]) {
+        if (![window respondsToSelector:@selector(screen)] || [window screen] == [UIScreen mainScreen]) {
+            CGContextSaveGState(context);
+            CGContextTranslateCTM(context, [window center].x, [window center].y);
+            CGContextConcatCTM(context, [window transform]);
+            CGContextTranslateCTM(context, -[window bounds].size.width*[[window layer] anchorPoint].x, -[window bounds].size.height*[[window layer] anchorPoint].y);
+            [[window layer] renderInContext:context];
+            
+            CGContextRestoreGState(context);
+        }
+    }
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+//倒入框架
+//#import
+//AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+//或者
+//AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 
 
 @end

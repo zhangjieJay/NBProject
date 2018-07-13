@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NBProject/NBRootViewController.m"
-            timestampString = "542863525.301194"
+            filePath = "NBProject/NBMoneyTextField.m"
+            timestampString = "552641828.2369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-dosomething:"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "-init"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

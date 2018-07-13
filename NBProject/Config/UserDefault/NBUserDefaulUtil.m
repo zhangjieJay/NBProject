@@ -7,6 +7,7 @@
 //
 
 #import "NBUserDefaulUtil.h"
+#import "KeychainItemWrapper.h"
 
 @implementation NBUserDefaulUtil
 + (NSString *)getMyLocalInfoType:(MyLocalInfoType)type {
@@ -170,8 +171,26 @@
 
 
 
++(void)keyChainSaveValue:(id)value{
+    
+    /** 初始化一个保存用户帐号的KeychainItemWrapper */
+    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"NBAPP_SSXXVB" accessGroup:nil];
+    //保存帐号
+    [wrapper setObject:value forKey:(id)kSecAttrAccount];
+    
+}
++(id)valueForkeyInChain{
+    
+    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"NBAPP_SSXXVB" accessGroup:nil];
 
-
+    NSString * uuid = [wrapper objectForKey:(id)kSecAttrAccount];
+    
+    if ([NBTool isEmpty:uuid]) {//如果没有则 获取
+        uuid = [[NBDevice defaultDevice] getUUID];
+        [NBUserDefaulUtil keyChainSaveValue:uuid];
+    }
+    return uuid;
+}
 
 
 @end
